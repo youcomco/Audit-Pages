@@ -1,0 +1,2441 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="artifact-type" content="narrative">
+  <meta name="design-style" content="charter">
+  <title>حسابرسی ادعاهای مدیریت — راهنمای جامع آزمون جامعه حسابداران رسمی ایران (IACPA)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;600;700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@1.43.0/dist/umd/lucide.min.js"></script>
+  <style>
+    :root {
+      color-scheme: light;
+
+      /* Page and surfaces (Charter) */
+      --background: #f7f4ec;
+      --surface-container-low: #fffdf8;
+      --surface-container: #ece5d4;
+      --surface-container-high: #e3dac4;
+
+      /* Ink */
+      --on-surface: #1c1f26;
+      --on-surface-variant: #4f5360;
+
+      /* Rules */
+      --outline: #b08d57;
+      --outline-variant: #d9cfb8;
+
+      /* Accents */
+      --primary: #14213d;
+      --on-primary: #f7f4ec;
+      --primary-container: #e3e6ee;
+      --on-primary-container: #14213d;
+      --secondary: #2d5a4a;
+      --on-secondary: #f7f4ec;
+      --secondary-container: #e2ede8;
+      --tertiary: #8a6a35;
+      --tertiary-container: #f5ecdc;
+      --error: #9b2c2c;
+      --on-error: #f7f4ec;
+      --error-container: #f9e6e6;
+
+      /* Data series */
+      --data-1: #14213d;
+      --data-2: #8a6a35;
+      --data-3: #2d5a4a;
+      --data-4: #5b7aa0;
+      --data-context: #c2bba9;
+
+      /* Semantic */
+      --positive: #2d5a4a;
+      --warning: #8a6a35;
+      --focus: #14213d;
+      --navy-brass-text: color-mix(in srgb, var(--outline) 75%, var(--on-primary));
+      --navy-muted-text: color-mix(in srgb, var(--on-primary) 78%, var(--primary));
+
+      /* Fonts (Persian first for RTL script integrity) */
+      --font-headline: 'Noto Naskh Arabic', 'Libre Caslon Text', 'Vazirmatn', serif;
+      --font-body: 'Vazirmatn', sans-serif;
+      --font-label: 'Vazirmatn', 'JetBrains Mono', monospace;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      /* Shape (Charter: squared 2px corners) */
+      --rounded: 0.125rem;
+      --rounded-lg: 0.125rem;
+      --rounded-full: 0.125rem;
+
+      /* Style effects */
+      --brass-rule: 2px solid var(--outline);
+      --brass-band-rule: 3px solid var(--outline);
+      --hairline: 1px solid var(--outline-variant);
+      --navy-border: 1px solid var(--primary);
+      --leaf-underline: 0 1px 0 var(--outline-variant);
+
+      /* Type scale (Narrative) */
+      --display-size: clamp(2.1rem, 1.4rem + 2.6vw, 3.25rem);
+      --headline-size: clamp(1.5rem, 1.2rem + 1.1vw, 2rem);
+      --subhead-size: clamp(1.125rem, 1.02rem + 0.45vw, 1.35rem);
+      --body-size: clamp(1rem, 0.96rem + 0.18vw, 1.08rem);
+      --label-size: clamp(0.75rem, 0.72rem + 0.12vw, 0.8125rem);
+
+      /* Spacing scale (4pt base) */
+      --space-2xs: 0.125rem;
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+      --space-3xl: 6rem;
+
+      /* Motion */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+      --dur-micro: 120ms;
+      --dur-short: 220ms;
+      --dur-long: 420ms;
+    }
+
+    /* Base reset */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      overflow-x: clip;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    header { position: static !important; }
+    button, input, select, textarea {
+      font-family: inherit;
+      font-size: inherit;
+      letter-spacing: 0;
+    }
+
+    .page-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-xl);
+      padding: var(--space-lg);
+      max-width: 1180px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .page-grid * { min-width: 0; }
+
+    /* Focus rings */
+    :focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    /* Typography helpers */
+    h1, h2, h3, h4 {
+      font-family: var(--font-headline);
+      color: var(--on-surface);
+      margin: 0;
+      letter-spacing: 0;
+    }
+    p {
+      margin: 0 0 var(--space-md) 0;
+      max-width: 70ch;
+    }
+    p:last-child { margin-bottom: 0; }
+
+    .mono-num {
+      font-family: var(--font-mono);
+      font-variant-numeric: tabular-nums lining-nums;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+    .tabular {
+      font-variant-numeric: tabular-nums lining-nums;
+    }
+
+    /* Treatment 1 & 2: Navy Title Band + Upright Regular Headline */
+    .title-band {
+      background-color: var(--primary);
+      color: var(--on-primary);
+      padding: var(--space-2xl) var(--space-lg) var(--space-xl);
+      border-bottom: var(--brass-band-rule);
+    }
+    .title-band-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 var(--space-lg);
+    }
+    .title-kicker {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 600;
+      color: var(--navy-brass-text);
+      margin-bottom: var(--space-sm);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    .title-band h1 {
+      font-family: var(--font-headline);
+      font-weight: 400;
+      font-size: var(--display-size);
+      line-height: 1.18;
+      color: var(--on-primary);
+      padding-bottom: var(--space-md);
+      border-bottom: 1px solid var(--outline);
+      margin-bottom: var(--space-md);
+    }
+    .title-band .lede {
+      color: var(--navy-muted-text);
+      font-size: var(--subhead-size);
+      line-height: 1.55;
+      max-width: 68ch;
+      margin: 0;
+    }
+
+    /* Chapter Navigation Bar */
+    .chapter-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      border-bottom: var(--hairline);
+      padding-bottom: var(--space-md);
+      margin-bottom: var(--space-sm);
+    }
+    .chapter-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      min-height: 44px;
+      padding: var(--space-xs) var(--space-md);
+      text-decoration: none;
+      color: var(--primary);
+      background-color: var(--surface-container-low);
+      border: var(--hairline);
+      border-radius: var(--rounded);
+      font-size: var(--label-size);
+      font-weight: 600;
+      transition: background-color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out);
+    }
+    .chapter-link:hover {
+      background-color: var(--primary-container);
+      border-color: var(--primary);
+    }
+    .chapter-link.is-active {
+      border-bottom: var(--brass-rule);
+      background-color: var(--surface-container-low);
+    }
+
+    /* Treatment 3 & 4: Brass top rule figure cards + statement figures */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+      gap: var(--space-md);
+    }
+    .figure-card {
+      background-color: var(--surface-container-low);
+      border-top: var(--brass-rule);
+      box-shadow: var(--leaf-underline);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md) var(--space-lg);
+    }
+    .figure-label {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 600;
+      color: var(--on-surface-variant);
+      margin-bottom: var(--space-xs);
+    }
+    .figure-value {
+      font-family: var(--font-headline);
+      font-weight: 400;
+      font-size: clamp(1.65rem, 1.35rem + 0.9vw, 2.25rem);
+      line-height: 1.2;
+      font-variant-numeric: tabular-nums lining-nums;
+      color: var(--on-surface);
+    }
+    .figure-delta {
+      font-size: var(--label-size);
+      color: var(--tertiary);
+      font-weight: 600;
+      margin-top: var(--space-xs);
+    }
+    .figure-delta.is-positive {
+      color: var(--secondary);
+    }
+
+    /* Treatment 5: Brass section rule */
+    .section-block {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+    .section-head {
+      border-top: var(--brass-rule);
+      padding-top: var(--space-md);
+      border-bottom: var(--hairline);
+      padding-bottom: var(--space-sm);
+    }
+    .section-kicker {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 600;
+      color: var(--tertiary);
+      margin-bottom: var(--space-xs);
+    }
+    .section-head h2 {
+      font-family: var(--font-headline);
+      font-weight: 400;
+      font-size: var(--headline-size);
+      line-height: 1.25;
+      color: var(--on-surface);
+    }
+    .section-sub {
+      color: var(--on-surface-variant);
+      margin-top: var(--space-xs);
+      max-width: 72ch;
+    }
+
+    /* Charter Editorial Note / Aside Box */
+    .editorial-note {
+      background-color: var(--surface-container);
+      border-right: 3px solid var(--primary);
+      border-bottom: var(--hairline);
+      padding: var(--space-md) var(--space-lg);
+      border-radius: var(--rounded);
+    }
+    .editorial-note-title {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: var(--subhead-size);
+      color: var(--primary);
+      margin-bottom: var(--space-xs);
+    }
+
+    /* Buttons (Charter: 2px squared corners, 44px min touch target) */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      min-height: 44px;
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--rounded);
+      font-weight: 500;
+      font-size: 0.9375rem;
+      cursor: pointer;
+      transition: background-color var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out), box-shadow var(--dur-micro) var(--ease-out);
+      text-decoration: none;
+    }
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--on-primary);
+      border: var(--navy-border);
+    }
+    .btn-primary:hover:not(:disabled) {
+      background-color: color-mix(in srgb, var(--primary) 88%, var(--on-surface));
+    }
+    .btn-secondary {
+      background-color: var(--surface-container-low);
+      color: var(--primary);
+      border: var(--navy-border);
+    }
+    .btn-secondary:hover:not(:disabled) {
+      background-color: var(--primary-container);
+    }
+    .btn-secondary[aria-pressed="true"],
+    .btn-tab[aria-selected="true"] {
+      background-color: var(--primary);
+      color: var(--on-primary);
+      border-color: var(--primary);
+    }
+    .btn:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    /* Squared Stamp Tags (no pills) */
+    .stamp {
+      display: inline-flex;
+      align-items: center;
+      padding: var(--space-2xs) var(--space-sm);
+      border: 1px solid var(--outline);
+      border-radius: var(--rounded);
+      font-size: var(--label-size);
+      font-weight: 600;
+      color: var(--tertiary);
+      background-color: transparent;
+      white-space: nowrap;
+    }
+    .stamp.is-navy {
+      border-color: var(--primary);
+      color: var(--primary);
+      background-color: var(--primary-container);
+    }
+    .stamp.is-green {
+      border-color: var(--secondary);
+      color: var(--secondary);
+      background-color: var(--secondary-container);
+    }
+    .stamp.is-error {
+      border-color: var(--error);
+      color: var(--error);
+      background-color: var(--error-container);
+    }
+
+    /* Section 1: Assertions Explorer */
+    .category-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+    .explorer-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.15fr);
+      gap: var(--space-lg);
+      align-items: start;
+    }
+    .assertion-list {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-sm);
+    }
+    .assertion-item {
+      text-align: right;
+      width: 100%;
+      min-height: 54px;
+      padding: var(--space-sm) var(--space-md);
+      background-color: var(--surface-container-low);
+      border: var(--hairline);
+      border-right: 3px solid var(--outline-variant);
+      border-radius: var(--rounded);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      color: var(--on-surface);
+      transition: background-color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out);
+    }
+    .assertion-item:hover {
+      background-color: var(--primary-container);
+    }
+    .assertion-item.is-selected {
+      background-color: var(--primary-container);
+      border-color: var(--primary);
+      border-right: 4px solid var(--primary);
+    }
+    .assertion-item-title {
+      font-weight: 600;
+      display: block;
+    }
+    .assertion-item-en {
+      font-size: var(--label-size);
+      color: var(--on-surface-variant);
+      display: block;
+    }
+    .detail-panel {
+      background-color: var(--surface-container-low);
+      border-top: var(--brass-rule);
+      border-bottom: var(--hairline);
+      border-left: var(--hairline);
+      border-right: var(--hairline);
+      padding: var(--space-lg);
+      border-radius: var(--rounded);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .detail-panel h3 {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: var(--subhead-size);
+      color: var(--primary);
+    }
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr));
+      gap: var(--space-md);
+      border-top: var(--hairline);
+      padding-top: var(--space-md);
+    }
+    .detail-cell-label {
+      font-size: var(--label-size);
+      font-weight: 600;
+      color: var(--tertiary);
+      margin-bottom: var(--space-xs);
+    }
+    .detail-example-box {
+      background-color: var(--surface-container);
+      padding: var(--space-md);
+      border-radius: var(--rounded);
+      border-right: 2px solid var(--outline);
+    }
+
+    /* Tables (Charter: no vertical borders, high-surface header band, hairlines) */
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      background-color: var(--surface-container-low);
+      border-top: var(--brass-rule);
+      border-bottom: var(--hairline);
+    }
+    table.charter-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: right;
+      font-size: 0.9375rem;
+    }
+    table.charter-table thead th {
+      background-color: var(--surface-container-high);
+      color: var(--on-surface);
+      font-size: var(--label-size);
+      font-weight: 700;
+      padding: var(--space-sm) var(--space-md);
+      border-bottom: var(--brass-rule);
+      white-space: nowrap;
+    }
+    table.charter-table tbody td {
+      padding: var(--space-sm) var(--space-md);
+      border-bottom: var(--hairline);
+      vertical-align: top;
+    }
+    table.charter-table tbody tr:hover {
+      background-color: var(--primary-container);
+    }
+
+    /* Section 2: Direction of Testing Simulator */
+    .sim-controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr));
+      gap: var(--space-sm);
+    }
+    .sim-card {
+      background-color: var(--surface-container-low);
+      border-top: var(--brass-rule);
+      box-shadow: var(--leaf-underline);
+      padding: var(--space-lg);
+      border-radius: var(--rounded);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+    .diagram-stage {
+      background-color: var(--background);
+      border: var(--hairline);
+      padding: var(--space-md);
+      border-radius: var(--rounded);
+      min-height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .diagram-stage svg {
+      width: 100%;
+      height: auto;
+      max-height: 280px;
+      display: block;
+    }
+    .sim-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr));
+      gap: var(--space-md);
+    }
+    .sim-metric {
+      border-right: 2px solid var(--outline);
+      padding-right: var(--space-md);
+    }
+
+    /* Section 3: Matrix Filter Bar */
+    .filter-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+      gap: var(--space-md);
+      align-items: end;
+      background-color: var(--surface-container-low);
+      border-top: var(--brass-rule);
+      box-shadow: var(--leaf-underline);
+      padding: var(--space-md) var(--space-lg);
+    }
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+    .field-label {
+      font-size: var(--label-size);
+      font-weight: 600;
+      color: var(--on-surface-variant);
+    }
+    .charter-select {
+      min-height: 44px;
+      padding: var(--space-xs) var(--space-md);
+      background-color: var(--surface-container-low);
+      color: var(--on-surface);
+      border: var(--hairline);
+      border-radius: var(--rounded);
+      cursor: pointer;
+    }
+    .charter-select:focus-visible {
+      border-color: var(--primary);
+    }
+
+    /* Section 4: Trap Cards */
+    .trap-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+      gap: var(--space-lg);
+    }
+    .trap-card {
+      background-color: var(--surface-container-low);
+      border-top: var(--brass-rule);
+      box-shadow: var(--leaf-underline);
+      padding: var(--space-lg);
+      border-radius: var(--rounded);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: var(--space-md);
+    }
+    .trap-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--space-sm);
+    }
+    .trap-card h3 {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: var(--subhead-size);
+      color: var(--primary);
+    }
+    .trap-answer {
+      background-color: var(--surface-container);
+      border-right: 3px solid var(--secondary);
+      padding: var(--space-md);
+      border-radius: var(--rounded);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .trap-answer[hidden] {
+      display: none;
+    }
+
+    /* Section 5: Quiz Engine */
+    .quiz-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.85fr);
+      gap: var(--space-lg);
+      align-items: start;
+    }
+    .quiz-card {
+      background-color: var(--surface-container-low);
+      border-top: var(--brass-rule);
+      box-shadow: var(--leaf-underline);
+      padding: var(--space-lg);
+      border-radius: var(--rounded);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .quiz-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-sm);
+      border-bottom: var(--hairline);
+      padding-bottom: var(--space-sm);
+    }
+    .quiz-stem {
+      font-family: var(--font-headline);
+      font-weight: 600;
+      font-size: var(--subhead-size);
+      line-height: 1.55;
+      color: var(--on-surface);
+    }
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .quiz-option {
+      width: 100%;
+      min-height: 48px;
+      text-align: right;
+      padding: var(--space-sm) var(--space-md);
+      background-color: var(--surface-container-low);
+      border: var(--hairline);
+      border-radius: var(--rounded);
+      color: var(--on-surface);
+      cursor: pointer;
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      transition: background-color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out);
+    }
+    .quiz-option:hover:not(:disabled) {
+      background-color: var(--primary-container);
+      border-color: var(--primary);
+    }
+    .quiz-option.is-correct {
+      background-color: var(--secondary-container);
+      border-color: var(--secondary);
+      border-right: 4px solid var(--secondary);
+    }
+    .quiz-option.is-wrong {
+      background-color: var(--error-container);
+      border-color: var(--error);
+      border-right: 4px solid var(--error);
+    }
+    .quiz-option-index {
+      font-weight: 700;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+    .quiz-explanation {
+      background-color: var(--surface-container);
+      border-right: 3px solid var(--primary);
+      padding: var(--space-md);
+      border-radius: var(--rounded);
+    }
+    .quiz-explanation.is-correct-box {
+      border-right-color: var(--secondary);
+    }
+    .quiz-explanation.is-wrong-box {
+      border-right-color: var(--error);
+    }
+    .quiz-nav-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-sm);
+      border-top: var(--hairline);
+      padding-top: var(--space-md);
+    }
+    .quiz-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .mastery-chart-wrap {
+      min-height: 180px;
+      width: 100%;
+    }
+    .q-pager-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(44px, 1fr));
+      gap: var(--space-xs);
+    }
+    .q-dot {
+      min-height: 44px;
+      min-width: 44px;
+      border: var(--hairline);
+      background-color: var(--surface-container-low);
+      color: var(--on-surface);
+      border-radius: var(--rounded);
+      cursor: pointer;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .q-dot.is-current {
+      border-color: var(--primary);
+      box-shadow: inset 0 -3px 0 var(--outline);
+    }
+    .q-dot.is-answered-ok {
+      background-color: var(--secondary-container);
+      color: var(--secondary);
+      border-color: var(--secondary);
+    }
+    .q-dot.is-answered-bad {
+      background-color: var(--error-container);
+      color: var(--error);
+      border-color: var(--error);
+    }
+
+    /* Footer / Sources */
+    .charter-footer {
+      border-top: var(--brass-rule);
+      padding: var(--space-lg) 0 var(--space-2xl);
+      color: var(--on-surface-variant);
+      font-size: var(--label-size);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: var(--space-md);
+    }
+
+    /* Container queries for adaptive cards */
+    .card-wrapper { container-type: inline-size; }
+    @container (max-width: 480px) {
+      .detail-grid, .sim-summary-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Reveal animation */
+    .reveal-block {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity var(--dur-long) var(--ease-out), transform var(--dur-long) var(--ease-out);
+    }
+    .reveal-block.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 860px) {
+      .explorer-layout,
+      .quiz-shell {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .page-grid {
+        padding: var(--space-md);
+        gap: var(--space-lg);
+      }
+      .title-band {
+        padding: var(--space-xl) var(--space-md) var(--space-lg);
+      }
+      .title-band-inner {
+        padding: 0;
+      }
+      .trap-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal-block {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Treatment 1 & 2: Full-width Navy Title Band with Brass Rule -->
+  <header class="title-band">
+    <div class="title-band-inner">
+      <div class="title-kicker">
+        <span>پرونده آموزشی و آمادگی آزمون جامعه حسابداران رسمی ایران (<bdi dir="ltr">IACPA</bdi>)</span>
+        <span>—</span>
+        <span>استاندارد حسابرسی ۳۱۵ و ۵۰۰ ایران</span>
+      </div>
+      <h1>حسابرسی ادعاهای مدیریت</h1>
+      <p class="lede">
+        چارچوب جامع تسلط بر طبقات سه‌گانه ادعاهای صریح و ضمنی مدیریت، منطق جهت آزمون‌ها (بیش‌نمایی در برابر کم‌نمایی)، ماتریس ارتباط ادعاها با روش‌های حسابرسی، تله‌های پرتکرار کنکوری و شبیه‌ساز خودارزیابی تستی.
+      </p>
+    </div>
+  </header>
+
+  <main class="page-grid">
+
+    <!-- Quick Jump Navigation -->
+    <nav class="chapter-nav" aria-label="فهرست بخش‌های راهنما">
+      <a class="chapter-link is-active" href="#sec-categories">۱. طبقات سه‌گانه ادعاها</a>
+      <a class="chapter-link" href="#sec-direction">۲. جهت آزمون (بیش‌نمایی/کم‌نمایی)</a>
+      <a class="chapter-link" href="#sec-matrix">۳. ماتریس سرفصل و روش‌ها</a>
+      <a class="chapter-link" href="#sec-traps">۴. تله‌های کنکوری</a>
+      <a class="chapter-link" href="#sec-quiz">۵. سامانه خودارزیابی تستی</a>
+    </nav>
+
+    <!-- Treatment 3 & 4: KPI Strip -->
+    <section class="kpi-grid" aria-label="خلاصه ساختار و پیشرفت مطالعه">
+      <div class="figure-card">
+        <div class="figure-label">ساختار استاندارد ۳۱۵</div>
+        <div class="figure-value tabular">۱۳ ادعا</div>
+        <div class="figure-delta">در ۳ طبقه معاملات، مانده‌ها و افشا</div>
+      </div>
+      <div class="figure-card">
+        <div class="figure-label">جهت‌های محوری آزمون</div>
+        <div class="figure-value tabular">۲ مسیر</div>
+        <div class="figure-delta">سندرسی معکوس (<bdi dir="ltr">Vouching</bdi>) و ردیابی (<bdi dir="ltr">Tracing</bdi>)</div>
+      </div>
+      <div class="figure-card">
+        <div class="figure-label">تله‌های کنکوری مرور‌شده</div>
+        <div class="figure-value tabular" id="kpi-traps-count">۰ از ۸</div>
+        <div class="figure-delta" id="kpi-traps-status">آماده بررسی تحلیلی</div>
+      </div>
+      <div class="figure-card">
+        <div class="figure-label">نمره خودارزیابی فعلی</div>
+        <div class="figure-value tabular" id="kpi-quiz-score">۰٪</div>
+        <div class="figure-delta is-positive" id="kpi-quiz-detail">۰ از ۱۴ پرسش پاسخ‌داده‌شده</div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: Three Categories of Management Assertions -->
+    <section id="sec-categories" class="section-block reveal-block">
+      <div class="section-head">
+        <div class="section-kicker">بخش نخست — مبانی استاندارد حسابرسی ۳۱۵</div>
+        <h2>طبقات سه‌گانه ادعاهای مدیریت و تناظر آن‌ها در صورت‌های مالی</h2>
+        <p class="section-sub">
+          مدیریت با ارائه صورت‌های مالی، به‌طور صریح یا ضمنی ادعاهایی را درباره شناخت، اندازه‌گیری، ارائه و افشای اقلام مطرح می‌کند. حسابرس برای کشف تحریف‌های بااهمیت، خطر را در سطح هر ادعا ارزیابی و روش محتوایی متناظر را طراحی می‌کند.
+        </p>
+      </div>
+
+      <div class="editorial-note">
+        <div class="editorial-note-title">نکته کلیدی آزمون جامعه (<bdi dir="ltr">IACPA</bdi>) درباره طبقه‌بندی ۳گانه و ویرایش جدید <bdi dir="ltr">ISA 315</bdi></div>
+        <p>
+          در استاندارد حسابرسی ۳۱۵ ایران (و عموم پرسش‌های ادوار گذشته جامعه حسابداران رسمی)، ادعاهای مدیریت در <strong>سه طبقه مجزا</strong> شامل «گروه‌های معاملات و رویدادها» (۵ ادعا)، «مانده حساب‌های پایان دوره» (۴ ادعا) و «ارائه و افشا» (۴ ادعا) آموزش و آزمون گرفته می‌شود. یادآور می‌شود در ویرایش تجدیدنظرشده استاندارد بین‌المللی <bdi dir="ltr">ISA 315</bdi>، طبقه سوم در دو طبقه اول ادغام شد (همراه با افزودن «ارائه» به معاملات و مانده‌ها)، اما <strong>محتوای مفهومی تک‌تک ۱۳ ادعا</strong> یکسان باقی مانده است. در این راهنما هر سه طبقه رسمی آزمون به صورت دقیق تشریح شده است.
+        </p>
+      </div>
+
+      <div class="category-tabs" role="tablist" aria-label="انتخاب طبقه ادعاهای مدیریت">
+        <button type="button" class="btn btn-secondary btn-tab" id="tab-cat-transactions" role="tab" aria-selected="true" onclick="selectCategory('transactions')">
+          طبقه ۱: معاملات و رویدادها (۵ ادعا)
+        </button>
+        <button type="button" class="btn btn-secondary btn-tab" id="tab-cat-balances" role="tab" aria-selected="false" onclick="selectCategory('balances')">
+          طبقه ۲: مانده حساب‌های پایان دوره (۴ ادعا)
+        </button>
+        <button type="button" class="btn btn-secondary btn-tab" id="tab-cat-presentation" role="tab" aria-selected="false" onclick="selectCategory('presentation')">
+          طبقه ۳: ارائه و افشا (۴ ادعا)
+        </button>
+      </div>
+
+      <div class="explorer-layout card-wrapper">
+        <div class="assertion-list" id="assertion-list" aria-label="فهرست ادعاهای طبقه انتخاب‌شده"></div>
+        <article class="detail-panel" id="assertion-detail" aria-live="polite"></article>
+      </div>
+
+      <div class="table-wrap">
+        <table class="charter-table" aria-label="جدول تناظر ادعاهای معاملات، مانده حساب‌ها و ارائه و افشا">
+          <thead>
+            <tr>
+              <th>محور مفهومی ادعا</th>
+              <th>در معاملات و رویدادها (سود و زیان)</th>
+              <th>در مانده حساب‌ها (ترازنامه)</th>
+              <th>در ارائه و افشا (یادداشت‌ها)</th>
+              <th>ریسک غالب تحریف</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>واقعیت و مالکیت</strong></td>
+              <td>رخداد (<bdi dir="ltr">Occurrence</bdi>)</td>
+              <td>وجود (<bdi dir="ltr">Existence</bdi>) و حقوق و تعهدات</td>
+              <td>رخداد و حقوق و تعهدات</td>
+              <td>بیش‌نمایی (<bdi dir="ltr">Overstatement</bdi>)</td>
+            </tr>
+            <tr>
+              <td><strong>جامعیت ثبت</strong></td>
+              <td>کامل بودن (<bdi dir="ltr">Completeness</bdi>)</td>
+              <td>کامل بودن (<bdi dir="ltr">Completeness</bdi>)</td>
+              <td>کامل بودن (<bdi dir="ltr">Completeness</bdi>)</td>
+              <td>کم‌نمایی (<bdi dir="ltr">Understatement</bdi>)</td>
+            </tr>
+            <tr>
+              <td><strong>مبلغ و اندازه‌گیری</strong></td>
+              <td>دقت و صحت (<bdi dir="ltr">Accuracy</bdi>)</td>
+              <td>ارزشیابی و تخصیص (<bdi dir="ltr">Valuation &amp; Allocation</bdi>)</td>
+              <td>دقت و ارزشیابی (<bdi dir="ltr">Accuracy &amp; Valuation</bdi>)</td>
+              <td>هر دو سو (به‌ویژه برآوردها)</td>
+            </tr>
+            <tr>
+              <td><strong>دوره مالی صحیح</strong></td>
+              <td>انقطاع زمانی (<bdi dir="ltr">Cut-off</bdi>)</td>
+              <td>متأثر از وجود و کامل بودن پایان دوره</td>
+              <td>بازتاب صحیح دوره افشا</td>
+              <td>انتقال بین دو دوره مالی</td>
+            </tr>
+            <tr>
+              <td><strong>سرفصل و شفافیت</strong></td>
+              <td>طبقه‌بندی (<bdi dir="ltr">Classification</bdi>)</td>
+              <td>طبقه‌بندی (در ویرایش جدید) و افشای مانده</td>
+              <td>طبقه‌بندی و قابلیت فهم</td>
+              <td>جابه‌جایی سرفصل / ابهام افشا</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION 2: Direction of Testing Simulator -->
+    <section id="sec-direction" class="section-block reveal-block">
+      <div class="section-head">
+        <div class="section-kicker">بخش دوم — منطق استنتاج شواهد حسابرسی</div>
+        <h2>جهت آزمون‌ها: رویارویی بیش‌نمایی (<bdi dir="ltr">Vouching</bdi>) و کم‌نمایی (<bdi dir="ltr">Tracing</bdi>)</h2>
+        <p class="section-sub">
+          در آزمون جامعه، انتخاب جهت حرکت حسابرس بین «دفاتر حسابداری» و «مدارک مثبته / اقلام عینی» پربسامدترین سؤال طراحی شواهد است. قاعده بنیادین: نقطه شروع نمونه‌گیری تعیین می‌کند که حسابرس به دنبال کشف بیش‌نمایی است یا کم‌نمایی.
+        </p>
+      </div>
+
+      <div class="sim-controls" role="group" aria-label="انتخاب سناریوی جهت آزمون">
+        <button type="button" class="btn btn-secondary" id="sim-btn-over" aria-pressed="true" onclick="selectSimMode('overstatement')">
+          ۱. آزمون بیش‌نمایی: دارایی‌ها و درآمدها
+        </button>
+        <button type="button" class="btn btn-secondary" id="sim-btn-under" aria-pressed="false" onclick="selectSimMode('understatement')">
+          ۲. آزمون کم‌نمایی: بدهی‌ها و هزینه‌ها
+        </button>
+        <button type="button" class="btn btn-secondary" id="sim-btn-inv-exist" aria-pressed="false" onclick="selectSimMode('inv_existence')">
+          ۳. انبارگردانی: از فهرست به قفسه
+        </button>
+        <button type="button" class="btn btn-secondary" id="sim-btn-inv-comp" aria-pressed="false" onclick="selectSimMode('inv_completeness')">
+          ۴. انبارگردانی: از قفسه به فهرست
+        </button>
+      </div>
+
+      <div class="sim-card card-wrapper">
+        <div class="diagram-stage" id="direction-diagram-stage" aria-live="polite"></div>
+        <div class="sim-summary-grid" id="direction-summary"></div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="charter-table" aria-label="مقایسه تطبیقی سندرسی معکوس و ردیابی رو به جلو">
+          <thead>
+            <tr>
+              <th>شاخص مقایسه</th>
+              <th>سندرسی معکوس (<bdi dir="ltr">Vouching</bdi>)</th>
+              <th>ردیابی رو به جلو (<bdi dir="ltr">Tracing</bdi>)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>نقطه شروع نمونه‌گیری</strong></td>
+              <td>اقلام ثبت‌شده در دفاتر، معین یا گزارش‌های حسابداری</td>
+              <td>مدارک مثبته اولیه، رویدادهای واقعی یا دارایی‌های عینی</td>
+            </tr>
+            <tr>
+              <td><strong>مسیر حرکت حسابرس</strong></td>
+              <td>از دفاتر ← به سمت مستندات اولیه یا دارایی فیزیکی</td>
+              <td>از مستندات اولیه یا دارایی فیزیکی ← به سمت دفاتر و صورت مالی</td>
+            </tr>
+            <tr>
+              <td><strong>ادعای اصلی اثبات‌شده</strong></td>
+              <td><strong>رخداد</strong> (معاملات) و <strong>وجود</strong> (مانده حساب‌ها)</td>
+              <td><strong>کامل بودن</strong> (<bdi dir="ltr">Completeness</bdi>)</td>
+            </tr>
+            <tr>
+              <td><strong>نوع تحریف قابل کشف</strong></td>
+              <td><strong>بیش‌نمایی</strong> (ثبت اقلام واهی یا فاقد پشتوانه)</td>
+              <td><strong>کم‌نمایی</strong> (از قلم افتادگی و عدم ثبت اقلام واقعی)</td>
+            </tr>
+            <tr>
+              <td><strong>کاربرد رایج کنکوری</strong></td>
+              <td>حساب‌های دریافتنی، فروش، اضافات دارایی ثابت، فهرست موجودی کالا</td>
+              <td>حساب‌های پرداختنی، هزینه‌ها، بارنامه‌های ارسالی به دفتر فروش</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Assertion-to-Procedure Matrix -->
+    <section id="sec-matrix" class="section-block reveal-block">
+      <div class="section-head">
+        <div class="section-kicker">بخش سوم — نقشه عملیاتی سرفصل‌های ترازنامه و سود و زیان</div>
+        <h2>ماتریس ارتباط ادعاها با روش‌های حسابرسی در سرفصل‌های کلیدی</h2>
+        <p class="section-sub">
+          هر روش حسابرسی برای اثبات یک یا دو ادعای مشخص طراحی می‌شود. جدول زیر را بر اساس سرفصل حساب، ادعای هدف یا روش جمع‌آوری شواهد (استاندارد ۵۰۰) فیلتر کنید تا پیوند دقیق آزمون‌ها را ببینید.
+        </p>
+      </div>
+
+      <div class="filter-bar">
+        <div class="field-group">
+          <label class="field-label" for="filter-account">فیلتر سرفصل حساب</label>
+          <select class="charter-select" id="filter-account" onchange="applyMatrixFilters()">
+            <option value="all">همه سرفصل‌های کلیدی (۶ سرفصل)</option>
+            <option value="cash">موجودی نقد و بانک</option>
+            <option value="ar">حساب‌های دریافتنی</option>
+            <option value="inventory">موجودی کالا و بهای تمام‌شده</option>
+            <option value="ppe">دارایی‌های ثابت مشهود</option>
+            <option value="ap">حساب‌های پرداختنی و بدهی‌ها</option>
+            <option value="revenue">فروش و درآمدهای عملیاتی</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="filter-assertion">فیلتر ادعای هدف</label>
+          <select class="charter-select" id="filter-assertion" onchange="applyMatrixFilters()">
+            <option value="all">همه ادعاهای استاندارد</option>
+            <option value="existence">وجود / رخداد</option>
+            <option value="completeness">کامل بودن</option>
+            <option value="rights">حقوق و تعهدات</option>
+            <option value="valuation">ارزشیابی و تخصیص / صحت</option>
+            <option value="cutoff">انقطاع زمانی</option>
+            <option value="presentation">ارائه، طبقه‌بندی و افشا</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="filter-evidence">روش جمع‌آوری شواهد (<bdi dir="ltr">ISA 500</bdi>)</label>
+          <select class="charter-select" id="filter-evidence" onchange="applyMatrixFilters()">
+            <option value="all">همه روش‌های جمع‌آوری شواهد</option>
+            <option value="confirmation">تاییدخواهی (<bdi dir="ltr">Confirmation</bdi>)</option>
+            <option value="inspection">بازرسی اسناد و دارایی (<bdi dir="ltr">Inspection</bdi>)</option>
+            <option value="observation">مشاهده (<bdi dir="ltr">Observation</bdi>)</option>
+            <option value="recalculation">محاسبه مجدد (<bdi dir="ltr">Recalculation</bdi>)</option>
+            <option value="inquiry">پرس‌وجو و روش تحلیلی</option>
+          </select>
+        </div>
+        <button type="button" class="btn btn-secondary" onclick="resetMatrixFilters()">پاک کردن فیلترها</button>
+      </div>
+
+      <div class="figure-label" id="matrix-count-label">نمایش ۱۸ روش حسابرسی</div>
+
+      <div class="table-wrap">
+        <table class="charter-table" aria-label="ماتریس ارتباط روش‌های حسابرسی با ادعاهای مدیریت">
+          <thead>
+            <tr>
+              <th>سرفصل</th>
+              <th>روش اجرایی حسابرسی</th>
+              <th>ادعا(های) اصلی اثبات‌شده</th>
+              <th>روش شواهد (<bdi dir="ltr">ISA 500</bdi>)</th>
+              <th>جهت آزمون و نکته امتحانی</th>
+            </tr>
+          </thead>
+          <tbody id="matrix-tbody"></tbody>
+        </table>
+      </div>
+      <div class="editorial-note" id="matrix-empty-state" hidden>
+        <div class="editorial-note-title">موردی با فیلترهای انتخاب‌شده یافت نشد</div>
+        <p>ترکیب سرفصل، ادعا و روش جمع‌آوری شواهد انتخابی شما بدون ردیف است. برای بازگشت به نمای کامل ماتریس، دکمه «پاک کردن فیلترها» را بزنید.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 4: IACPA Exam Traps -->
+    <section id="sec-traps" class="section-block reveal-block">
+      <div class="section-head">
+        <div class="section-kicker">بخش چهارم — ظرافت‌ها و انحرافات متداول در گزینه‌ها</div>
+        <h2>تله‌های کنکوری آزمون جامعه حسابداران رسمی (<bdi dir="ltr">IACPA</bdi>)</h2>
+        <p class="section-sub">
+          طراحان آزمون جامعه معمولاً دو ادعای نزدیک به‌هم یا جهت‌های معکوس نمونه‌گیری را در گزینه‌ها کنار هم می‌گذارند. پیش از گشودن پاسخ هر تله، پاسخ خود را در ذهن بسنجید و سپس تحلیل فنی آن را بررسی کنید.
+        </p>
+      </div>
+
+      <div class="trap-grid" id="trap-grid"></div>
+    </section>
+
+    <!-- SECTION 5: Interactive Self-Assessment Quiz -->
+    <section id="sec-quiz" class="section-block reveal-block">
+      <div class="section-head">
+        <div class="section-kicker">بخش پنجم — ارزیابی نهایی آمادگی</div>
+        <h2>سامانه خودارزیابی تستی همراه با پاسخ تشریحی</h2>
+        <p class="section-sub">
+          ۱۴ پرسش استاندارد در سطح آزمون حسابرسی ۱ و ۲ جامعه حسابداران رسمی ایران. پاسخ‌های شما و تحلیل عملکرد مبحثی به‌صورت خودکار ذخیره می‌شود تا نقاط ضعف خود را پیش از آزمون برطرف کنید.
+        </p>
+      </div>
+
+      <div class="filter-bar">
+        <div class="field-group">
+          <label class="field-label" for="quiz-topic-filter">انتخاب مجموعه پرسش‌ها</label>
+          <select class="charter-select" id="quiz-topic-filter" onchange="filterQuizQuestions()">
+            <option value="all">همه مباحث (۱۴ پرسش کامل)</option>
+            <option value="categories">طبقات سه‌گانه ادعاها</option>
+            <option value="direction">جهت آزمون (بیش‌نمایی و کم‌نمایی)</option>
+            <option value="matrix">ارتباط سرفصل و روش حسابرسی</option>
+            <option value="traps">تله‌های ترکیبی کنکوری</option>
+          </select>
+        </div>
+        <button type="button" class="btn btn-secondary" id="btn-export-report" onclick="exportPerformanceReport()">
+          خروجی کارنامه متنی
+        </button>
+        <button type="button" class="btn btn-secondary" id="btn-reset-quiz" onclick="handleResetQuiz(this)">
+          شروع مجدد آزمون
+        </button>
+      </div>
+
+      <div class="quiz-shell">
+        <div class="quiz-card" id="quiz-question-card" aria-live="polite"></div>
+
+        <aside class="quiz-sidebar">
+          <div class="figure-card">
+            <div class="figure-label">ناوبری سریع پرسش‌ها</div>
+            <div class="q-pager-grid" id="quiz-pager-grid" aria-label="فهرست شماره پرسش‌ها"></div>
+          </div>
+
+          <div class="figure-card">
+            <div class="figure-label">نمودار تسلط به تفکیک مبحث</div>
+            <div class="mastery-chart-wrap" id="quiz-mastery-chart"></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <footer class="charter-footer">
+      <div>
+        <strong>منابع و مبانی علمی:</strong> استانداردهای حسابرسی ایران (استانداردهای ۳۱۵، ۳۳۰، ۵۰۰، ۵۰۱ و ۵۰۵) و سرفصل‌های رسمی آزمون حسابرسی جامعه حسابداران رسمی ایران (<bdi dir="ltr">IACPA</bdi>).
+      </div>
+      <div id="save-status-indicator">وضعیت ذخیره پیشرفت: آماده</div>
+    </footer>
+  </main>
+
+  <api-shim></api-shim>
+
+  <script>
+    const ASSERTION_CATEGORIES = {
+      transactions: {
+        title: `ادعاهای مربوط به گروه‌های معاملات و رویدادها (صورت سود و زیان)`,
+        shortTitle: `معاملات و رویدادها`,
+        items: [
+          {
+            id: `tr-occurrence`,
+            fa: `رخداد`,
+            en: `Occurrence`,
+            risk: `بیش‌نمایی (<bdi dir="ltr">Overstatement</bdi>)`,
+            definition: `معاملات و رویدادهایی که در دفاتر ثبت شده‌اند واقعاً به وقوع پیوسته‌اند و به واحد تجاری مورد رسیدگی تعلق دارند.`,
+            procedure: `سندرسی معکوس (<bdi dir="ltr">Vouching</bdi>): انتخاب نمونه از دفتر فروش یا هزینه و ردیابی آن به مدارک مثبته اولیه نظیر بارنامه، قبض انبار و فاکتور معتبر.`,
+            example: `بررسی فاکتورهای فروش ثبت‌شده در دفتر روزنامه فروش با گواهی ارسال کالا (بارنامه) امضاشده توسط مشتری جهت اطمینان از نبود فروش‌های صوری.`
+          },
+          {
+            id: `tr-completeness`,
+            fa: `کامل بودن`,
+            en: `Completeness`,
+            risk: `کم‌نمایی (<bdi dir="ltr">Understatement</bdi>)`,
+            definition: `تمام معاملات و رویدادهایی که می‌بایست در دوره مالی ثبت شوند، به‌طور کامل ثبت شده‌اند و هیچ معامله‌ای از قلم نیفتاده است.`,
+            procedure: `ردیابی رو به جلو (<bdi dir="ltr">Tracing</bdi>): انتخاب نمونه از مدارک مثبته اولیه (شماره بارنامه‌ها، رسیدهای انبار) و جست‌وجوی ثبت متناظر آن‌ها در دفاتر؛ همچنین بررسی توالی عددی مدارک.`,
+            example: `انتخاب نمونه‌ای از قبوض انبار مواد اولیه و ردیابی آن‌ها به دفتر روزنامه خرید و حساب‌های پرداختنی برای اطمینان از عدم کتمان خرید و هزینه.`
+          },
+          {
+            id: `tr-accuracy`,
+            fa: `دقت و صحت`,
+            en: `Accuracy`,
+            risk: `تحریف مبلغ (بیش‌نمایی یا کم‌نمایی محاسباتی)`,
+            definition: `مبالغ و سایر داده‌های مربوط به معاملات و رویدادهای ثبت‌شده به درستی محاسبه و در حساب‌ها منعکس شده‌اند.`,
+            procedure: `محاسبه مجدد (<bdi dir="ltr">Recalculation</bdi>) و مقایسه قیمت فاکتور با لیست قیمت مصوب یا قراردادها، کنترل تخفیفات، مالیات ارزش افزوده و نرخ تسعیر ارز.`,
+            example: `ضرب مجدد مقدار مندرج در بارنامه در نرخ مصوب فروش مندرج در قرارداد مشتری و تطبیق جمع کل فاکتور با مبلغ ثبت‌شده در دفتر معین.`
+          },
+          {
+            id: `tr-cutoff`,
+            fa: `انقطاع زمانی`,
+            en: `Cut-off`,
+            risk: `انتقال درآمد یا هزینه بین دو دوره مالی متوالی`,
+            definition: `معاملات و رویدادها در دوره مالی صحیح (دوره وقوع و انتقال کنترل/مخاطر و مزایا) ثبت شده‌اند.`,
+            procedure: `آزمون انقطاع زمانی: بازرسی آخرین مدارک حمل/رسید قبل از پایان سال و اولین مدارک پس از پایان سال و تطبیق تاریخ انتقال ریسک با تاریخ ثبت حسابداری.`,
+            example: `بررسی ۵ بارنامه آخر اسفند و ۵ بارنامه اول فروردین با توجه به شرایط تحویل (<bdi dir="ltr">FOB</bdi> مبدأ در برابر مقصد) برای حصول اطمینان از ثبت فروش در سال صحیح.`
+          },
+          {
+            id: `tr-classification`,
+            fa: `طبقه‌بندی`,
+            en: `Classification`,
+            risk: `ثبت در سرفصل نادرست صورت سود و زیان یا ترازنامه`,
+            definition: `معاملات و رویدادها در حساب‌های مناسب و سرفصل صحیح کدینگ حسابداری ثبت شده‌اند.`,
+            procedure: `بازرسی اسناد مثبته مخارج و درآمدها و تطبیق ماهیت معامله با سرفصل ثبت‌شده (تفکیک هزینه جاری از مخارج سرمایه‌ای، یا درآمد عملیاتی از غیرعملیاتی).`,
+            example: `رسیدگی به حساب تعمیرات و نگهداری ماشین‌آلات جهت اطمینان از اینکه مخارج به‌سازی اساسی و افزایش عمر مفید اشتباهاً به عنوان هزینه دوره ثبت نشده باشد.`
+          }
+        ]
+      },
+      balances: {
+        title: `ادعاهای مربوط به مانده حساب‌های پایان دوره (ترازنامه)`,
+        shortTitle: `مانده حساب‌ها`,
+        items: [
+          {
+            id: `bal-existence`,
+            fa: `وجود`,
+            en: `Existence`,
+            risk: `بیش‌نمایی (<bdi dir="ltr">Overstatement</bdi>)`,
+            definition: `دارایی‌ها، بدهی‌ها و حقوق مالکانه مندرج در ترازنامه در تاریخ گزارشگری واقعاً وجود خارجی یا قراردادی دارند.`,
+            procedure: `مشاهده فیزیکی دارایی‌ها (انبارگردانی از فهرست به قفسه، بازدید دارایی ثابت) و ارسال تاییدیه برون‌سازمانی (بانک، بدهکاران).`,
+            example: `ارسال تاییدیه مثبت به مشتریان بدهکار و شمارش اقلام مندرج در کاردکس موجودی کالا در پایان سال برای اثبات وجود واقعی دارایی.`
+          },
+          {
+            id: `bal-rights`,
+            fa: `حقوق و تعهدات`,
+            en: `Rights and Obligations`,
+            risk: `ثبت اقلام غیرمتعلق (کالای امانی دیگران) یا عدم افشای وثایق`,
+            definition: `واحد تجاری مالک حقوق مربوط به دارایی‌هاست و بدهی‌ها نیز تعهدات واقعی واحد تجاری در تاریخ ترازنامه هستند.`,
+            procedure: `بازرسی اسناد مالکیت، قراردادهای اجاره (تشخیص اجاره سرمایه‌ای/حق استفاده)، صورت‌جلسات هیئت‌مدیره و قراردادهای ترهین یا واگذاری مطالبات.`,
+            example: `بررسی اسناد مالکیت زمین و ساختمان و استعلام از بانک برای شناسایی دارایی‌های مرهونه یا تفکیک کالای امانی مشتریان در انبار.`
+          },
+          {
+            id: `bal-completeness`,
+            fa: `کامل بودن`,
+            en: `Completeness`,
+            risk: `کم‌نمایی (<bdi dir="ltr">Understatement</bdi>)`,
+            definition: `تمام دارایی‌ها، بدهی‌ها و حقوق مالکانه‌ای که می‌بایست در ترازنامه ثبت شوند، به طور کامل منظور شده‌اند.`,
+            procedure: `جست‌وجوی بدهی‌های ثبت‌نشده (بررسی پرداخت‌های پس از تاریخ ترازنامه، فاکتورهای معوق)، شمارش از کف انبار به فهرست دفتر و ارسال تاییدیه به بستانکاران کلان با مانده صفر.`,
+            example: `رسیدگی به پرداخت‌های نقدی و چک‌های صادره در فروردین سال بعد برای کشف بدهی‌های مربوط به خدمات دریافت‌شده در اسفند که ثبت نشده‌اند.`
+          },
+          {
+            id: `bal-valuation`,
+            fa: `ارزشیابی و تخصیص`,
+            en: `Valuation and Allocation`,
+            risk: `تحریف برآوردها، ذخایر کاهش ارزش و استهلاک`,
+            definition: `دارایی‌ها، بدهی‌ها و حقوق مالکانه به مبالغ مناسب در صورت‌های مالی منعکس شده و هرگونه تعدیل ارزشیابی یا تخصیص به درستی ثبت شده است.`,
+            procedure: `آزمون جدول سنی مطالبات و کفایت ذخیره مطالبات مشکوک‌الوصول، بررسی اقل بهای تمام‌شده یا خالص ارزش فروش (<bdi dir="ltr">NRV</bdi>)، و محاسبه مجدد استهلاک و کاهش ارزش.`,
+            example: `ارزیابی قابلیت بازیافت حساب‌های دریافتنی سررسیدگذشته با بررسی وصولی‌های پس از تاریخ ترازنامه جهت کفایت ذخیره مطالبات مشکوک‌الوصول.`
+          }
+        ]
+      },
+      presentation: {
+        title: `ادعاهای مربوط به ارائه و افشا (صورت‌های مالی و یادداشت‌های توضیحی)`,
+        shortTitle: `ارائه و افشا`,
+        items: [
+          {
+            id: `pres-occ-rights`,
+            fa: `رخداد و حقوق و تعهدات`,
+            en: `Occurrence and Rights & Obligations`,
+            risk: `افشای رویدادهای موهوم یا متعلق به اشخاص ثالث`,
+            definition: `رویدادها، معاملات و سایر موارد افشاشده در یادداشت‌های توضیحی واقعاً رخ داده‌اند و به واحد تجاری مربوط هستند.`,
+            procedure: `تطبیق موارد افشاشده در یادداشت معاملات با اشخاص وابسته، بدهی‌های احتمالی و تعهدات سرمایه‌ای با قراردادها و مکاتبات حقوقی واقعی.`,
+            example: `بررسی قراردادها و صورت‌جلسات جهت اطمینان از اینکه دعاوی حقوقی یا معاملات با اشخاص وابسته افشاشده، واقعی و مربوط به شرکت هستند.`
+          },
+          {
+            id: `pres-completeness`,
+            fa: `کامل بودن`,
+            en: `Completeness`,
+            risk: `حذف افشاهای الزامی استانداردهای حسابداری`,
+            definition: `تمام افشاهایی که طبق استانداردهای حسابداری می‌بایست در صورت‌های مالی گنجانده شوند، به طور کامل درج شده‌اند.`,
+            procedure: `استفاده از چک‌لیست افشا (<bdi dir="ltr">Disclosure Checklist</bdi>)، خواندن صورت‌جلسات مجمع و هیئت‌مدیره، و استعلام از مشاور حقوقی درباره دعاوی جاری.`,
+            example: `بررسی عدم حذف یادداشت مربوط به وثیقه‌های اعطایی بابت تسهیلات بانکی یا رویدادهای بااهمیت پس از تاریخ ترازنامه.`
+          },
+          {
+            id: `pres-classification`,
+            fa: `طبقه‌بندی و قابلیت فهم`,
+            en: `Classification and Understandability`,
+            risk: `ارائه مبهم یا جابه‌جایی اقلام جاری و غیرجاری`,
+            definition: `اطلاعات مالی به نحو مناسب ارائه و تشریح شده و موارد افشاشده به وضوح بیان گردیده‌اند.`,
+            procedure: `کنترل تفکیک صحیح بدهی‌های جاری و غیرجاری، نحوه تجمیع یا تفکیک اقلام بااهمیت، و بررسی خوانایی و صراحت زبان یادداشت‌های رویه‌های حسابداری.`,
+            example: `اطمینان از اینکه حصه جاری تسهیلات بلندمدت که ظرف ۱۲ ماه آینده سررسید می‌شود از بخش غیرجاری تفکیک و در بدهی‌های جاری طبقه‌بندی شده است.`
+          },
+          {
+            id: `pres-accuracy`,
+            fa: `دقت و ارزشیابی`,
+            en: `Accuracy and Valuation`,
+            risk: `عدم تطابق ارقام یادداشت‌ها با مبالغ صورت‌های مالی`,
+            definition: `اطلاعات مالی و سایر اطلاعات افشاشده به نحو منصفانه و به مبالغ صحیح ارائه گردیده‌اند.`,
+            procedure: `تطبیق عرضی (<bdi dir="ltr">Cross-footing</bdi>) و ردیابی مبالغ مندرج در جداول یادداشت‌های توضیحی به ترازنامه و سود و زیان و کنترل محاسبات مربوط به سود هر سهم و نرخ مؤثر مالیات.`,
+            example: `تطبیق جدول گردش بهای تمام‌شده و استهلاک انباشته دارایی‌های ثابت در یادداشت‌ها با ارقام خالص مندرج در متن ترازنامه.`
+          }
+        ]
+      }
+    };
+
+    const DIRECTION_MODES = {
+      overstatement: {
+        modeTitle: `آزمون بیش‌نمایی (سندرسی معکوس / <bdi dir="ltr">Vouching</bdi>)`,
+        directionLabel: `از دفاتر حسابداری ← به سمت مدارک مثبته اولیه`,
+        startPop: `اقلام ثبت‌شده در دفتر معین و صورت‌های مالی`,
+        targetAssertion: `رخداد (معاملات) و وجود (مانده حساب‌ها)`,
+        riskTested: `خطر بیش‌نمایی (<bdi dir="ltr">Overstatement</bdi>) در دارایی‌ها و درآمدها`,
+        arrowDir: `left`,
+        accentToken: `var(--primary)`,
+        example: `نمونه از دفتر روزنامه فروش انتخاب و به بارنامه امضاشده ردیابی می‌شود تا فروش واهی کشف گردد.`
+      },
+      understatement: {
+        modeTitle: `آزمون کم‌نمایی (ردیابی رو به جلو / <bdi dir="ltr">Tracing</bdi>)`,
+        directionLabel: `از مدارک مثبته اولیه ← به سمت دفاتر حسابداری`,
+        startPop: `رویدادهای واقعی، بارنامه‌ها، رسید انبار و پرداخت‌های آتی`,
+        targetAssertion: `کامل بودن (<bdi dir="ltr">Completeness</bdi>)`,
+        riskTested: `خطر کم‌نمایی (<bdi dir="ltr">Understatement</bdi>) در بدهی‌ها و هزینه‌ها`,
+        arrowDir: `right`,
+        accentToken: `var(--secondary)`,
+        example: `نمونه از قبوض انبار یا پرداخت‌های فروردین سال بعد انتخاب و به دفتر معین بستانکاران ردیابی می‌شود تا بدهی ثبت‌نشده کشف گردد.`
+      },
+      inv_existence: {
+        modeTitle: `انبارگردانی: از فهرست دفتر به قفسه‌های انبار`,
+        directionLabel: `از فهرست موجودی (دفاتر) ← به سمت اقلام فیزیکی در انبار`,
+        startPop: `کاردکس و صورت‌ریز موجودی کالا در سیستم مالی`,
+        targetAssertion: `وجود (<bdi dir="ltr">Existence</bdi>)`,
+        riskTested: `خطر بیش‌نمایی موجودی کالا (وجود اقلام کاغذی در دفاتر بدون مابه‌ازای عینی)`,
+        arrowDir: `left`,
+        accentToken: `var(--primary)`,
+        example: `حسابرس ردیفی از فهرست موجودی پایان سال را انتخاب کرده و وجود فیزیکی آن کالا را در سالن انبار شمارش و مشاهده می‌کند.`
+      },
+      inv_completeness: {
+        modeTitle: `انبارگردانی: از قفسه‌های انبار به فهرست دفتر`,
+        directionLabel: `از اقلام فیزیکی در قفسه انبار ← به سمت فهرست موجودی (دفاتر)`,
+        startPop: `کالاهای چیده‌شده در طبقات و کف انبار`,
+        targetAssertion: `کامل بودن (<bdi dir="ltr">Completeness</bdi>)`,
+        riskTested: `خطر کم‌نمایی موجودی کالا (حذف یا شمارش‌نشدن کالای واقعی در فهرست نهایی)`,
+        arrowDir: `right`,
+        accentToken: `var(--secondary)`,
+        example: `حسابرس به‌صورت اتفاقی تعدادی از کارتن‌های موجود در کف انبار را شمارش کرده و تگ آن را تا فهرست نهایی موجودی ردیابی می‌کند.`
+      }
+    };
+
+    const MATRIX_ROWS = [
+      {
+        accountKey: `cash`,
+        accountName: `موجودی نقد و بانک`,
+        procedure: `اخذ تاییدیه استاندارد بانکی به صورت مستقیم از تمامی بانک‌های طرف حساب (حتی حساب‌های بسته‌شده طی سال)`,
+        assertionKeys: [`existence`, `rights`, `completeness`, `valuation`],
+        assertionText: `وجود، حقوق و تعهدات، کامل بودن، ارزشیابی`,
+        evidenceKey: `confirmation`,
+        evidenceName: `تاییدخواهی`,
+        note: `تاییدیه بانکی افزون بر مانده حساب، وجود وثایق، محدودیت برداشت و تسهیلات ثبت‌نشده (کامل بودن بدهی) را نیز روشن می‌کند.`
+      },
+      {
+        accountKey: `cash`,
+        accountName: `موجودی نقد و بانک`,
+        procedure: `تهیه و بررسی جدول نقل‌وانتقالات بین بانکی (<bdi dir="ltr">Interbank Transfer Schedule</bdi>) در روزهای پایانی و ابتدایی سال`,
+        assertionKeys: [`cutoff`, `existence`],
+        assertionText: `انقطاع زمانی و وجود`,
+        evidenceKey: `inspection`,
+        evidenceName: `بازرسی اسناد`,
+        note: `روش اختصاصی کشف چک‌بازی بین‌بانکی (<bdi dir="ltr">Kiting</bdi>) که باعث بیش‌نمایی کاذب مانده نقد در پایان سال می‌شود.`
+      },
+      {
+        accountKey: `cash`,
+        accountName: `موجودی نقد و بانک`,
+        procedure: `رسیدگی به صورت مغایرت بانکی پایان سال و ردیابی چک‌های در جریان و وجوه بین‌راهی به صورت‌حساب بانک فروردین`,
+        assertionKeys: [`existence`, `completeness`, `valuation`],
+        assertionText: `وجود، کامل بودن، ارزشیابی`,
+        evidenceKey: `recalculation`,
+        evidenceName: `بازرسی و محاسبه مجدد`,
+        note: `وجوه در راه باید ظرف چند روز ابتدایی سال جدید در بانک بنشیند؛ در غیر این صورت احتمال ثبت صوری پایان سال بالاست.`
+      },
+      {
+        accountKey: `ar`,
+        accountName: `حساب‌های دریافتنی`,
+        procedure: `ارسال تاییدیه مثبت به مشتریان دارای مانده بااهمیت و پیگیری موارد بدون پاسخ از طریق اسناد جایگزین`,
+        assertionKeys: [`existence`, `rights`, `cutoff`],
+        assertionText: `وجود، حقوق و تعهدات، انقطاع زمانی`,
+        evidenceKey: `confirmation`,
+        evidenceName: `تاییدخواهی`,
+        note: `تله کنکوری: تاییدیه مثبت مستقیماً ادعای «وجود» و «حقوق» را اثبات می‌کند، اما دلیل کافی بر «قابلیت وصول / ارزشیابی» نیست.`
+      },
+      {
+        accountKey: `ar`,
+        accountName: `حساب‌های دریافتنی`,
+        procedure: `بررسی جدول تجزیه سنی مطالبات، وصولی‌های نقدی پس از تاریخ ترازنامه و کفایت ذخیره مطالبات مشکوک‌الوصول`,
+        assertionKeys: [`valuation`],
+        assertionText: `ارزشیابی و تخصیص`,
+        evidenceKey: `recalculation`,
+        evidenceName: `محاسبه مجدد و بازرسی`,
+        note: `اصلی‌ترین روش اثبات ادعای «ارزشیابی و تخصیص» در سرفصل حساب‌های دریافتنی همین آزمون است.`
+      },
+      {
+        accountKey: `ar`,
+        accountName: `حساب‌های دریافتنی`,
+        procedure: `بررسی قراردادهای تسهیلات، تنزیل اسناد و صورت‌جلسات جهت شناسایی مطالبات واگذارشده یا در وثیقه`,
+        assertionKeys: [`rights`, `presentation`],
+        assertionText: `حقوق و تعهدات، ارائه و افشا`,
+        evidenceKey: `inspection`,
+        evidenceName: `بازرسی قراردادها`,
+        note: `اگر مطالبات نزد بانک وثیقه باشد، باید در یادداشت‌های توضیحی به عنوان محدودیت مالکیت افشا گردد.`
+      },
+      {
+        accountKey: `inventory`,
+        accountName: `موجودی کالا و بهای تمام‌شده`,
+        procedure: `نظارت بر انبارگردانی: شمارش آزمایشی از فهرست دفتر به قفسه‌های انبار (<bdi dir="ltr">Sheet to Floor</bdi>)`,
+        assertionKeys: [`existence`],
+        assertionText: `وجود`,
+        evidenceKey: `observation`,
+        evidenceName: `مشاهده و شمارش`,
+        note: `جهت سندرسی معکوس (<bdi dir="ltr">Vouching</bdi>) برای اطمینان از اینکه اقلام درج‌شده در صورت‌ریز موجودی واقعاً در انبار حضور دارند.`
+      },
+      {
+        accountKey: `inventory`,
+        accountName: `موجودی کالا و بهای تمام‌شده`,
+        procedure: `نظارت بر انبارگردانی: شمارش آزمایشی از قفسه‌های انبار به فهرست دفتر (<bdi dir="ltr">Floor to Sheet</bdi>)`,
+        assertionKeys: [`completeness`],
+        assertionText: `کامل بودن`,
+        evidenceKey: `observation`,
+        evidenceName: `مشاهده و شمارش`,
+        note: `جهت ردیابی (<bdi dir="ltr">Tracing</bdi>) برای کشف کم‌نمایی و حصول اطمینان از درج تمام اقلام فیزیکی در فهرست نهایی.`
+      },
+      {
+        accountKey: `inventory`,
+        accountName: `موجودی کالا و بهای تمام‌شده`,
+        procedure: `مشاهده کالاهای ناباب، راکد و آسیب‌دیده طی انبارگردانی و آزمون اقل بهای تمام‌شده یا خالص ارزش فروش (<bdi dir="ltr">NRV</bdi>)`,
+        assertionKeys: [`valuation`],
+        assertionText: `ارزشیابی و تخصیص`,
+        evidenceKey: `inspection`,
+        evidenceName: `بازرسی و محاسبه مجدد`,
+        note: `مقایسه بهای تمام‌شده کاردکس با قیمت فروش فاکتورهای پس از تاریخ ترازنامه منهای هزینه‌های فروش و تکمیل.`
+      },
+      {
+        accountKey: `inventory`,
+        accountName: `موجودی کالا و بهای تمام‌شده`,
+        procedure: `بررسی رسیدها و حواله‌های انبار نزدیک تاریخ ترازنامه و تفکیک کالای امانی دیگران نزد شرکت از کالای خود شرکت`,
+        assertionKeys: [`cutoff`, `rights`],
+        assertionText: `انقطاع زمانی و حقوق و تعهدات`,
+        evidenceKey: `inspection`,
+        evidenceName: `بازرسی اسناد`,
+        note: `کالای امانی دیگران در انبار شرکت اگر در شمارش بیاید موجب نقض «حقوق و تعهدات» و بیش‌نمایی دارایی می‌شود.`
+      },
+      {
+        accountKey: `ppe`,
+        accountName: `دارایی‌های ثابت مشهود`,
+        procedure: `بازدید فیزیکی اضافات مهم سال جاری و تطبیق شماره پلاک اموال با دفتر معین دارایی‌های ثابت`,
+        assertionKeys: [`existence`],
+        assertionText: `وجود`,
+        evidenceKey: `inspection`,
+        evidenceName: `بازرسی فیزیکی`,
+        note: `بازدید فیزیکی دارایی ثابت «وجود» را اثبات می‌کند اما «مالکیت» را خیر (اسناد ثبتی برای مالکیت لازم است).`
+      },
+      {
+        accountKey: `ppe`,
+        accountName: `دارایی‌های ثابت مشهود`,
+        procedure: `بازرسی اسناد مثبته حساب «هزینه‌های تعمیرات و نگهداری» برای شناسایی اقلام دارای ماهیت سرمایه‌ای`,
+        assertionKeys: [`completeness`, `presentation`],
+        assertionText: `کامل بودن (دارایی ثابت) و طبقه‌بندی`,
+        evidenceKey: `inspection`,
+        evidenceName: `بازرسی اسناد`,
+        note: `تله کلاسیک کنکور: حسابرسی هزینه تعمیرات برای اثبات «کامل بودن» دارایی ثابت و درستی «طبقه‌بندی» هزینه است.`
+      },
+      {
+        accountKey: `ppe`,
+        accountName: `دارایی‌های ثابت مشهود`,
+        procedure: `بازرسی سند رسمی مالکیت املاک، برگ سبز خودرو و محاسبه مجدد هزینه استهلاک و بررسی نشانه‌های کاهش ارزش`,
+        assertionKeys: [`rights`, `valuation`],
+        assertionText: `حقوق و تعهدات، ارزشیابی و تخصیص`,
+        evidenceKey: `recalculation`,
+        evidenceName: `بازرسی و محاسبه مجدد`,
+        note: `ارزیابی عمر مفید، ارزش اسقاط و روش استهلاک زیرمجموعه ادعای «ارزشیابی و تخصیص» قرار می‌گیرد.`
+      },
+      {
+        accountKey: `ap`,
+        accountName: `حساب‌های پرداختنی و بدهی‌ها`,
+        procedure: `جست‌وجوی بدهی‌های ثبت‌نشده: بررسی پرداخت‌های نقدی و صورت‌حساب‌های دریافتی پس از تاریخ ترازنامه`,
+        assertionKeys: [`completeness`, `cutoff`],
+        assertionText: `کامل بودن و انقطاع زمانی`,
+        evidenceKey: `inspection`,
+        evidenceName: `بازرسی اسناد`,
+        note: `آزمون اصلی حساب‌های پرداختنی به‌دلیل ریسک کم‌نمایی، ردیابی پرداخت‌های فروردین و اردیبهشت به قبوض انبار اسفند است.`
+      },
+      {
+        accountKey: `ap`,
+        accountName: `حساب‌های پرداختنی و بدهی‌ها`,
+        procedure: `ارسال تاییدیه به تأمین‌کنندگان عمده (حتی تأمین‌کنندگانی که مانده پایان سال آن‌ها در دفاتر صفر یا ناچیز است)`,
+        assertionKeys: [`completeness`, `valuation`],
+        assertionText: `کامل بودن و ارزشیابی`,
+        evidenceKey: `confirmation`,
+        evidenceName: `تاییدخواهی`,
+        note: `برعکس دریافتنی‌ها، در پرداختنی‌ها جامعه نمونه بر اساس حجم خرید طی سال انتخاب می‌شود تا بدهی حذف‌شده پیدا شود.`
+      },
+      {
+        accountKey: `ap`,
+        accountName: `حساب‌های پرداختنی و بدهی‌ها`,
+        procedure: `ارسال نامه استعلام استاندارد به وکلا و مشاوران حقوقی جهت شناسایی دعاوی مطرح‌شده و احتمالی`,
+        assertionKeys: [`completeness`, `presentation`],
+        assertionText: `کامل بودن و ارائه و افشا`,
+        evidenceKey: `confirmation`,
+        evidenceName: `تاییدخواهی و پرس‌وجو`,
+        note: `برای تعیین لزوم ثبت ذخیره (بدهی محتمل) یا افشای بدهی احتمالی در یادداشت‌ها بر اساس استاندارد ۴ به کار می‌رود.`
+      },
+      {
+        accountKey: `revenue`,
+        accountName: `فروش و درآمدهای عملیاتی`,
+        procedure: `انتخاب نمونه از بارنامه‌های خروج کالا و ردیابی آن به فاکتور فروش و دفتر روزنامه فروش`,
+        assertionKeys: [`completeness`],
+        assertionText: `کامل بودن (درآمد فروش)`,
+        evidenceKey: `inspection`,
+        evidenceName: `بازرسی اسناد`,
+        note: `جهت <bdi dir="ltr">Tracing</bdi>: اطمینان از اینکه هر کالایی که از کارخانه خارج شده، صورتحساب و ثبت فروش برای آن صادر گردیده است.`
+      },
+      {
+        accountKey: `revenue`,
+        accountName: `فروش و درآمدهای عملیاتی`,
+        procedure: `انتخاب نمونه از دفتر فروش و تطبیق با بارنامه و رسید مشتری؛ و بررسی برگشت از فروش‌های ماه اول سال بعد`,
+        assertionKeys: [`existence`, `cutoff`],
+        assertionText: `رخداد و انقطاع زمانی`,
+        evidenceKey: `inquiry`,
+        evidenceName: `بازرسی و روش تحلیلی`,
+        note: `جهش غیرعادی برگشت از فروش در فروردین نشانه قوی ثبت فروش‌های واهی یا نقض انقطاع زمانی در روزهای آخر اسفند است.`
+      }
+    ];
+
+    const EXAM_TRAPS = [
+      {
+        id: `trap-1`,
+        title: `تاییدیه حساب‌های دریافتنی: وجود یا ارزشیابی؟`,
+        badge: `پربسامدترین تله`,
+        question: `حسابرس تاییدیه مثبت را برای مشتری الف ارسال کرده و مشتری مانده ۱٬۲۰۰ میلیون ریالی را دقیقاً تأیید می‌کند. این شواهد کدام ادعا را اثبات نمی‌کند؟`,
+        trapWhy: `داوطلبان تصور می‌کنند وقتی مشتری بدهی خود را کتباً تایید کرد، پس پول آن وصول خواهد شد و ادعای «ارزشیابی» هم اثبات شده است.`,
+        goldenRule: `تاییدیه مشتری فقط ادعای «وجود» و «حقوق و تعهدات» (و تا حدی انقطاع زمانی) را اثبات می‌کند، نه توانایی مالی مشتری در پرداخت بدهی را! ادعای «ارزشیابی و تخصیص» (ذخیره مطالبات مشکوک‌الوصول) فقط با بررسی جدول سنی و وصولی‌های پس از تاریخ ترازنامه اثبات می‌شود.`,
+        assertionRef: `وجود در برابر ارزشیابی و تخصیص — استاندارد ۵۰۵ و ۵۰۰`
+      },
+      {
+        id: `trap-2`,
+        title: `جهت شمارش در انبارگردانی (<bdi dir="ltr">Floor to Sheet</bdi>)`,
+        badge: `جهت آزمون`,
+        question: `حسابرس حین نظارت بر شمارش موجودی کالا، چند قلم کالا را مستقیماً از قفسه‌های انبار انتخاب و شمارش کرده و سپس به صورت‌ریز شمارش و کاردکس نهایی ردیابی می‌کند. هدف چیست؟`,
+        trapWhy: `بسیاری از داوطلبان به محض دیدن کلمه «شمارش موجودی» گزینه «وجود» را انتخاب می‌کنند، بدون آنکه به مبدأ حرکت حسابرس دقت کنند.`,
+        goldenRule: `مبدأ = قفسه انبار (اقلام واقعی) و مقصد = فهرست دفتر. حرکت از واقعیت به دفتر (<bdi dir="ltr">Tracing</bdi>) همواره برای اثبات ادعای «کامل بودن» و کشف کم‌نمایی است. عکس این مسیر (از فهرست به قفسه) ادعای «وجود» را اثبات می‌کند.`,
+        assertionRef: `کامل بودن در برابر وجود — استاندارد ۵۰۱`
+      },
+      {
+        id: `trap-3`,
+        title: `تله هزینه‌های تعمیرات و نگهداری برای دارایی ثابت`,
+        badge: `ادعای پنهان`,
+        question: `چرا حسابرس هنگام رسیدگی به حساب «دارایی‌های ثابت مشهود»، اسناد و مدارک حساب «هزینه‌های تعمیرات و نگهداری» را بازرسی می‌کند؟`,
+        trapWhy: `در نگاه اول ممکن است فکر کنید هدف آزمون صرفاً رسیدگی به صحت هزینه دوره است، در حالی که پرسش درباره هدف حسابرسی دارایی ثابت مطرح شده است.`,
+        goldenRule: `مدیریت ممکن است برای کاهش سود مشمول مالیات یا خطای کدینگ، مخارج سرمایه‌ای (مثلاً تعویض موتور خط تولید) را به جای ثبت در دارایی ثابت، در هزینه تعمیرات ببرد. بنابراین هدف این روش، اثبات «کامل بودن» مانده دارایی ثابت و «طبقه‌بندی» صحیح است.`,
+        assertionRef: `کامل بودن دارایی ثابت و طبقه‌بندی هزینه`
+      },
+      {
+        id: `trap-4`,
+        title: `انتخاب نمونه تاییدیه بستانکاران با مانده صفر`,
+        badge: `جامعه آماری معکوس`,
+        question: `در ارسال تاییدیه حساب‌های پرداختنی، کدام جامعه آماری برای انتخاب نمونه اولویت دارد؟ مشتریان دارای مانده بدهکار کلان یا تأمین‌کنندگان بزرگ با مانده صفر؟`,
+        trapWhy: `داوطلبان الگوی حساب‌های دریافتنی (انتخاب مانده‌های ریالی درشت پایان سال) را عیناً به حساب‌های پرداختنی تعمیم می‌دهند.`,
+        goldenRule: `در دارایی‌ها ریسک «بیش‌نمایی» بالاست پس سراغ مانده‌های درشت دفتر می‌رویم. اما در بدهی‌ها ریسک «کم‌نمایی» حاکم است؛ حسابی که مانده آن صفر یا کم نشان داده شده ممکن است بدهی حذف‌شده داشته باشد! پس نمونه از فهرست تأمین‌کنندگان دارای گردش خرید بالا طی سال (حتی با مانده صفر) انتخاب می‌شود.`,
+        assertionRef: `کامل بودن بدهی‌ها — جهت ردیابی`
+      },
+      {
+        id: `trap-5`,
+        title: `تفاوت باریک «دقت و صحت» با «ارزشیابی و تخصیص»`,
+        badge: `تفکیک طبقات`,
+        question: `کدام خطا نقض ادعای «دقت و صحت» (<bdi dir="ltr">Accuracy</bdi>) و کدام نقض ادعای «ارزشیابی و تخصیص» (<bdi dir="ltr">Valuation</bdi>) است؟`,
+        trapWhy: `هر دو ادعا به مبلغ پولی مربوط هستند و در ترجمه فارسی گاهی با هم خلط می‌شوند.`,
+        goldenRule: `«دقت و صحت» مربوط به طبقه معاملات (سود و زیان) است؛ یعنی اشتباه در ضرب و جمع فاکتور فروش یا نرخ ثبت معامله در طول دوره. «ارزشیابی و تخصیص» مربوط به مانده حساب ترازنامه است؛ یعنی برآوردهای پایان سال مانند ذخیره مطالبات مشکوک‌الوصول، استهلاک انباشته و کاهش ارزش به <bdi dir="ltr">NRV</bdi>.`,
+        assertionRef: `طبقه ۱ (دقت) در برابر طبقه ۲ (ارزشیابی)`
+      },
+      {
+        id: `trap-6`,
+        title: `کالای امانی ما نزد دیگران در برابر کالای امانی دیگران نزد ما`,
+        badge: `مالکیت و کامل بودن`,
+        question: `اگر شرکت کالای امانی مشتریان را در انبار خود نگه دارد و در شمارش پایان سال لحاظ کند کدام ادعا نقض شده؟ و اگر کالای خودش را نزد حق‌العمل‌کار بفرستد چطور؟`,
+        trapWhy: `هر دو حالت با واژه «کالای امانی» مطرح می‌شوند اما جهت خطر و ادعای نقض‌شده کاملاً معکوس است.`,
+        goldenRule: `کالای امانی دیگران نزد ما ← اگر ثبت شود موجب بیش‌نمایی موجودی و نقض ادعای «حقوق و تعهدات» (عدم مالکیت) است. کالای امانی ما نزد دیگران ← اگر فراموش شود موجب کم‌نمایی موجودی و نقض ادعای «کامل بودن» است (تاییدیه از امین و بازرسی قرارداد امانت).`,
+        assertionRef: `حقوق و تعهدات در برابر کامل بودن — استاندارد ۵۰۱`
+      },
+      {
+        id: `trap-7`,
+        title: `شرط تحویل <bdi dir="ltr">FOB</bdi> مبدأ در برابر <bdi dir="ltr">FOB</bdi> مقصد در انقطاع زمانی`,
+        badge: `انقطاع زمانی`,
+        question: `کالایی در تاریخ ۲۸ اسفند از انبار فروشنده بارگیری شده اما تا ۴ فروردین به مقصد مشتری نرسیده است. ثبت فروش در سال ۱۴۰۴ با کدام شرط تحویل مجاز است؟`,
+        trapWhy: `عده‌ای تاریخ صدور فاکتور را ملاک می‌گیرند، حال آنکه انتقال کنترل و ریسک بر اساس شرایط تحویل قرارداد تعیین می‌شود.`,
+        goldenRule: `در <bdi dir="ltr">FOB</bdi> مبدأ (<bdi dir="ltr">Shipping Point</bdi>)، با تحویل به باربری در ۲۸ اسفند کنترل منتقل شده و فروش در اسفند قطعی است. اما در <bdi dir="ltr">FOB</bdi> مقصد (<bdi dir="ltr">Destination</bdi>)، تا ۴ فروردین کالا متعلق به فروشنده است؛ ثبت آن در اسفند باعث نقض «انقطاع زمانی» و بیش‌نمایی فروش و دریافتنی‌ها می‌شود.`,
+        assertionRef: `انقطاع زمانی (<bdi dir="ltr">Cut-off</bdi>) و وجود دریافتنی‌ها`
+      },
+      {
+        id: `trap-8`,
+        title: `انتقال وجوه بین‌بانکی (<bdi dir="ltr">Kiting</bdi>) در پایان سال`,
+        badge: `مغایرت بانکی`,
+        question: `حسابرس چگونه کشف می‌کند که شرکت در ۲۹ اسفند چکی از بانک الف به نفع بانک ب صادر کرده و واریز را در بانک ب ثبت کرده، اما کسر از بانک الف را تا فروردین به تأخیر انداخته است؟`,
+        trapWhy: `با بررسی صورت مغایرت هر بانک به‌تنهایی یا چک کردن تاییدیه بانکی ممکن است این دست‌کاری پنهان بماند.`,
+        goldenRule: `با تهیه «جدول نقل‌وانتقالات بین بانکی» برای چند روز قبل و بعد از پایان سال! اگر تاریخ ثبت دفتر (پرداخت) در بانک الف در سال بعد باشد ولی تاریخ ثبت دفتر (دریافت) در بانک ب در سال جاری باشد، دو بار شمردن وجه نقد (نقض وجود و انقطاع زمانی) آشکار می‌شود.`,
+        assertionRef: `وجود نقد و انقطاع زمانی`
+      }
+    ];
+
+    const QUIZ_QUESTIONS = [
+      {
+        id: 1,
+        topic: `direction`,
+        topicLabel: `جهت آزمون`,
+        difficulty: `متوسط`,
+        stem: `حسابرس در حال رسیدگی به حساب‌های فروش است و نمونه‌ای از ردیف‌های ثبت‌شده در دفتر روزنامه فروش را انتخاب کرده و به مدارک ارسال کالا (بارنامه‌ها) و سفارش‌های تأییدشده مشتری ردیابی می‌کند. این روش عمدتاً کدام ادعای مدیریت را آزمون می‌کند؟`,
+        options: [
+          `کامل بودن (<bdi dir="ltr">Completeness</bdi>)`,
+          `رخداد (<bdi dir="ltr">Occurrence</bdi>)`,
+          `انقطاع زمانی (<bdi dir="ltr">Cut-off</bdi>)`,
+          `طبقه‌بندی (<bdi dir="ltr">Classification</bdi>)`
+        ],
+        correctIndex: 1,
+        explanation: `نقطه شروع نمونه‌گیری «دفتر روزنامه فروش» و مقصد آن «مدارک مثبته اولیه (بارنامه)» است. این حرکت همان سندرسی معکوس (<bdi dir="ltr">Vouching</bdi>) است که برای کشف بیش‌نمایی و اثبات واقعی بودن معاملات ثبت‌شده یعنی ادعای <strong>رخداد</strong> اجرا می‌شود. برای اثبات «کامل بودن» باید برعکس از بارنامه به سمت دفتر حرکت کرد.`
+      },
+      {
+        id: 2,
+        topic: `matrix`,
+        topicLabel: `ارتباط سرفصل و روش`,
+        difficulty: `دشوار`,
+        stem: `کدام روش حسابرسی بهترین شواهد را برای اثبات ادعای «ارزشیابی و تخصیص» در سرفصل حساب‌های دریافتنی تجاری فراهم می‌آورد؟`,
+        options: [
+          `ارسال تاییدیه مثبت به مشتریان دارای مانده‌های بااهمیت`,
+          `ردیابی اقلام دفتر معین مشتریان به بارنامه‌های صادره`,
+          `بررسی وصولی‌های نقدی پس از تاریخ ترازنامه و آزمون کفایت ذخیره مطالبات مشکوک‌الوصول`,
+          `کنترل قراردادهای واگذاری مطالبات و صورت‌جلسات هیئت‌مدیره`
+        ],
+        correctIndex: 2,
+        explanation: `تاییدیه مثبت (گزینه الف) ادعای «وجود» و «حقوق» را اثبات می‌کند نه قابلیت وصول را! گزینه ب برای «رخداد/وجود» است و گزینه د مربوط به «حقوق و تعهدات و افشا» است. تنها گزینه ج مستقیماً مبلغ قابل بازیافت و تعدیل ارزشیابی مانده ترازنامه‌ای یعنی <strong>ارزشیابی و تخصیص</strong> را می‌آزماید.`
+      },
+      {
+        id: 3,
+        topic: `traps`,
+        topicLabel: `تله کنکوری`,
+        difficulty: `متوسط`,
+        stem: `حسابرس ضمن نظارت بر شمارش فیزیکی موجودی کالا در پایان سال، چند قلم کالا را به‌طور تصادفی از قفسه‌های انبار انتخاب، شمارش و شماره تگ آن‌ها را تا فهرست نهایی موجودی کالا ردیابی می‌کند. این آزمون برای اثبات کدام ادعا طراحی شده است؟`,
+        options: [
+          `وجود (<bdi dir="ltr">Existence</bdi>)`,
+          `کامل بودن (<bdi dir="ltr">Completeness</bdi>)`,
+          `حقوق و تعهدات (<bdi dir="ltr">Rights &amp; Obligations</bdi>)`,
+          `ارزشیابی و تخصیص (<bdi dir="ltr">Valuation &amp; Allocation</bdi>)`
+        ],
+        correctIndex: 1,
+        explanation: `مسیر حرکت از «کف انبار (اقلام عینی)» به سمت «فهرست دفتر» (<bdi dir="ltr">Floor to Sheet</bdi>) است؛ یعنی ردیابی رو به جلو (<bdi dir="ltr">Tracing</bdi>). این مسیر اطمینان می‌دهد که تمام کالاهای واقعی انبار در فهرست موجودی منعکس شده و از قلم نیفتاده‌اند؛ پس ادعای <strong>کامل بودن</strong> اثبات می‌شود.`
+      },
+      {
+        id: 4,
+        topic: `categories`,
+        topicLabel: `طبقات ادعاها`,
+        difficulty: `ساده`,
+        stem: `مطابق استاندارد حسابرسی ۳۱۵ ایران، کدام یک از موارد زیر جزء ادعاهای مربوط به «گروه‌های معاملات و رویدادها» نیست؟`,
+        options: [
+          `انقطاع زمانی (<bdi dir="ltr">Cut-off</bdi>)`,
+          `رخداد (<bdi dir="ltr">Occurrence</bdi>)`,
+          `حقوق و تعهدات (<bdi dir="ltr">Rights and Obligations</bdi>)`,
+          `دقت و صحت (<bdi dir="ltr">Accuracy</bdi>)`
+        ],
+        correctIndex: 2,
+        explanation: `طبقه اول (معاملات و رویدادها) دارای ۵ ادعاست: رخداد، کامل بودن، دقت و صحت، انقطاع زمانی و طبقه‌بندی. ادعای <strong>حقوق و تعهدات</strong> متعلق به طبقه دوم (مانده حساب‌های پایان دوره) و طبقه سوم (ارائه و افشا) است.`
+      },
+      {
+        id: 5,
+        topic: `traps`,
+        topicLabel: `تله کنکوری`,
+        difficulty: `دشوار`,
+        stem: `چرا حسابرس در حسابرسی سرفصل «دارایی‌های ثابت مشهود» اقدام به بازرسی اسناد حساب «هزینه‌های تعمیرات و نگهداری» می‌نماید؟`,
+        options: [
+          `برای اثبات ادعای «وجود» دارایی‌های ثابت مستهلک‌شده`,
+          `برای اثبات ادعای «کامل بودن» دارایی‌های ثابت و صحت «طبقه‌بندی»`,
+          `برای اطمینان از عدم ثبت مخارج استهلاک بیش از حد مجاز مالیاتی`,
+          `برای اثبات ادعای «حقوق و تعهدات» دارایی‌های استیجاری`
+        ],
+        correctIndex: 1,
+        explanation: `اگر مخارج سرمایه‌ای (افزایش‌دهنده عمر مفید یا ظرفیت دارایی) اشتباهاً به هزینه تعمیرات منظور شده باشد، مانده دارایی ثابت کمتر از واقع (کم‌نمایی) خواهد بود. بنابراین بررسی هزینه تعمیرات، دارایی‌های سرمایه‌گذاری‌شده ثبت‌نشده را کشف کرده و ادعای <strong>کامل بودن</strong> دارایی ثابت و <strong>طبقه‌بندی</strong> را اثبات می‌کند.`
+      },
+      {
+        id: 6,
+        topic: `direction`,
+        topicLabel: `جهت آزمون`,
+        difficulty: `متوسط`,
+        stem: `برای کشف «بدهی‌های ثبت‌نشده» در سرفصل حساب‌های پرداختنی پایان سال، کدام یک از روش‌های زیر اثربخش‌ترین شواهد را ارائه می‌دهد؟`,
+        options: [
+          `انتخاب نمونه از مانده‌های بزرگ دفتر معین بستانکاران و تطبیق با فاکتور خرید`,
+          `بررسی پرداخت‌های نقدی و صورت‌حساب‌های دریافتی طی هفته‌های نخست پس از تاریخ ترازنامه`,
+          `محاسبه مجدد جمع ستون‌های دفتر روزنامه خرید پایان سال`,
+          `اخذ تاییدیه حقوقی درباره تسهیلات بانکی دریافتی`
+        ],
+        correctIndex: 1,
+        explanation: `حساب‌های پرداختنی دارای خطر «کم‌نمایی» (عدم ثبت بدهی‌ها) است؛ بنابراین بررسی دفتر معین بستانکاران (گزینه الف) کمکی به یافتن اقلام حذف‌شده نمی‌کند. مؤثرترین روش، بررسی پرداخت‌های پس از تاریخ ترازنامه و ردیابی آن‌ها به قبض انبار یا تاریخ دریافت خدمت در سال مورد رسیدگی (جهت <bdi dir="ltr">Tracing</bdi>) است.`
+      },
+      {
+        id: 7,
+        topic: `matrix`,
+        topicLabel: `ارتباط سرفصل و روش`,
+        difficulty: `متوسط`,
+        stem: `تهیه و بررسی جدول نقل‌وانتقالات بین بانکی (<bdi dir="ltr">Interbank Transfer Schedule</bdi>) برای چند روز قبل و بعد از تاریخ ترازنامه، جهت کشف چه تحریفی و اثبات کدام ادعاها انجام می‌شود؟`,
+        options: [
+          `کشف لَپینگ (<bdi dir="ltr">Lapping</bdi>) و اثبات ادعای کامل بودن درآمد`,
+          `کشف چک‌بازی بین‌بانکی (<bdi dir="ltr">Kiting</bdi>) و اثبات ادعاهای وجود و انقطاع زمانی نقد`,
+          `کشف اختلاس تنخواه‌گردان و اثبات ادعای حقوق و تعهدات`,
+          `کشف تسعیر نادرست ارز و اثبات ادعای طبقه‌بندی`
+        ],
+        correctIndex: 1,
+        explanation: `در تقلب <bdi dir="ltr">Kiting</bdi>، مبلغ واریزی چک انتقالی در پایان سال در بانک مقصد ثبت می‌شود اما کسر آن از بانک مبدأ تا آغاز سال بعد به تعویق می‌افتد؛ در نتیجه یک وجه نقد دو بار در ترازنامه می‌نشیند. جدول نقل‌وانتقالات بین بانکی این تخلف را در سطح ادعای <strong>وجود</strong> و <strong>انقطاع زمانی</strong> کشف می‌کند.`
+      },
+      {
+        id: 8,
+        topic: `traps`,
+        topicLabel: `تله کنکوری`,
+        difficulty: `دشوار`,
+        stem: `حسابرس هنگام ارسال تاییدیه برای سرفصل «حساب‌های پرداختنی» متوجه می‌شود یکی از تأمین‌کنندگان اصلی شرکت در طول سال، در پایان سال مانده صفر دارد. تصمیم صحیح حسابرس کدام است؟`,
+        options: [
+          `حذف آن تأمین‌کننده از جامعه نمونه‌گیری به دلیل بی‌اهمیت بودن مانده پایان سال`,
+          `ارسال تاییدیه برای این تأمین‌کننده به دلیل احتمال وجود بدهی ثبت‌نشده (کم‌نمایی)`,
+          `ارسال تاییدیه منفی به‌جای تاییدیه مثبت برای کاهش هزینه حسابرسی`,
+          `اکتفا به تاییدیه مدیر مالی در مورد مانده صفر`
+        ],
+        correctIndex: 1,
+        explanation: `چون ریسک اصلی بدهی‌ها «کم‌نمایی» است، یک مانده صفر در دفاتر می‌تواند ناشی از عدم ثبت فاکتورهای آخر سال یا پرداخت ثبت‌نشده اشتباهی باشد. بنابراین در حساب‌های پرداختنی، نمونه تاییدیه بر اساس حجم معاملات سالانه (حتی برای مانده‌های صفر یا کم) انتخاب می‌شود.`
+      },
+      {
+        id: 9,
+        topic: `categories`,
+        topicLabel: `طبقات ادعاها`,
+        difficulty: `متوسط`,
+        stem: `عدم تفکیک حصه جاری وام بانکی بلندمدت (سررسید طی ۱۲ ماه آینده) در ترازنامه، مستقیماً نقض کدام یک از ادعاهای مدیریت محسوب می‌شود؟`,
+        options: [
+          `کامل بودن در طبقه معاملات`,
+          `رخداد در طبقه مانده حساب‌ها`,
+          `طبقه‌بندی و قابلیت فهم در طبقه ارائه و افشا`,
+          `انقطاع زمانی در طبقه معاملات`
+        ],
+        correctIndex: 2,
+        explanation: `کل مبلغ وام در ترازنامه وجود دارد و مبلغ آن صحیح است، اما محل قرارگیری بخش جاری آن در زیرمجموعه بدهی‌های غیرجاری نادرست است. این خطا مستقیماً ادعای <strong>طبقه‌بندی و قابلیت فهم</strong> (در طبقه ارائه و افشا) را نقض می‌کند.`
+      },
+      {
+        id: 10,
+        topic: `traps`,
+        topicLabel: `تله کنکوری`,
+        difficulty: `دشوار`,
+        stem: `شرکتی در تاریخ ۲۹ اسفند محموله‌ای را با شرط تحویل <bdi dir="ltr">FOB</bdi> مقصد (<bdi dir="ltr">FOB Destination</bdi>) بارگیری و ارسال می‌کند که در ۳ فروردین به انبار خریدار می‌رسد. شرکت فروش را در ۲۹ اسفند ثبت و کالا را از موجودی انبار خارج کرده است. کدام تحریف رخ داده است؟`,
+        options: [
+          `نقض انقطاع زمانی و کم‌نمایی فروش و موجودی کالا`,
+          `نقض انقطاع زمانی و بیش‌نمایی فروش و حساب‌های دریافتنی (و کم‌نمایی موجودی کالا)`,
+          `نقض دقت و صحت بدون اثر بر مانده موجودی کالا`,
+          `هیچ تحریفی رخ نداده است زیرا کالا از انبار خارج شده است`
+        ],
+        correctIndex: 1,
+        explanation: `در شرط <bdi dir="ltr">FOB</bdi> مقصد، کنترل و مخاطر مالکیت کالا تا زمان تحویل در مقصد (۳ فروردین) نزد فروشنده باقی می‌ماند. بنابراین ثبت فروش در اسفند باعث نقض <strong>انقطاع زمانی</strong> و در نتیجه <strong>بیش‌نمایی فروش و حساب‌های دریافتنی</strong> و همچنین <strong>کم‌نمایی موجودی کالای پایان سال</strong> می‌شود.`
+      },
+      {
+        id: 11,
+        topic: `matrix`,
+        topicLabel: `ارتباط سرفصل و روش`,
+        difficulty: `ساده`,
+        stem: `حسابرس به‌منظور حصول اطمینان از اینکه تمامی دعاوی حقوقی علیه شرکت در صورت‌های مالی شناسایی و به نحو مقتضی افشا شده‌اند، با مشاور حقوقی شرکت مکاتبه می‌نماید. این روش عمدتاً کدام ادعا را آزمون می‌کند؟`,
+        options: [
+          `دقت و محاسبه مجدد در معاملات`,
+          `کامل بودن و ارائه و افشای بدهی‌های احتمالی`,
+          `انقطاع زمانی درآمدهای عملیاتی`,
+          `حقوق مالکیت دارایی‌های نامشهود`
+        ],
+        correctIndex: 1,
+        explanation: `استعلام از مشاور حقوقی مهم‌ترین روش برای کشف دعاوی و مطالبات اشخاص ثالث است که ممکن است مدیریت آن‌ها را کتمان یا افشا نکرده باشد؛ بنابراین مستقیماً ادعای <strong>کامل بودن</strong> و <strong>ارائه و افشا</strong> (طبقه سوم) را اثبات می‌کند.`
+      },
+      {
+        id: 12,
+        topic: `categories`,
+        topicLabel: `طبقات ادعاها`,
+        difficulty: `متوسط`,
+        stem: `کدام یک از جفت ادعاهای زیر به‌ترتیب در طبقه «معاملات و رویدادها» و طبقه «مانده حساب‌ها» متناظر یکدیگرند؟`,
+        options: [
+          `رخداد ↔ کامل بودن`,
+          `دقت و صحت ↔ ارزشیابی و تخصیص`,
+          `انقطاع زمانی ↔ حقوق و تعهدات`,
+          `طبقه‌بندی ↔ وجود`
+        ],
+        correctIndex: 1,
+        explanation: `در تناظر میان طبقه اول و دوم: «رخداد» متناظر با «وجود» است، «کامل بودن» در هر دو یکسان است، و «دقت و صحت» در معاملات متناظر با اندازه‌گیری نهایی یعنی <strong>ارزشیابی و تخصیص</strong> در مانده حساب‌های ترازنامه است.`
+      },
+      {
+        id: 13,
+        topic: `traps`,
+        topicLabel: `تله کنکوری`,
+        difficulty: `دشوار`,
+        stem: `در انبارگردانی پایان سال مشخص می‌شود بخشی از کالاهای موجود در قفسه الف متعلق به مشتری است که به‌صورت امانی نزد شرکت نگهداری می‌شود، اما در شمارش پایان سال شرکت منظور شده است. این امر کدام ادعا را در ترازنامه نقض می‌کند؟`,
+        options: [
+          `کامل بودن موجودی کالا`,
+          `حقوق و تعهدات (<bdi dir="ltr">Rights &amp; Obligations</bdi>)`,
+          `دقت و صحت معاملات خرید`,
+          `قابلیت فهم یادداشت‌های توضیحی`
+        ],
+        correctIndex: 1,
+        explanation: `کالا از نظر فیزیکی «وجود» دارد، اما شرکت حق مالکیت قانونی بر آن ندارد! بنابراین ثبت آن در دارایی‌های شرکت مستقیماً ادعای <strong>حقوق و تعهدات</strong> را نقض کرده و باعث بیش‌نمایی موجودی کالا می‌شود.`
+      },
+      {
+        id: 14,
+        topic: `direction`,
+        topicLabel: `جهت آزمون`,
+        difficulty: `متوسط`,
+        stem: `اگر در آزمون فروش‌های پایان سال متوجه شوید که در هفته اول فروردین سال بعد، حجم غیرعادی و بسیار بالایی «برگشت از فروش» نسبت به فروش‌های روزهای پایانی اسفند ثبت شده است، فرضیه اصلی حسابرس چیست؟`,
+        options: [
+          `کم‌نمایی فروش در اسفند سال مورد رسیدگی`,
+          `احتمال ثبت فروش‌های واهی یا نقض انقطاع زمانی در روزهای پایانی اسفند (بیش‌نمایی فروش)`,
+          `نقص در کنترل داخلی خریدهای سال بعد`,
+          `کم‌نمایی ذخیره کاهش ارزش موجودی کالا`
+        ],
+        correctIndex: 1,
+        explanation: `برگشت‌های غیرعادی و بااهمیت در ابتدای سال جدید یکی از علائم کلاسیک دست‌کاری درآمد در پایان سال (بستن غیرواقعی فروش برای دستیابی به بودجه و برگشت آن در فروردین) است که ادعای <strong>رخداد</strong> و <strong>انقطاع زمانی</strong> فروش را زیر سؤال می‌برد.`
+      }
+    ];
+
+    /* Persistent application state */
+    let appState = {
+      selectedCategory: `transactions`,
+      selectedAssertionId: `tr-occurrence`,
+      simMode: `overstatement`,
+      reviewedTraps: [],
+      quizAnswers: {},
+      currentQuestionIndex: 0,
+      quizTopicFilter: `all`
+    };
+
+    function toPersianDigits(val) {
+      const map = [`۰`, `۱`, `۲`, `۳`, `۴`, `۵`, `۶`, `۷`, `۸`, `۹`];
+      return String(val).replace(/\d/g, function(d) {
+        return map[Number(d)];
+      });
+    }
+
+    async function saveProgress() {
+      const statusEl = document.getElementById(`save-status-indicator`);
+      try {
+        if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === `function`) {
+          await window.notebookAppApi.setAppState(appState);
+          if (statusEl) {
+            statusEl.textContent = `وضعیت ذخیره پیشرفت: همگام‌سازی‌شده`;
+          }
+        }
+      } catch (err) {
+        if (statusEl) {
+          statusEl.textContent = `وضعیت ذخیره پیشرفت: خطا در همگام‌سازی`;
+        }
+      }
+    }
+
+    function updateKPIs() {
+      const trapsEl = document.getElementById(`kpi-traps-count`);
+      const trapsStatusEl = document.getElementById(`kpi-traps-status`);
+      const quizScoreEl = document.getElementById(`kpi-quiz-score`);
+      const quizDetailEl = document.getElementById(`kpi-quiz-detail`);
+
+      const reviewedCount = appState.reviewedTraps.length;
+      const totalTraps = EXAM_TRAPS.length;
+      if (trapsEl) trapsEl.textContent = `${toPersianDigits(reviewedCount)} از ${toPersianDigits(totalTraps)}`;
+      if (trapsStatusEl) {
+        trapsStatusEl.textContent = reviewedCount === totalTraps
+          ? `تمامی تله‌های کنکوری بررسی شدند`
+          : `${toPersianDigits(totalTraps - reviewedCount)} تله باقی‌مانده برای بررسی`;
+      }
+
+      const answeredIds = Object.keys(appState.quizAnswers);
+      let correctCount = 0;
+      answeredIds.forEach(function(qId) {
+        const q = QUIZ_QUESTIONS.find(function(item) { return String(item.id) === String(qId); });
+        if (q && appState.quizAnswers[qId] === q.correctIndex) {
+          correctCount += 1;
+        }
+      });
+      const totalQ = QUIZ_QUESTIONS.length;
+      const pct = answeredIds.length > 0 ? Math.round((correctCount / answeredIds.length) * 100) : 0;
+      if (quizScoreEl) quizScoreEl.textContent = `${toPersianDigits(pct)}٪`;
+      if (quizDetailEl) {
+        quizDetailEl.textContent = `${toPersianDigits(correctCount)} پاسخ صحیح از ${toPersianDigits(answeredIds.length)} پاسخ ثبت‌شده (کل ${toPersianDigits(totalQ)})`;
+      }
+    }
+
+    /* Section 1: Assertions Explorer */
+    function selectCategory(catKey) {
+      if (!ASSERTION_CATEGORIES[catKey]) return;
+      appState.selectedCategory = catKey;
+      appState.selectedAssertionId = ASSERTION_CATEGORIES[catKey].items[0].id;
+      renderCategorySection();
+      saveProgress();
+    }
+
+    function selectAssertion(assertionId) {
+      appState.selectedAssertionId = assertionId;
+      renderCategorySection();
+      saveProgress();
+    }
+
+    function renderCategorySection() {
+      const tabKeys = [`transactions`, `balances`, `presentation`];
+      tabKeys.forEach(function(key) {
+        const btn = document.getElementById(`tab-cat-${key}`);
+        if (btn) {
+          btn.setAttribute(`aria-selected`, key === appState.selectedCategory ? `true` : `false`);
+        }
+      });
+
+      const cat = ASSERTION_CATEGORIES[appState.selectedCategory];
+      const listEl = document.getElementById(`assertion-list`);
+      const detailEl = document.getElementById(`assertion-detail`);
+      if (!cat || !listEl || !detailEl) return;
+
+      listEl.innerHTML = cat.items.map(function(item, idx) {
+        const isSel = item.id === appState.selectedAssertionId;
+        return `
+          <button type="button" class="assertion-item ${isSel ? `is-selected` : ``}" onclick="selectAssertion('${item.id}')" aria-pressed="${isSel}">
+            <div>
+              <span class="assertion-item-title">${toPersianDigits(idx + 1)}. ${item.fa}</span>
+              <span class="assertion-item-en"><bdi dir="ltr">${item.en}</bdi></span>
+            </div>
+            <span class="stamp ${isSel ? `is-navy` : ``}">${cat.shortTitle}</span>
+          </button>
+        `;
+      }).join(``);
+
+      const activeItem = cat.items.find(function(x) { return x.id === appState.selectedAssertionId; }) || cat.items[0];
+      detailEl.innerHTML = `
+        <div class="trap-header">
+          <div>
+            <div class="detail-cell-label">${cat.title}</div>
+            <h3>${activeItem.fa} (<bdi dir="ltr">${activeItem.en}</bdi>)</h3>
+          </div>
+          <span class="stamp is-navy">${activeItem.risk}</span>
+        </div>
+        <p>${activeItem.definition}</p>
+        <div class="detail-grid">
+          <div>
+            <div class="detail-cell-label">روش اصلی اثبات حسابرسی</div>
+            <p>${activeItem.procedure}</p>
+          </div>
+          <div class="detail-example-box">
+            <div class="detail-cell-label">مثال عینی آزمون جامعه</div>
+            <p>${activeItem.example}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    /* Section 2: Direction of Testing Simulator */
+    function selectSimMode(modeKey) {
+      if (!DIRECTION_MODES[modeKey]) return;
+      appState.simMode = modeKey;
+      renderDirectionSimulator();
+      saveProgress();
+    }
+
+    function renderDirectionSimulator() {
+      const btnMap = {
+        overstatement: `sim-btn-over`,
+        understatement: `sim-btn-under`,
+        inv_existence: `sim-btn-inv-exist`,
+        inv_completeness: `sim-btn-inv-comp`
+      };
+      Object.keys(btnMap).forEach(function(k) {
+        const btn = document.getElementById(btnMap[k]);
+        if (btn) btn.setAttribute(`aria-pressed`, k === appState.simMode ? `true` : `false`);
+      });
+
+      const mode = DIRECTION_MODES[appState.simMode];
+      const stageEl = document.getElementById(`direction-diagram-stage`);
+      const summaryEl = document.getElementById(`direction-summary`);
+      if (!mode || !stageEl || !summaryEl) return;
+
+      const isToLeft = mode.arrowDir === `left`;
+      const isInv = appState.simMode.indexOf(`inv_`) === 0;
+      const rightBoxTitle = isInv ? `فهرست موجودی و کاردکس (دفاتر)` : `دفاتر روزنامه و معین حسابداری`;
+      const rightBoxSub = isInv ? `مبالغ و مقادیر ثبت‌شده پایان سال` : `ترازنامه و صورت سود و زیان`;
+      const leftBoxTitle = isInv ? `کالای فیزیکی در قفسه‌های انبار` : `مدارک مثبته و رویدادهای واقعی`;
+      const leftBoxSub = isInv ? `مشاهده و شمارش عینی در انبار` : `بارنامه، قبض انبار، فاکتور معتبر`;
+
+      const arrowPath = isToLeft
+        ? `M 510 115 L 250 115`
+        : `M 250 115 L 510 115`;
+      const arrowHead = isToLeft
+        ? `M 262 106 L 246 115 L 262 124`
+        : `M 498 106 L 514 115 L 498 124`;
+      const startCircleX = isToLeft ? `510` : `250`;
+      const actionText = isToLeft
+        ? `سندرسی معکوس (Vouching) — کشف بیش‌نمایی`
+        : `ردیابی رو به جلو (Tracing) — کشف کم‌نمایی`;
+
+      stageEl.innerHTML = `
+        <svg viewBox="0 0 760 220" role="img" aria-label="${mode.directionLabel}">
+          <rect x="24" y="45" width="215" height="130" rx="2" fill="var(--surface-container-low)" stroke="${!isToLeft ? mode.accentToken : `var(--outline-variant)`}" stroke-width="${!isToLeft ? `2.5` : `1.5`}"/>
+          <text x="131" y="92" text-anchor="middle" fill="var(--primary)" font-family="Vazirmatn, sans-serif" font-size="14" font-weight="700">${leftBoxTitle}</text>
+          <text x="131" y="118" text-anchor="middle" fill="var(--on-surface-variant)" font-family="Vazirmatn, sans-serif" font-size="12">${leftBoxSub}</text>
+          <text x="131" y="150" text-anchor="middle" fill="${!isToLeft ? mode.accentToken : `var(--tertiary)`}" font-family="Vazirmatn, sans-serif" font-size="12" font-weight="600">${!isToLeft ? `نقطه شروع نمونه‌گیری` : `مقصد تأیید شواهد`}</text>
+
+          <rect x="521" y="45" width="215" height="130" rx="2" fill="var(--surface-container-low)" stroke="${isToLeft ? mode.accentToken : `var(--outline-variant)`}" stroke-width="${isToLeft ? `2.5` : `1.5`}"/>
+          <text x="628" y="92" text-anchor="middle" fill="var(--primary)" font-family="Vazirmatn, sans-serif" font-size="14" font-weight="700">${rightBoxTitle}</text>
+          <text x="628" y="118" text-anchor="middle" fill="var(--on-surface-variant)" font-family="Vazirmatn, sans-serif" font-size="12">${rightBoxSub}</text>
+          <text x="628" y="150" text-anchor="middle" fill="${isToLeft ? mode.accentToken : `var(--tertiary)`}" font-family="Vazirmatn, sans-serif" font-size="12" font-weight="600">${isToLeft ? `نقطه شروع نمونه‌گیری` : `مقصد ثبت حسابداری`}</text>
+
+          <path d="${arrowPath}" stroke="${mode.accentToken}" stroke-width="3.5" fill="none"/>
+          <path d="${arrowHead}" stroke="${mode.accentToken}" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="${startCircleX}" cy="115" r="6" fill="${mode.accentToken}"/>
+
+          <rect x="265" y="72" width="230" height="30" rx="2" fill="var(--surface-container)"/>
+          <text x="380" y="92" text-anchor="middle" fill="var(--on-surface)" font-family="Vazirmatn, sans-serif" font-size="12.5" font-weight="700">${actionText}</text>
+          <text x="380" y="148" text-anchor="middle" fill="var(--on-surface-variant)" font-family="Vazirmatn, sans-serif" font-size="12">${mode.targetAssertion}</text>
+        </svg>
+      `;
+
+      summaryEl.innerHTML = `
+        <div class="sim-metric">
+          <div class="detail-cell-label">عنوان مسیر و روش</div>
+          <p><strong>${mode.modeTitle}</strong></p>
+        </div>
+        <div class="sim-metric">
+          <div class="detail-cell-label">جمعیت آماری مبدأ</div>
+          <p>${mode.startPop}</p>
+        </div>
+        <div class="sim-metric">
+          <div class="detail-cell-label">خطر هدف و ادعای اصلی</div>
+          <p>${mode.riskTested} — <strong>${mode.targetAssertion}</strong></p>
+        </div>
+        <div class="sim-metric">
+          <div class="detail-cell-label">مثال اجرایی</div>
+          <p>${mode.example}</p>
+        </div>
+      `;
+    }
+
+    /* Section 3: Matrix Filters */
+    function applyMatrixFilters() {
+      const accEl = document.getElementById(`filter-account`);
+      const assEl = document.getElementById(`filter-assertion`);
+      const evEl = document.getElementById(`filter-evidence`);
+      const tbody = document.getElementById(`matrix-tbody`);
+      const countLabel = document.getElementById(`matrix-count-label`);
+      const emptyBox = document.getElementById(`matrix-empty-state`);
+      if (!accEl || !assEl || !evEl || !tbody || !countLabel || !emptyBox) return;
+
+      const accVal = accEl.value;
+      const assVal = assEl.value;
+      const evVal = evEl.value;
+
+      const filtered = MATRIX_ROWS.filter(function(row) {
+        const matchAcc = accVal === `all` || row.accountKey === accVal;
+        const matchAss = assVal === `all` || row.assertionKeys.indexOf(assVal) !== -1;
+        const matchEv = evVal === `all` || row.evidenceKey === evVal;
+        return matchAcc && matchAss && matchEv;
+      });
+
+      countLabel.textContent = `نمایش ${toPersianDigits(filtered.length)} روش حسابرسی از ${toPersianDigits(MATRIX_ROWS.length)} مورد کلیدی`;
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = ``;
+        emptyBox.hidden = false;
+        return;
+      }
+
+      emptyBox.hidden = true;
+      tbody.innerHTML = filtered.map(function(row) {
+        return `
+          <tr>
+            <td><strong>${row.accountName}</strong></td>
+            <td>${row.procedure}</td>
+            <td><span class="stamp is-navy">${row.assertionText}</span></td>
+            <td><span class="stamp">${row.evidenceName}</span></td>
+            <td>${row.note}</td>
+          </tr>
+        `;
+      }).join(``);
+    }
+
+    function resetMatrixFilters() {
+      const accEl = document.getElementById(`filter-account`);
+      const assEl = document.getElementById(`filter-assertion`);
+      const evEl = document.getElementById(`filter-evidence`);
+      if (accEl) accEl.value = `all`;
+      if (assEl) assEl.value = `all`;
+      if (evEl) evEl.value = `all`;
+      applyMatrixFilters();
+    }
+
+    /* Section 4: Exam Traps */
+    function toggleTrap(trapId) {
+      const idx = appState.reviewedTraps.indexOf(trapId);
+      const ansEl = document.getElementById(`ans-${trapId}`);
+      const btnEl = document.getElementById(`btn-${trapId}`);
+      if (!ansEl || !btnEl) return;
+
+      const isCurrentlyHidden = ansEl.hidden;
+      ansEl.hidden = !isCurrentlyHidden;
+      btnEl.setAttribute(`aria-expanded`, isCurrentlyHidden ? `true` : `false`);
+      btnEl.textContent = isCurrentlyHidden ? `بستن تحلیل تله` : `مشاهده تحلیل تله کنکوری`;
+
+      if (isCurrentlyHidden && idx === -1) {
+        appState.reviewedTraps.push(trapId);
+        updateKPIs();
+        saveProgress();
+      }
+      renderTrapBadges();
+    }
+
+    function renderTrapBadges() {
+      EXAM_TRAPS.forEach(function(trap) {
+        const stampEl = document.getElementById(`stamp-${trap.id}`);
+        if (!stampEl) return;
+        const isReviewed = appState.reviewedTraps.indexOf(trap.id) !== -1;
+        stampEl.className = `stamp ${isReviewed ? `is-green` : ``}`;
+        stampEl.textContent = isReviewed ? `مرور شده` : trap.badge;
+      });
+    }
+
+    function renderTrapsSection() {
+      const grid = document.getElementById(`trap-grid`);
+      if (!grid) return;
+      grid.innerHTML = EXAM_TRAPS.map(function(trap, index) {
+        const isReviewed = appState.reviewedTraps.indexOf(trap.id) !== -1;
+        return `
+          <article class="trap-card">
+            <div>
+              <div class="trap-header">
+                <div class="detail-cell-label">تله شماره ${toPersianDigits(index + 1)}</div>
+                <span class="stamp ${isReviewed ? `is-green` : ``}" id="stamp-${trap.id}">${isReviewed ? `مرور شده` : trap.badge}</span>
+              </div>
+              <h3>${trap.title}</h3>
+              <p style="margin-top: var(--space-sm);">${trap.question}</p>
+            </div>
+            <div class="trap-answer" id="ans-${trap.id}" hidden>
+              <div>
+                <div class="detail-cell-label">چرا داوطلبان در دام می‌افتند؟</div>
+                <p>${trap.trapWhy}</p>
+              </div>
+              <div>
+                <div class="detail-cell-label">قاعده طلایی پاسخ صحیح</div>
+                <p>${trap.goldenRule}</p>
+              </div>
+              <div class="figure-label">${trap.assertionRef}</div>
+            </div>
+            <button type="button" class="btn btn-secondary" id="btn-${trap.id}" aria-expanded="false" onclick="toggleTrap('${trap.id}')">
+              مشاهده تحلیل تله کنکوری
+            </button>
+          </article>
+        `;
+      }).join(``);
+    }
+
+    /* Section 5: Quiz Engine */
+    function getFilteredQuizList() {
+      if (appState.quizTopicFilter === `all`) return QUIZ_QUESTIONS;
+      return QUIZ_QUESTIONS.filter(function(q) {
+        return q.topic === appState.quizTopicFilter;
+      });
+    }
+
+    function filterQuizQuestions() {
+      const sel = document.getElementById(`quiz-topic-filter`);
+      if (sel) appState.quizTopicFilter = sel.value;
+      appState.currentQuestionIndex = 0;
+      renderQuiz();
+      saveProgress();
+    }
+
+    function selectQuestionByIndex(idx) {
+      const list = getFilteredQuizList();
+      if (idx < 0 || idx >= list.length) return;
+      appState.currentQuestionIndex = idx;
+      renderQuiz();
+      saveProgress();
+    }
+
+    function answerQuestion(qId, optionIdx) {
+      if (appState.quizAnswers[String(qId)] !== undefined) return;
+      appState.quizAnswers[String(qId)] = optionIdx;
+      renderQuiz();
+      updateKPIs();
+      saveProgress();
+    }
+
+    function handleResetQuiz(btn) {
+      if (!btn) return;
+      if (btn.dataset.armed !== `true`) {
+        btn.dataset.armed = `true`;
+        btn.textContent = `برای پاک کردن پاسخ‌ها دوباره کلیک کنید`;
+        return;
+      }
+      btn.dataset.armed = `false`;
+      btn.textContent = `شروع مجدد آزمون`;
+      appState.quizAnswers = {};
+      appState.currentQuestionIndex = 0;
+      renderQuiz();
+      updateKPIs();
+      saveProgress();
+    }
+
+    function renderMasteryChart() {
+      const container = document.getElementById(`quiz-mastery-chart`);
+      if (!container) return;
+      const topics = [
+        { key: `categories`, label: `طبقات ادعاها` },
+        { key: `direction`, label: `جهت آزمون` },
+        { key: `matrix`, label: `ماتریس سرفصل‌ها` },
+        { key: `traps`, label: `تله‌های کنکوری` }
+      ];
+
+      const rows = topics.map(function(t) {
+        const list = QUIZ_QUESTIONS.filter(function(q) { return q.topic === t.key; });
+        let answered = 0;
+        let correct = 0;
+        list.forEach(function(q) {
+          const ans = appState.quizAnswers[String(q.id)];
+          if (ans !== undefined) {
+            answered += 1;
+            if (ans === q.correctIndex) correct += 1;
+          }
+        });
+        const pct = answered > 0 ? Math.round((correct / answered) * 100) : 0;
+        return { label: t.label, pct: pct, answered: answered, total: list.length, correct: correct };
+      });
+
+      const svgRows = rows.map(function(r, i) {
+        const y = 18 + i * 42;
+        const barMax = 150;
+        const barW = Math.round((r.pct / 100) * barMax);
+        const barColor = r.answered === 0 ? `var(--data-context)` : (r.pct >= 70 ? `var(--secondary)` : (r.pct >= 40 ? `var(--tertiary)` : `var(--error)`));
+        return `
+          <text x="295" y="${y + 13}" text-anchor="end" fill="var(--on-surface)" font-family="Vazirmatn, sans-serif" font-size="11.5" font-weight="600">${r.label}</text>
+          <rect x="52" y="${y + 2}" width="${barMax}" height="14" rx="1" fill="var(--surface-container)"/>
+          <rect x="${52 + (barMax - barW)}" y="${y + 2}" width="${barW}" height="14" rx="1" fill="${barColor}"/>
+          <text x="44" y="${y + 13}" text-anchor="end" fill="var(--on-surface-variant)" font-family="Vazirmatn, sans-serif" font-size="11">${r.answered > 0 ? `${toPersianDigits(r.pct)}٪` : `—`}</text>
+        `;
+      }).join(``);
+
+      container.innerHTML = `
+        <svg viewBox="0 0 305 186" width="100%" height="186" role="img" aria-label="نمودار درصد پاسخ صحیح به تفکیک مبحث">
+          ${svgRows}
+        </svg>
+      `;
+    }
+
+    function renderQuiz() {
+      const cardEl = document.getElementById(`quiz-question-card`);
+      const pagerEl = document.getElementById(`quiz-pager-grid`);
+      if (!cardEl || !pagerEl) return;
+
+      const list = getFilteredQuizList();
+      if (appState.currentQuestionIndex >= list.length) {
+        appState.currentQuestionIndex = 0;
+      }
+
+      const q = list[appState.currentQuestionIndex];
+      const userAnswer = appState.quizAnswers[String(q.id)];
+      const isAnswered = userAnswer !== undefined;
+      const isCorrect = isAnswered && userAnswer === q.correctIndex;
+      const optionLetters = [`الف`, `ب`, `ج`, `د`];
+
+      cardEl.innerHTML = `
+        <div class="quiz-meta-row">
+          <div style="display:flex; gap:var(--space-sm); flex-wrap:wrap; align-items:center;">
+            <span class="stamp is-navy">پرسش ${toPersianDigits(appState.currentQuestionIndex + 1)} از ${toPersianDigits(list.length)}</span>
+            <span class="stamp">${q.topicLabel}</span>
+          </div>
+          <span class="figure-label">سطح دشواری: ${q.difficulty}</span>
+        </div>
+        <div class="quiz-stem">${q.stem}</div>
+        <div class="quiz-options" role="group" aria-label="گزینه‌های پاسخ">
+          ${q.options.map(function(opt, idx) {
+            let cls = `quiz-option`;
+            if (isAnswered) {
+              if (idx === q.correctIndex) cls += ` is-correct`;
+              else if (idx === userAnswer) cls += ` is-wrong`;
+            }
+            return `
+              <button type="button" class="${cls}" ${isAnswered ? `disabled` : ``} onclick="answerQuestion(${q.id}, ${idx})">
+                <span class="quiz-option-index">${optionLetters[idx]})</span>
+                <span>${opt}</span>
+              </button>
+            `;
+          }).join(``)}
+        </div>
+        ${isAnswered ? `
+          <div class="quiz-explanation ${isCorrect ? `is-correct-box` : `is-wrong-box`}">
+            <div class="detail-cell-label" style="color:${isCorrect ? `var(--secondary)` : `var(--error)`}">
+              ${isCorrect ? `پاسخ شما صحیح است (گزینه ${optionLetters[q.correctIndex]})` : `پاسخ نادرست — گزینه صحیح «${optionLetters[q.correctIndex]}» است`}
+            </div>
+            <p>${q.explanation}</p>
+          </div>
+        ` : `
+          <div class="figure-label">یکی از گزینه‌های بالا را انتخاب کنید تا پاسخ تشریحی بلافاصله نمایش داده شود.</div>
+        `}
+        <div class="quiz-nav-row">
+          <button type="button" class="btn btn-secondary" ${appState.currentQuestionIndex === 0 ? `disabled` : ``} onclick="selectQuestionByIndex(${appState.currentQuestionIndex - 1})">
+            پرسش قبلی
+          </button>
+          <button type="button" class="btn btn-primary" ${appState.currentQuestionIndex >= list.length - 1 ? `disabled` : ``} onclick="selectQuestionByIndex(${appState.currentQuestionIndex + 1})">
+            پرسش بعدی
+          </button>
+        </div>
+      `;
+
+      pagerEl.innerHTML = list.map(function(item, idx) {
+        const ans = appState.quizAnswers[String(item.id)];
+        let cls = `q-dot`;
+        if (idx === appState.currentQuestionIndex) cls += ` is-current`;
+        if (ans !== undefined) {
+          cls += ans === item.correctIndex ? ` is-answered-ok` : ` is-answered-bad`;
+        }
+        return `<button type="button" class="${cls}" onclick="selectQuestionByIndex(${idx})" aria-label="پرسش ${toPersianDigits(idx + 1)}">${toPersianDigits(idx + 1)}</button>`;
+      }).join(``);
+
+      renderMasteryChart();
+    }
+
+    function exportPerformanceReport() {
+      const answeredIds = Object.keys(appState.quizAnswers);
+      let correctCount = 0;
+      const lines = [
+        `کارنامه خودارزیابی حسابرسی ادعاهای مدیریت — آمادگی آزمون IACPA`,
+        `================================================================`,
+        `تله‌های کنکوری بررسی‌شده: ${appState.reviewedTraps.length} از ${EXAM_TRAPS.length}`,
+        ``
+      ];
+      QUIZ_QUESTIONS.forEach(function(q, i) {
+        const ans = appState.quizAnswers[String(q.id)];
+        const isOk = ans === q.correctIndex;
+        if (isOk) correctCount += 1;
+        const statusText = ans === undefined ? `پاسخ داده‌نشده` : (isOk ? `صحیح` : `نادرست`);
+        lines.push(`پرسش ${i + 1} (${q.topicLabel}): ${statusText}`);
+      });
+      const pct = answeredIds.length > 0 ? Math.round((correctCount / answeredIds.length) * 100) : 0;
+      lines.push(``);
+      lines.push(`جمع پاسخ صحیح: ${correctCount} از ${answeredIds.length} (${pct}%)`);
+
+      const reportContent = lines.join(`\n`);
+      if (window.notebookAppApi && typeof window.notebookAppApi.triggerFileDownload === `function`) {
+        window.notebookAppApi.triggerFileDownload({
+          content: reportContent,
+          contentType: `text/plain`,
+          encoding: `UTF-8`,
+          filename: `iacpa-assertions-report.txt`
+        });
+      }
+    }
+
+    /* Scroll Reveal Observer */
+    function initScrollReveal() {
+      const blocks = document.querySelectorAll(`.reveal-block`);
+      if (!(`IntersectionObserver` in window)) {
+        blocks.forEach(function(b) { b.classList.add(`is-visible`); });
+        return;
+      }
+      const obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add(`is-visible`);
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      blocks.forEach(function(b) { obs.observe(b); });
+    }
+
+    async function initApp() {
+      try {
+        if (window.notebookAppApi && typeof window.notebookAppApi.getAppState === `function`) {
+          const saved = await window.notebookAppApi.getAppState();
+          if (saved && typeof saved === `object`) {
+            if (saved.selectedCategory && ASSERTION_CATEGORIES[saved.selectedCategory]) {
+              appState.selectedCategory = saved.selectedCategory;
+            }
+            if (saved.selectedAssertionId) {
+              appState.selectedAssertionId = saved.selectedAssertionId;
+            }
+            if (saved.simMode && DIRECTION_MODES[saved.simMode]) {
+              appState.simMode = saved.simMode;
+            }
+            if (Array.isArray(saved.reviewedTraps)) {
+              appState.reviewedTraps = saved.reviewedTraps;
+            }
+            if (saved.quizAnswers && typeof saved.quizAnswers === `object`) {
+              appState.quizAnswers = saved.quizAnswers;
+            }
+            if (typeof saved.currentQuestionIndex === `number`) {
+              appState.currentQuestionIndex = saved.currentQuestionIndex;
+            }
+            if (saved.quizTopicFilter) {
+              appState.quizTopicFilter = saved.quizTopicFilter;
+            }
+          }
+        }
+      } catch (e) {
+        /* Fallback to default initial state */
+      }
+
+      const topicFilterEl = document.getElementById(`quiz-topic-filter`);
+      if (topicFilterEl) topicFilterEl.value = appState.quizTopicFilter;
+
+      renderCategorySection();
+      renderDirectionSimulator();
+      applyMatrixFilters();
+      renderTrapsSection();
+
+      /* Re-open previously reviewed traps badges cleanly */
+      renderTrapBadges();
+
+      renderQuiz();
+      updateKPIs();
+      initScrollReveal();
+
+      if (window.lucide && typeof window.lucide.createIcons === `function`) {
+        window.lucide.createIcons();
+      }
+      if (window.notebookAppApi && typeof window.notebookAppApi.notifyAppReady === `function`) {
+        window.notebookAppApi.notifyAppReady();
+      }
+    }
+
+    document.addEventListener(`DOMContentLoaded`, initApp);
+  </script>
+</body>
+</html>
