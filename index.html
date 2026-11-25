@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101827">
+  <title>کتابخانه استانداردهای حسابرسی</title>
+  <style>
+    :root {
+      --bg: #f3f6fa;
+      --surface: #ffffff;
+      --surface-2: #f8fafc;
+      --text: #172235;
+      --muted: #68758a;
+      --line: #e3e9f1;
+      --primary: #2457a6;
+      --primary-soft: #eaf1fc;
+      --accent: #16a085;
+      --shadow: 0 12px 32px rgba(24, 42, 70, .07);
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Tahoma, "Segoe UI", sans-serif;
+      line-height: 1.8;
+    }
+    a { color: inherit; text-decoration: none; }
+    .hero {
+      background: linear-gradient(125deg, #101827 0%, #19365e 65%, #2457a6 100%);
+      color: #fff;
+      padding: 42px 22px 66px;
+    }
+    .hero-inner, main { width: min(1100px, calc(100% - 36px)); margin: auto; }
+    .eyebrow { color: #a9c6ef; font-size: 12px; letter-spacing: .3px; }
+    h1 { margin: 8px 0 7px; font-size: clamp(24px, 4vw, 34px); }
+    .hero p { color: #d4deec; margin: 0; font-size: 14px; }
+    main { margin-top: -30px; padding-bottom: 48px; }
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .toolbar { padding: 20px; display: grid; gap: 14px; }
+    .search-wrap { position: relative; }
+    .search-wrap span {
+      position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+      color: var(--muted); font-size: 18px;
+    }
+    input, select {
+      width: 100%; border: 1px solid var(--line); background: var(--surface-2);
+      border-radius: 12px; padding: 13px 42px 13px 14px; color: var(--text);
+      font: inherit; outline: none;
+    }
+    select { padding-right: 14px; cursor: pointer; }
+    input:focus, select:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(36,87,166,.1); }
+    .filters { display: grid; grid-template-columns: 1fr 210px; gap: 12px; }
+    .summary {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; padding: 18px 4px 14px; color: var(--muted); font-size: 13px;
+    }
+    .count { color: var(--text); font-weight: bold; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+      padding: 18px; min-height: 170px; display: flex; flex-direction: column;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: #bfd0e8; }
+    .card-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .number {
+      background: var(--primary-soft); color: var(--primary); border-radius: 9px;
+      padding: 4px 10px; font-weight: bold; font-size: 12px;
+    }
+    .tag { color: var(--muted); font-size: 11px; }
+    .card h2 { font-size: 15px; line-height: 1.9; margin: 13px 0 7px; }
+    .description { color: var(--muted); font-size: 12px; margin: 0 0 15px; }
+    .open-link {
+      margin-top: auto; color: var(--primary); font-size: 12px; font-weight: bold;
+      display: inline-flex; align-items: center; gap: 7px;
+    }
+    .empty {
+      grid-column: 1 / -1; text-align: center; padding: 42px 20px;
+      color: var(--muted); background: var(--surface); border: 1px dashed #cbd5e1;
+      border-radius: 16px;
+    }
+    footer { text-align: center; color: var(--muted); font-size: 11px; padding: 22px 10px; }
+    @media (max-width: 800px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) {
+      .hero { padding: 32px 18px 58px; }
+      .filters { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr; }
+      .card { min-height: 145px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">کتابخانه تخصصی</div>
+      <h1>استانداردهای حسابرسی</h1>
+      <p>دسترسی یکپارچه به متن و محتوای استانداردهای حسابرسی</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel toolbar" aria-label="جست‌وجو و فیلتر استانداردها">
+      <div class="search-wrap">
+        <span>⌕</span>
+        <input id="searchInput" type="search" placeholder="جست‌وجو بر اساس شماره، عنوان یا توضیحات..." autocomplete="off">
+      </div>
+      <div class="filters">
+        <select id="categoryFilter" aria-label="فیلتر دسته‌بندی">
+          <option value="">همه دسته‌بندی‌ها</option>
+        </select>
+        <select id="sortSelect" aria-label="مرتب‌سازی">
+          <option value="number-asc">مرتب‌سازی: شماره صعودی</option>
+          <option value="number-desc">مرتب‌سازی: شماره نزولی</option>
+          <option value="title">مرتب‌سازی: عنوان</option>
+        </select>
+      </div>
+    </section>
+
+    <div class="summary">
+      <div>استانداردهای ثبت‌شده: <span class="count" id="totalCount">۰</span></div>
+      <div id="resultCount">۰ نتیجه</div>
+    </div>
+
+    <section class="grid" id="standardsGrid" aria-live="polite"></section>
+
+    <footer>کتابخانه استانداردهای حسابرسی</footer>
+  </main>
+
+  <script>
+    /*
+      راهنمای افزودن استاندارد جدید:
+      فقط یک سطر مانند نمونه زیر به آرایه standards اضافه کن.
+      مسیر فایل نسبت به همین index.html است.
+      فایل HTML استاندارد را ابتدا داخل پوشه standards قرار بده.
+
+      {
+        number: "200",
+        title: "اهداف کلی حسابرس مستقل و اجرای حسابرسی طبق استانداردهای حسابرسی",
+        category: "اصول کلی و مسئولیت‌ها",
+        description: "توضیح کوتاه درباره محتوای استاندارد",
+        file: "standards/standard-200.html"
+      }
+    */
+
+    const standards = [
+      {
+        number: "200",
+        title: "اهداف کلی حسابرس مستقل و اجرای حسابرسی طبق استانداردهای حسابرسی",
+        category: "اصول کلی و مسئولیت‌ها",
+        description: "مسئولیت‌ها و اهداف کلی حسابرس مستقل در اجرای حسابرسی صورت‌های مالی.",
+        file: "standards/standard-200.html"
+      },
+      {
+        number: "210",
+        title: "توافق در مورد شرایط قرارداد حسابرسی",
+        category: "اصول کلی و مسئولیت‌ها",
+        description: "شرایط پذیرش و توافق با صاحبکار درباره قرارداد حسابرسی.",
+        file: "standards/standard-210.html"
+      },
+      {
+        number: "220",
+        title: "مدیریت کیفیت در حسابرسی صورت‌های مالی",
+        category: "مدیریت کیفیت",
+        description: "مسئولیت‌های حسابرس در مدیریت کیفیت در سطح مأموریت حسابرسی.",
+        file: "standards/standard-220.html"
+      },
+      {
+        number: "230",
+        title: "مستندسازی حسابرسی",
+        category: "اصول کلی و مسئولیت‌ها",
+        description: "الزامات تهیه و نگهداری مستندات حسابرسی.",
+        file: "standards/standard-230.html"
+      },
+      {
+        number: "240",
+        title: "مسئولیت‌های حسابرس در ارتباط با تقلب",
+        category: "اصول کلی و مسئولیت‌ها",
+        description: "نحوه برخورد حسابرس با خطر تحریف بااهمیت ناشی از تقلب.",
+        file: "standards/standard-240.html"
+      },
+      {
+        number: "300",
+        title: "برنامه‌ریزی حسابرسی صورت‌های مالی",
+        category: "برنامه‌ریزی و ارزیابی خطر",
+        description: "مسئولیت حسابرس در برنامه‌ریزی حسابرسی صورت‌های مالی.",
+        file: "standards/standard-300.html"
+      },
+      {
+        number: "315",
+        title: "شناخت واحد مورد رسیدگی و محیط آن و ارزیابی خطرهای تحریف بااهمیت",
+        category: "برنامه‌ریزی و ارزیابی خطر",
+        description: "شناخت واحد تجاری، محیط آن و سیستم کنترل‌های داخلی.",
+        file: "standards/standard-315.html"
+      }
+    ];
+
+    const fa = value => new Intl.NumberFormat("fa-IR").format(value);
+    const searchInput = document.getElementById("searchInput");
+    const categoryFilter = document.getElementById("categoryFilter");
+    const sortSelect = document.getElementById("sortSelect");
+    const grid = document.getElementById("standardsGrid");
+
+    function setupCategories() {
+      const categories = [...new Set(standards.map(item => item.category).filter(Boolean))].sort();
+      categories.forEach(category => {
+        const option = document.createElement("option");
+        option.value = category;
+        option.textContent = category;
+        categoryFilter.appendChild(option);
+      });
+    }
+
+    function render() {
+      const query = searchInput.value.trim().toLocaleLowerCase("fa");
+      const category = categoryFilter.value;
+      let items = standards.filter(item => {
+        const searchable = `${item.number} ${item.title} ${item.description || ""} ${item.category || ""}`.toLocaleLowerCase("fa");
+        return searchable.includes(query) && (!category || item.category === category);
+      });
+
+      if (sortSelect.value === "number-asc") items.sort((a,b) => Number(a.number) - Number(b.number));
+      if (sortSelect.value === "number-desc") items.sort((a,b) => Number(b.number) - Number(a.number));
+      if (sortSelect.value === "title") items.sort((a,b) => a.title.localeCompare(b.title, "fa"));
+
+      document.getElementById("totalCount").textContent = fa(standards.length);
+      document.getElementById("resultCount").textContent = `${fa(items.length)} نتیجه`;
+
+      grid.replaceChildren();
+      if (!items.length) {
+        const empty = document.createElement("div");
+        empty.className = "empty";
+        empty.textContent = "استانداردی با این مشخصات پیدا نشد.";
+        grid.appendChild(empty);
+        return;
+      }
+
+      items.forEach(item => {
+        const card = document.createElement("article");
+        card.className = "card";
+
+        const top = document.createElement("div");
+        top.className = "card-top";
+        const number = document.createElement("span");
+        number.className = "number";
+        number.textContent = `استاندارد ${item.number}`;
+        const tag = document.createElement("span");
+        tag.className = "tag";
+        tag.textContent = item.category || "بدون دسته‌بندی";
+        top.append(number, tag);
+
+        const title = document.createElement("h2");
+        title.textContent = item.title;
+        const description = document.createElement("p");
+        description.className = "description";
+        description.textContent = item.description || "";
+
+        const link = document.createElement("a");
+        link.className = "open-link";
+        link.href = item.file;
+        link.textContent = "مشاهده استاندارد ←";
+
+        card.append(top, title, description, link);
+        grid.appendChild(card);
+      });
+    }
+
+    setupCategories();
+    render();
+    searchInput.addEventListener("input", render);
+    categoryFilter.addEventListener("change", render);
+    sortSelect.addEventListener("change", render);
+  </script>
+</body>
+</html>
