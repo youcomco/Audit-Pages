@@ -1,0 +1,2327 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="artifact-type" content="narrative">
+  <meta name="design-style" content="briefing">
+  <title>استاندارد حسابرسی ۳۳۰ | راهنمای جامع و سامانه آزمون IACPA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      color-scheme: light;
+
+      /* Page and surfaces: warm stone-white paper (Briefing) */
+      --background: #faf9f5;
+      --surface-container-low: #ffffff;
+      --surface-container: #f1efe8;
+      --surface-container-high: #e6e2d6;
+
+      /* Ink */
+      --on-surface: #17181a;
+      --on-surface-variant: #56585c;
+
+      /* Rules */
+      --outline: #17181a;
+      --outline-variant: #dedad0;
+
+      /* Accents */
+      --primary: #17181a;
+      --on-primary: #faf9f5;
+      --primary-container: #f2b705;
+      --on-primary-container: #17181a;
+      --secondary: #1f4e5f;
+      --on-secondary: #ffffff;
+      --secondary-wash: #e7f0f3;
+      --tertiary: #785008;
+      --tag-bg: #f5e6c4;
+      --error: #b42318;
+      --on-error: #ffffff;
+      --error-wash: #fceae8;
+
+      /* Data series */
+      --data-1: #1f4e5f;
+      --data-2: #d99000;
+      --data-3: #2b6e52;
+      --data-4: #b84a39;
+      --data-context: #c4bfb2;
+
+      /* Shared Semantic & Focus tokens */
+      --positive: #2b6e52;
+      --positive-wash: #e6f2ec;
+      --warning: #d99000;
+      --warning-wash: #fdf4dc;
+      --focus: #1f4e5f;
+
+      /* Fonts (Persian font listed first per RTL guidelines) */
+      --font-headline: 'Vazirmatn', 'Source Serif 4', serif;
+      --font-body: 'Vazirmatn', sans-serif;
+      --font-label: 'Vazirmatn', 'Geist Mono', monospace;
+      --font-mono: 'Geist Mono', 'Vazirmatn', monospace;
+
+      /* Shape */
+      --rounded: 0.25rem;
+      --rounded-lg: 0.375rem;
+      --rounded-full: 0.25rem;
+
+      /* Style effects */
+      --section-rule: 1.5px solid var(--outline);
+      --card-border: 1px solid var(--outline-variant);
+      --secondary-border: 1px solid var(--data-context);
+      --badge-radius: 2px;
+      --heading-tracking: 0;
+      --label-tracking: 0;
+
+      /* Type scale (Narrative) */
+      --display-size: clamp(2rem, 1.35rem + 2.4vw, 3.25rem);
+      --headline-size: clamp(1.45rem, 1.15rem + 1.2vw, 2rem);
+      --subhead-size: clamp(1.125rem, 1.05rem + 0.4vw, 1.35rem);
+      --body-size: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+      --label-size: 0.8125rem;
+
+      /* Spacing scale */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+      --space-3xl: 6rem;
+
+      /* Motion */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+      --dur-micro: 120ms;
+      --dur-short: 220ms;
+      --dur-long: 420ms;
+    }
+
+    /* Base reset */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      overflow-x: clip;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      line-height: 1.7;
+      letter-spacing: 0;
+    }
+    header { position: static !important; }
+
+    button, input, select, textarea {
+      font-family: inherit;
+      letter-spacing: 0;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .page-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-xl);
+      padding: var(--space-lg);
+      max-width: 1180px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .page-grid * { min-width: 0; }
+
+    /* Briefing Dossier Header & Section Bar */
+    .dossier-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      border-bottom: var(--section-rule);
+      padding-bottom: var(--space-sm);
+      margin-bottom: var(--space-md);
+    }
+    .dossier-bar-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    .dossier-pill {
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: var(--label-size);
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: var(--badge-radius);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+    .dossier-meta {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 500;
+      color: var(--on-surface-variant);
+    }
+    .index-num {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: var(--label-size);
+      color: var(--secondary);
+      background: var(--surface-container);
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: var(--badge-radius);
+    }
+
+    /* Typography */
+    .hero-title {
+      font-family: var(--font-headline);
+      font-weight: 800;
+      font-size: var(--display-size);
+      line-height: 1.25;
+      color: var(--on-surface);
+      margin: 0 0 var(--space-sm) 0;
+    }
+    .standfirst {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: var(--subhead-size);
+      color: var(--secondary);
+      line-height: 1.55;
+      margin: 0 0 var(--space-md) 0;
+      max-width: 68ch;
+    }
+    .prose {
+      max-width: 68ch;
+      margin: 0 0 var(--space-md) 0;
+      color: var(--on-surface);
+    }
+    .section-title {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: var(--headline-size);
+      line-height: 1.3;
+      margin: 0 0 var(--space-sm) 0;
+      color: var(--on-surface);
+    }
+    .sub-title {
+      font-family: var(--font-headline);
+      font-weight: 700;
+      font-size: var(--subhead-size);
+      line-height: 1.4;
+      margin: 0 0 var(--space-sm) 0;
+      color: var(--on-surface);
+    }
+
+    /* Navigation Anchor Pills */
+    .toc-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      padding: var(--space-md) 0;
+      border-top: var(--card-border);
+      border-bottom: var(--card-border);
+    }
+    .toc-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      min-height: 44px;
+      padding: var(--space-xs) var(--space-md);
+      background: var(--surface-container-low);
+      border: var(--card-border);
+      border-radius: var(--rounded);
+      color: var(--on-surface);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: var(--label-size);
+      transition: background-color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out);
+    }
+    .toc-link:hover {
+      background: var(--surface-container);
+      border-color: var(--outline);
+    }
+
+    /* Cards & Grids */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+      gap: var(--space-md);
+    }
+    .figure-card {
+      background: var(--surface-container-low);
+      border: var(--card-border);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md) var(--space-lg);
+    }
+    .figure-card .kpi-num {
+      font-family: var(--font-headline);
+      font-weight: 800;
+      font-size: var(--headline-size);
+      color: var(--secondary);
+      line-height: 1.2;
+      margin: var(--space-xs) 0;
+      font-variant-numeric: tabular-nums;
+    }
+    .figure-card .kpi-label {
+      font-size: var(--label-size);
+      font-weight: 700;
+      color: var(--tertiary);
+    }
+    .figure-card .kpi-desc {
+      font-size: 0.9375rem;
+      color: var(--on-surface-variant);
+      margin: 0;
+    }
+
+    /* Aside / Callout Boxes */
+    .aside-box {
+      background: var(--surface-container);
+      border-top: var(--section-rule);
+      border-radius: var(--rounded);
+      padding: var(--space-md) var(--space-lg);
+    }
+    .aside-box.secondary-accent {
+      border-top: 3px solid var(--secondary);
+      background: var(--secondary-wash);
+    }
+    .aside-box.warning-accent {
+      border-top: 3px solid var(--warning);
+      background: var(--warning-wash);
+    }
+    .aside-box.positive-accent {
+      border-top: 3px solid var(--positive);
+      background: var(--positive-wash);
+    }
+    .aside-box.error-accent {
+      border-top: 3px solid var(--error);
+      background: var(--error-wash);
+    }
+
+    /* Two-column editorial split */
+    .split-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+      gap: var(--space-lg);
+      align-items: start;
+    }
+    .split-equal {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-lg);
+      align-items: start;
+    }
+
+    /* Container query wrapper for adaptive cards */
+    .card-wrapper { container-type: inline-size; }
+    .card-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-md);
+    }
+    @container (min-width: 520px) {
+      .card-inner.two-col {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    /* Badges & Tags */
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      background: var(--tag-bg);
+      color: var(--tertiary);
+      font-weight: 700;
+      font-size: var(--label-size);
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: var(--rounded);
+    }
+    .tag.petrol {
+      background: var(--secondary-wash);
+      color: var(--secondary);
+    }
+    .tag.positive {
+      background: var(--positive-wash);
+      color: var(--positive);
+    }
+    .tag.error {
+      background: var(--error-wash);
+      color: var(--error);
+    }
+
+    /* Buttons & Controls */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      min-height: 44px;
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--rounded);
+      font-weight: 600;
+      font-size: 0.9375rem;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: background-color var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out), transform var(--dur-micro) var(--ease-out);
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-primary {
+      background: var(--primary);
+      color: var(--on-primary);
+    }
+    .btn-primary:hover:not(:disabled) {
+      background: var(--secondary);
+    }
+    .btn-secondary {
+      background: var(--surface-container-low);
+      color: var(--on-surface);
+      border: var(--secondary-border);
+    }
+    .btn-secondary:hover:not(:disabled) {
+      background: var(--surface-container);
+    }
+    .btn-secondary.active {
+      background: var(--secondary);
+      color: var(--on-secondary);
+      border-color: var(--secondary);
+    }
+    .btn-danger-outline {
+      background: var(--surface-container-low);
+      color: var(--error);
+      border: 1px solid var(--error);
+    }
+    .btn-danger-outline.armed {
+      background: var(--error);
+      color: var(--on-error);
+    }
+
+    /* Form Controls with always-visible top labels */
+    .control-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr));
+      gap: var(--space-md);
+      align-items: end;
+    }
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+    .field-label {
+      font-weight: 700;
+      font-size: var(--label-size);
+      color: var(--on-surface);
+    }
+    .field-select {
+      min-height: 44px;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--surface-container-low);
+      color: var(--on-surface);
+      border: 1px solid var(--data-context);
+      border-radius: var(--rounded);
+      font-size: 0.9375rem;
+      font-weight: 500;
+    }
+
+    /* Custom Toggle / Switch Rows */
+    .toggle-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .toggle-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      min-height: 48px;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--surface-container-low);
+      border: var(--card-border);
+      border-radius: var(--rounded);
+      cursor: pointer;
+    }
+    .toggle-item:hover {
+      background: var(--surface-container);
+    }
+    .toggle-item input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      accent-color: var(--secondary);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    /* Tables */
+    .table-wrap {
+      overflow-x: auto;
+      background: var(--surface-container-low);
+      border: var(--card-border);
+      border-radius: var(--rounded-lg);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: right;
+    }
+    thead th {
+      background: var(--surface-container-high);
+      color: var(--on-surface);
+      font-size: var(--label-size);
+      font-weight: 700;
+      padding: var(--space-sm) var(--space-md);
+      border-bottom: var(--section-rule);
+    }
+    tbody td {
+      padding: var(--space-sm) var(--space-md);
+      border-bottom: var(--card-border);
+      vertical-align: top;
+      font-size: 0.9375rem;
+    }
+    tbody tr:last-child td { border-bottom: none; }
+
+    /* Interactive Chart Box */
+    .chart-box {
+      position: relative;
+      min-height: 340px;
+      width: 100%;
+    }
+
+    /* Numbered Lists & Checklists */
+    .numbered-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    .numbered-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      padding: var(--space-sm) var(--space-md);
+      background: var(--surface-container-low);
+      border: var(--card-border);
+      border-radius: var(--rounded);
+    }
+    .num-badge {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: var(--label-size);
+      color: var(--on-secondary);
+      background: var(--secondary);
+      min-width: 28px;
+      height: 28px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--badge-radius);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* Trap Cards */
+    .trap-card {
+      background: var(--surface-container-low);
+      border: var(--card-border);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md) var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      transition: background-color var(--dur-short) var(--ease-out);
+    }
+    .trap-card.mastered {
+      background: var(--positive-wash);
+      border-color: var(--positive);
+    }
+    .trap-myth {
+      padding: var(--space-sm) var(--space-md);
+      background: var(--error-wash);
+      border-inline-start: 4px solid var(--error);
+      border-radius: var(--rounded);
+      font-size: 0.9375rem;
+    }
+    .trap-truth {
+      padding: var(--space-sm) var(--space-md);
+      background: var(--secondary-wash);
+      border-inline-start: 4px solid var(--secondary);
+      border-radius: var(--rounded);
+      font-size: 0.9375rem;
+    }
+
+    /* Quiz Engine Styles */
+    .quiz-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: end;
+      justify-content: space-between;
+      gap: var(--space-md);
+      padding: var(--space-md) var(--space-lg);
+      background: var(--surface-container);
+      border-top: var(--section-rule);
+      border-radius: var(--rounded);
+    }
+    .progress-track {
+      width: 100%;
+      height: 10px;
+      background: var(--surface-container-high);
+      border-radius: var(--rounded);
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--secondary);
+      width: 0%;
+      transition: width var(--dur-short) var(--ease-out);
+    }
+    .question-card {
+      background: var(--surface-container-low);
+      border: var(--card-border);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .question-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      border-bottom: var(--card-border);
+      padding-bottom: var(--space-sm);
+    }
+    .question-stem {
+      font-weight: 700;
+      font-size: 1.0625rem;
+      line-height: 1.65;
+      margin: 0;
+      color: var(--on-surface);
+    }
+    .options-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-sm);
+    }
+    .option-btn {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      width: 100%;
+      min-height: 48px;
+      text-align: right;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--background);
+      color: var(--on-surface);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded);
+      font-size: 0.96875rem;
+      line-height: 1.6;
+      cursor: pointer;
+      transition: background-color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out);
+    }
+    .option-btn:hover:not(:disabled) {
+      background: var(--surface-container);
+      border-color: var(--outline);
+    }
+    .option-btn.selected {
+      background: var(--secondary-wash);
+      border-color: var(--secondary);
+      box-shadow: inset 0 0 0 1px var(--secondary);
+      font-weight: 600;
+    }
+    .option-btn.correct {
+      background: var(--positive-wash);
+      border-color: var(--positive);
+      box-shadow: inset 0 0 0 1px var(--positive);
+      color: var(--on-surface);
+      font-weight: 600;
+    }
+    .option-btn.wrong {
+      background: var(--error-wash);
+      border-color: var(--error);
+      box-shadow: inset 0 0 0 1px var(--error);
+      color: var(--on-surface);
+    }
+    .option-letter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 28px;
+      height: 28px;
+      border-radius: var(--badge-radius);
+      background: var(--surface-container);
+      color: var(--on-surface);
+      font-weight: 700;
+      font-size: var(--label-size);
+      flex-shrink: 0;
+    }
+    .option-btn.selected .option-letter {
+      background: var(--secondary);
+      color: var(--on-secondary);
+    }
+    .option-btn.correct .option-letter {
+      background: var(--positive);
+      color: var(--on-error);
+    }
+    .option-btn.wrong .option-letter {
+      background: var(--error);
+      color: var(--on-error);
+    }
+    .explanation-box {
+      padding: var(--space-md);
+      background: var(--surface-container);
+      border-inline-start: 4px solid var(--secondary);
+      border-radius: var(--rounded);
+      font-size: 0.9375rem;
+      line-height: 1.7;
+    }
+    .explanation-box.is-correct {
+      border-inline-start-color: var(--positive);
+      background: var(--positive-wash);
+    }
+    .explanation-box.is-wrong {
+      border-inline-start-color: var(--error);
+      background: var(--error-wash);
+    }
+
+    /* Filter chips */
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: var(--section-rule);
+      padding-top: var(--space-lg);
+      padding-bottom: var(--space-xl);
+      color: var(--on-surface-variant);
+      font-size: var(--label-size);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 820px) {
+      .split-layout, .split-equal {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+    @media (max-width: 640px) {
+      .page-grid {
+        padding: var(--space-md);
+        gap: var(--space-lg);
+      }
+      .figure-card, .question-card {
+        padding: var(--space-md);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-grid">
+
+    <!-- HERO / BRIEFING HEADER -->
+    <header id="top">
+      <div class="dossier-bar">
+        <div class="dossier-bar-group">
+          <span class="dossier-pill">استاندارد حسابرسی ۳۳۰</span>
+          <span class="dossier-meta">پرونده جامع آمادگی آزمون جامعه حسابداران رسمی ایران (<bdi dir="ltr">IACPA</bdi>)</span>
+        </div>
+        <div class="dossier-bar-group">
+          <span class="dossier-meta" id="header-progress-badge">پیشرفت آزمون: ۰ از ۲۰ پرسش</span>
+        </div>
+      </div>
+
+      <h1 class="hero-title">پاسخ‌های حسابرس به ریسک‌های ارزیابی‌شده</h1>
+      <p class="standfirst">
+        از طراحی پاسخ‌های کلی در سطح صورت‌های مالی تا آزمون‌های کنترل، روش‌های محتوا، چرخه سه‌ساله، تله‌های طراحان سؤال و شبیه‌ساز ۲۰ پرسشی <bdi dir="ltr">IACPA</bdi>
+      </p>
+      <p class="prose">
+        استاندارد ۳۳۰ حلقه اتصال میان «ارزیابی ریسک تحریف بااهمیت» (استاندارد ۳۱۵) و «جمع‌آوری شواهد حسابرسی کافی و مناسب» (استاندارد ۵۰۰) است. موفقیت در پرسش‌های آزمونی جامعه حسابداران رسمی مستلزم تسلط دقیق بر مرزهای ظریف میان <strong>آزمون کنترل</strong> و <strong>روش محتوا</strong>، الزامات قطعی <strong>ریسک عمده</strong>، قواعد <strong>تاریخ میان‌دوره‌ای</strong> و شرایط <strong>اتکا به حسابرسی‌های قبلی</strong> است.
+      </p>
+
+      <nav class="toc-strip" aria-label="فهرست بخش‌های آموزشی">
+        <a class="toc-link" href="#sec-overview"><span class="index-num">۰۱</span> پاسخ‌های کلی و ادعا</a>
+        <a class="toc-link" href="#sec-toc"><span class="index-num">۰۲</span> آزمون کنترل‌ها و چرخه ۳ ساله</a>
+        <a class="toc-link" href="#sec-substantive"><span class="index-num">۰۳</span> روش‌های محتوا و ریسک عمده</a>
+        <a class="toc-link" href="#sec-closing"><span class="index-num">۰۴</span> کفایت شواهد و مستندسازی</a>
+        <a class="toc-link" href="#sec-traps"><span class="index-num">۰۵</span> تله‌های آزمونی پرتکرار</a>
+        <a class="toc-link" href="#sec-quiz"><span class="index-num">۰۶</span> سامانه آزمون تستی (۲۰ سؤال)</a>
+      </nav>
+    </header>
+
+    <!-- SNAPSHOT KPIs -->
+    <section aria-label="نمای کلان استاندارد ۳۳۰">
+      <div class="card-grid">
+        <article class="figure-card">
+          <div class="kpi-label">بند ۵ | سطح صورت‌های مالی</div>
+          <div class="kpi-num">۵ پاسخ کلی</div>
+          <p class="kpi-desc">تردید حرفه‌ای، نیروی متخصص، سرپرستی، غیرقابل‌پیش‌بینی بودن و تغییر کلی ماهیت، زمان‌بندی و دامنه</p>
+        </article>
+        <article class="figure-card">
+          <div class="kpi-label">بند ۸ و ۱۴ | آزمون کنترل</div>
+          <div class="kpi-num">۲ شرط و ۳ سال</div>
+          <p class="kpi-desc">الزام آزمون کنترل در اتکا یا ناکافی بودن محتوا؛ چرخه سه‌ساله با استثنای قطعی ریسک عمده</p>
+        </article>
+        <article class="figure-card">
+          <div class="kpi-label">بند ۱۸ و ۲۱ | روش محتوا</div>
+          <div class="kpi-num">الزام بی‌قید و شرط</div>
+          <p class="kpi-desc">اجرای روش محتوا برای هر قلم بااهمیت الزامی است؛ برای ریسک عمده آزمون جزئیات ضروری است</p>
+        </article>
+        <article class="figure-card">
+          <div class="kpi-label">آمادگی آزمون تستی</div>
+          <div class="kpi-num" id="kpi-quiz-score">۰٪ تسلط</div>
+          <p class="kpi-desc" id="kpi-quiz-sub">۲۰ پرسش تألیفی تراز <bdi dir="ltr">IACPA</bdi> همراه با تحلیل بندهای استاندارد و ذخیره خودکار</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECTION 01: OVERALL RESPONSES & ASSERTION LEVEL -->
+    <section id="sec-overview">
+      <div class="dossier-bar">
+        <div class="dossier-bar-group">
+          <span class="index-num">۰۱</span>
+          <span class="dossier-meta">بندهای ۱ تا ۷ و <bdi dir="ltr">A1–A18</bdi> | طراحی استراتژی پاسخ</span>
+        </div>
+        <span class="tag petrol">مفاهیم پایه و سطح صورت مالی در برابر سطح ادعا</span>
+      </div>
+
+      <h2 class="section-title">پاسخ‌های کلی در برابر روش‌های حسابرسی پسینی در سطح ادعا</h2>
+      <p class="prose">
+        حسابرس پس از شناسایی ریسک‌های تحریف بااهمیت در استاندارد ۳۱۵، باید در دو سطح واکنش نشان دهد: نخست، طراحی <strong>پاسخ‌های کلی</strong> برای مقابله با ریسک‌های فراگیر در سطح صورت‌های مالی (مانند ضعف محیط کنترلی یا ریسک تقلب مدیریت)؛ و دوم، طراحی <strong>روش‌های حسابرسی پسینی</strong> که ماهیت، زمان‌بندی و دامنه آن‌ها دقیقاً به ریسک‌های ارزیابی‌شده در سطح ادعا پاسخ دهد.
+      </p>
+
+      <div class="split-layout">
+        <!-- Interactive Strategy Simulator -->
+        <div class="figure-card">
+          <h3 class="sub-title">شبیه‌ساز طراحی استراتژی پاسخ حسابرس (بند ۵ تا ۷)</h3>
+          <p class="prose" style="margin-bottom: var(--space-md);">
+            شرایط کار حسابرسی را تنظیم کنید تا پاسخ کلی، رویکرد سطح ادعا و تغییر ماهیت، زمان‌بندی و دامنه طبق استاندارد ۳۳۰ محاسبه شود:
+          </p>
+
+          <div class="control-row" style="margin-bottom: var(--space-md);">
+            <div class="field-group">
+              <label class="field-label" for="sim-env">وضعیت محیط کنترلی (بند <bdi dir="ltr">A2</bdi>)</label>
+              <select class="field-select" id="sim-env" onchange="updateStrategySim()">
+                <option value="strong">قوی و اثربخش</option>
+                <option value="moderate">متوسط (دارای برخی نقاط ضعف)</option>
+                <option value="weak">دارای ضعف‌های عمده</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="sim-risk">سطح ریسک ارزیابی‌شده در سطح ادعا</label>
+              <select class="field-select" id="sim-risk" onchange="updateStrategySim()">
+                <option value="low">پایین</option>
+                <option value="medium" selected>متوسط / عادی</option>
+                <option value="high">بالا</option>
+                <option value="significant">ریسک عمده (Significant Risk)</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="sim-reliance">آیا قصد اتکا به کنترل‌ها وجود دارد؟</label>
+              <select class="field-select" id="sim-reliance" onchange="updateStrategySim()">
+                <option value="yes">بله — انتظار اثربخشی عملیاتی کنترل‌ها</option>
+                <option value="no">خیر — رویکرد مبتنی بر روش محتوا</option>
+                <option value="electronic">پردازش تمام‌الکترونیکی (روش محتوا ناکافی است)</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="sim-output" class="aside-box secondary-accent" aria-live="polite">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- 5 Overall Responses + Definitions -->
+        <div style="display: flex; flex-direction: column; gap: var(--space-md);">
+          <div class="aside-box">
+            <h3 class="sub-title">پنج پاسخ کلی استاندارد ۳۳۰ (بند <bdi dir="ltr">A1</bdi>)</h3>
+            <ul class="numbered-list">
+              <li><span class="num-badge">۱</span><span>تأکید به تیم حسابرسی بر لزوم حفظ <strong>تردید حرفه‌ای</strong> بیشتر.</span></li>
+              <li><span class="num-badge">۲</span><span>انتساب <strong>کارکنان باتجربه‌تر</strong>، دارای مهارت‌های تخصصی یا استفاده از کارشناسان.</span></li>
+              <li><span class="num-badge">۳</span><span>اعمال <strong>سرپرستی بیشتر</strong> بر کار اعضای تیم حسابرسی.</span></li>
+              <li><span class="num-badge">۴</span><span>گنجاندن عناصر <strong>غیرقابل‌پیش‌بینی</strong> در انتخاب روش‌های حسابرسی آتی.</span></li>
+              <li><span class="num-badge">۵</span><span>تغییرات کلی در <strong>ماهیت، زمان‌بندی یا دامنه</strong> روش‌ها (مثلاً انتقال آزمون‌ها از میان‌دوره‌ای به پایان دوره).</span></li>
+            </ul>
+          </div>
+
+          <div class="aside-box warning-accent">
+            <h3 class="sub-title">مرز دقیق استاندارد ۳۱۵ و ۳۳۰ (تله پرتکرار)</h3>
+            <p class="prose" style="margin: 0;">
+              ارزیابی <strong>طراحی و استقرار</strong> (<bdi dir="ltr">Design &amp; Implementation</bdi>) کنترل‌ها در مرحله شناخت و بر اساس <strong>استاندارد ۳۱۵</strong> انجام می‌شود؛ اما آزمون <strong>اثربخشی عملیاتی</strong> (<bdi dir="ltr">Operating Effectiveness</bdi>) کنترل‌ها در طول دوره موضوع <strong>استاندارد ۳۳۰</strong> است.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nature, Timing, Extent Table -->
+      <div class="table-wrap" style="margin-top: var(--space-lg);">
+        <table>
+          <thead>
+            <tr>
+              <th>بُعد طراحی روش (بند <bdi dir="ltr">A4–A18</bdi>)</th>
+              <th>تعریف دقیق استاندارد ۳۳۰</th>
+              <th>تأثیر افزایش سطح ریسک ارزیابی‌شده</th>
+              <th>تأثیر ضعف محیط کنترلی (بند <bdi dir="ltr">A2</bdi>)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>ماهیت (<bdi dir="ltr">Nature</bdi>)</strong></td>
+              <td>هدف روش (آزمون کنترل یا محتوا) و نوع روش (بازرسی، مشاهده، پرس‌وجو، تأییدخواهی، محاسبه مجدد، اجرای مجدد، تحلیلی)</td>
+              <td>کسب شواهد <strong>قابل‌اعتمادتر و مرتبط‌تر</strong> (تأییدیه برون‌سازمانی به جای مدارک داخلی). مهم‌ترین عامل در پاسخ به ریسک.</td>
+              <td>افزایش اتکا به روش‌های محتوا به جای آزمون کنترل؛ انتخاب روش‌های متقاعدکننده‌تر.</td>
+            </tr>
+            <tr>
+              <td><strong>زمان‌بندی (<bdi dir="ltr">Timing</bdi>)</strong></td>
+              <td>زمان اجرای روش (در تاریخ میان‌دوره‌ای یا در پایان دوره مالی / پس از پایان دوره)</td>
+              <td>اجرای روش‌ها <strong>در پایان دوره یا نزدیک به آن</strong> و پرهیز از بسنده کردن به تاریخ میان‌دوره‌ای.</td>
+              <td>انجام بخش عمده روش‌های حسابرسی <strong>در پایان دوره</strong> به جای تاریخ میان‌دوره‌ای.</td>
+            </tr>
+            <tr>
+              <td><strong>دامنه (<bdi dir="ltr">Extent</bdi>)</strong></td>
+              <td>کمیت و اندازه نمونه یا تعداد دفعات مشاهده و مکان‌های تحت رسیدگی</td>
+              <td>افزایش اندازه نمونه و تعداد اقلام آزمون‌شده (تناسب با سطح اهمیت و ریسک).</td>
+              <td>کسب شواهد گسترده‌تر از طریق روش‌های محتوا و افزایش تعداد مکان‌های مورد حسابرسی.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION 02: TESTS OF CONTROLS -->
+    <section id="sec-toc">
+      <div class="dossier-bar">
+        <div class="dossier-bar-group">
+          <span class="index-num">۰۲</span>
+          <span class="dossier-meta">بندهای ۸ تا ۱۷ و <bdi dir="ltr">A19–A41</bdi> | آزمون اثربخشی عملیاتی کنترل‌ها</span>
+        </div>
+        <span class="tag petrol">چرخه سه‌ساله، شواهد میان‌دوره‌ای و انحرافات</span>
+      </div>
+
+      <h2 class="section-title">الزامات آزمون‌های کنترل و شرایط اتکا به شواهد حسابرسی‌های قبلی</h2>
+      <p class="prose">
+        حسابرس در هر کار حسابرسی مجبور به اجرای آزمون کنترل نیست؛ اما بر اساس <strong>بند ۸ استاندارد ۳۳۰</strong>، در دو وضعیت زیر اجرای آزمون کنترل برای کسب شواهد کافی و مناسب درباره اثربخشی عملیاتی کنترل‌ها <strong>الزامی</strong> می‌شود:
+      </p>
+
+      <div class="split-equal" style="margin-bottom: var(--space-lg);">
+        <div class="aside-box secondary-accent">
+          <h3 class="sub-title">شرط اول بند ۸ (الف): انتظار اثربخشی عملیاتی</h3>
+          <p class="prose" style="margin: 0;">
+            هنگامی که ارزیابی حسابرس از ریسک‌های تحریف بااهمیت در سطح ادعا متضمن انتظار اثربخشی عملیاتی کنترل‌ها باشد؛ یعنی حسابرس قصد دارد در تعیین ماهیت، زمان‌بندی و دامنه روش‌های محتوا به کنترل‌های داخلی <strong>اتکا کند</strong>.
+          </p>
+        </div>
+        <div class="aside-box warning-accent">
+          <h3 class="sub-title">شرط دوم بند ۸ (ب): ناکافی بودن روش‌های محتوا به تنهایی</h3>
+          <p class="prose" style="margin: 0;">
+            هنگامی که روش‌های محتوا به تنهایی نتوانند شواهد حسابرسی کافی و مناسب در سطح ادعا فراهم کنند (مانند معاملاتی که به صورت <strong>کاملاً خودکار و الکترونیکی</strong> ثبت و پردازش می‌شوند و فاقد ردپای کاغذی مستقل هستند).
+          </p>
+        </div>
+      </div>
+
+      <div class="split-layout">
+        <!-- Interactive 3-Year Cycle Checker -->
+        <div class="figure-card">
+          <h3 class="sub-title">آزمونگر تعاملی مجوز اتکا به شواهد حسابرسی قبلی (بند ۱۳ تا ۱۵)</h3>
+          <p class="prose">
+            فرض کنید کنترل در حسابرسی سال‌های گذشته آزمون شده و اثربخش بوده است. شرایط زیر را بررسی کنید تا ببینید آیا در حسابرسی <strong>سال جاری</strong> می‌توانید به شواهد قبلی اتکا کنید یا الزام به آزمون مجدد دارید:
+          </p>
+
+          <div class="toggle-list" style="margin-bottom: var(--space-md);">
+            <label class="toggle-item">
+              <span>آیا این کنترل به یک <strong>ریسک عمده (<bdi dir="ltr">Significant Risk</bdi>)</strong> پاسخ می‌دهد؟ (بند ۱۵)</span>
+              <input type="checkbox" id="chk-sig-risk" onchange="updatePriorRelianceChecker()">
+            </label>
+            <label class="toggle-item">
+              <span>آیا از آخرین آزمون، <strong>تغییرات بااهمیتی</strong> در کنترل، افراد کلیدی یا سیستم <bdi dir="ltr">IT</bdi> رخ داده است؟ (بند ۱۴ الف)</span>
+              <input type="checkbox" id="chk-changed" onchange="updatePriorRelianceChecker()">
+            </label>
+            <label class="toggle-item">
+              <span>آیا از آخرین آزمون این کنترل، <strong>سه حسابرسی</strong> گذشته است؟ (بند ۱۴ ب)</span>
+              <input type="checkbox" id="chk-three-years" onchange="updatePriorRelianceChecker()">
+            </label>
+            <label class="toggle-item">
+              <span>آیا محیط کنترلی، کنترل‌های عمومی <bdi dir="ltr">IT</bdi> و نظارت بر کنترل‌ها <strong>ضعیف</strong> است؟ (بند <bdi dir="ltr">A36</bdi>)</span>
+              <input type="checkbox" id="chk-weak-itgc" onchange="updatePriorRelianceChecker()">
+            </label>
+          </div>
+
+          <div id="prior-reliance-result" class="aside-box positive-accent" aria-live="polite">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- Strength of Control Tests & Dual Purpose -->
+        <div style="display: flex; flex-direction: column; gap: var(--space-md);">
+          <div class="figure-card">
+            <h3 class="sub-title">سلسله‌مراتب قدرت روش‌های آزمون کنترل (بند ۱۰)</h3>
+            <ul class="numbered-list">
+              <li><span class="num-badge">!</span><span><strong>پرس‌وجو به تنهایی هرگز کافی نیست</strong>؛ حسابرس باید پرس‌وجو را با سایر روش‌ها ترکیب کند.</span></li>
+              <li><span class="num-badge">۲</span><span><strong>پرس‌وجو + مشاهده:</strong> اطمینان محدود، زیرا مشاهده فقط مربوط به لحظه‌ای است که روش انجام می‌شود.</span></li>
+              <li><span class="num-badge">۱</span><span><strong>پرس‌وجو + بازرسی یا اجرای مجدد:</strong> معمولاً <strong>اطمینان بیشتری</strong> نسبت به پرس‌وجو و مشاهده به تنهایی فراهم می‌کند.</span></li>
+            </ul>
+          </div>
+
+          <div class="aside-box">
+            <h3 class="sub-title">آزمون دومنظوره (<bdi dir="ltr">Dual-Purpose Test</bdi> — بند <bdi dir="ltr">A23</bdi>)</h3>
+            <p class="prose" style="margin: 0;">
+              حسابرس می‌تواند هم‌زمان یک آزمون کنترل و یک آزمون جزئیات را بر روی <strong>همان معامله واحد</strong> طراحی و اجرا کند؛ مثلاً بازرسی یک فاکتور خرید هم برای تأیید امضای مجوز (آزمون کنترل) و هم برای صحت مبلغ، محاسبه و ثبت حسابداری آن (آزمون جزئیات). توجه: هدف هر آزمون باید به وضوح تفکیک و مستند شود.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interim Control Evidence & Deviations -->
+      <div class="card-wrapper" style="margin-top: var(--space-lg);">
+        <div class="card-inner two-col">
+          <div class="figure-card">
+            <span class="tag petrol">بند ۱۲ | آزمون کنترل در تاریخ میان‌دوره‌ای</span>
+            <h3 class="sub-title" style="margin-top: var(--space-sm);">تعمیم به دوره باقیمانده</h3>
+            <p class="prose" style="margin-bottom: var(--space-sm);">
+              در صورت کسب شواهد اثربخشی کنترل‌ها در تاریخ میان‌دوره‌ای، حسابرس باید:
+            </p>
+            <ul class="numbered-list">
+              <li><span class="num-badge">الف</span><span>شواهدی درباره <strong>تغییرات بااهمیت</strong> آن کنترل‌ها پس از دوره میان‌دوره‌ای کسب کند؛ و</span></li>
+              <li><span class="num-badge">ب</span><span>شواهد حسابرسی <strong>تکمیلی</strong> مورد نیاز برای دوره باقیمانده را تعیین و اجرا نماید (متأثر از طول دوره باقیمانده، اهمیت ریسک و درجه تغییر).</span></li>
+            </ul>
+          </div>
+          <div class="figure-card">
+            <span class="tag error">بند ۱۶ و ۱۷ | ارزیابی انحرافات</span>
+            <h3 class="sub-title" style="margin-top: var(--space-sm);">انحرافات و رابطه با روش محتوا</h3>
+            <p class="prose" style="margin-bottom: var(--space-sm);">
+              دو قاعده طلایی بند ۱۶ و ۱۷ در آزمون <bdi dir="ltr">IACPA</bdi>:
+            </p>
+            <ul class="numbered-list">
+              <li><span class="num-badge">۱</span><span>نبودِ تحریف کشف‌شده در روش محتوا به معنای اثبات اثربخشی کنترل‌ها <strong>نیست</strong>؛ اما کشف تحریف در روش محتوا نشانه قوی نبود اثربخشی کنترل است.</span></li>
+              <li><span class="num-badge">۲</span><span>با کشف انحراف، حسابرس باید درباره علل و پیامدها پرس‌وجو کند و بررسی نماید آیا اتکا به کنترل ممکن است، آزمون تکمیلی لازم است یا باید با روش محتوا ریسک را پوشش داد.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 03: SUBSTANTIVE PROCEDURES & SIGNIFICANT RISKS -->
+    <section id="sec-substantive">
+      <div class="dossier-bar">
+        <div class="dossier-bar-group">
+          <span class="index-num">۰۳</span>
+          <span class="dossier-meta">بندهای ۱۸ تا ۲۳ و <bdi dir="ltr">A42–A58</bdi> | روش‌های محتوا و ریسک عمده</span>
+        </div>
+        <span class="tag">حداقل‌های غیرقابل‌حذف استاندارد ۳۳۰</span>
+      </div>
+
+      <h2 class="section-title">روش‌های محتوا، الزامات فرآیند بستن حساب‌ها و پاسخ به ریسک‌های عمده</h2>
+      <p class="prose">
+        بر اساس <strong>بند ۱۸ استاندارد ۳۳۰</strong>، صرف‌نظر از ریسک‌های ارزیابی‌شده تحریف بااهمیت (حتی اگر کنترل‌های داخلی بسیار قوی و ریسک کنترل بسیار پایین باشد)، حسابرس باید برای <strong>هر گروه معاملات، مانده حساب و افشای بااهمیت</strong>، روش‌های محتوا را طراحی و اجرا کند؛ زیرا ارزیابی ریسک قضاوتی است و کنترل داخلی دارای محدودیت‌های ذاتی (از جمله تخطی مدیریت) است.
+      </p>
+
+      <div class="split-layout">
+        <!-- Chart.js Visualization -->
+        <div class="figure-card">
+          <h3 class="sub-title">الگوی تخصیص روش‌های حسابرسی بر حسب سطح ریسک و اتکا به کنترل</h3>
+          <p class="prose" style="margin-bottom: var(--space-sm);">
+            تغییر ترکیب آزمون‌های کنترل، آزمون جزئیات و روش‌های تحلیلی محتوایی در ۴ سناریوی کلیدی استاندارد ۳۳۰:
+          </p>
+          <div class="chart-box">
+            <canvas id="auditMixChart" aria-label="نمودار ترکیب روش‌های حسابرسی در سناریوهای مختلف استاندارد ۳۳۰"></canvas>
+          </div>
+          <p class="dossier-meta" style="margin-top: var(--space-sm); margin-bottom: 0;">
+            منبع الگو: استخراج تحلیلی از بندهای ۷، ۸، ۱۸ و ۲۱ استاندارد حسابرسی ۳۳۰ (حداقل روش محتوا در همه سناریوها برقرار است).
+          </p>
+        </div>
+
+        <!-- Mandatory Substantive Rules -->
+        <div style="display: flex; flex-direction: column; gap: var(--space-md);">
+          <div class="aside-box error-accent">
+            <h3 class="sub-title">قانون آهنین ریسک عمده (بند ۲۱)</h3>
+            <p class="prose" style="margin: 0;">
+              اگر ریسک ارزیابی‌شده در سطح ادعا یک <strong>ریسک عمده (<bdi dir="ltr">Significant Risk</bdi>)</strong> باشد، روش‌های محتوا باید به صراحت به آن پاسخ دهند. هنگامی که رویکرد پاسخ به ریسک عمده <strong>فقط شامل روش‌های محتوا</strong> باشد، این روش‌ها باید حتماً شامل <strong>آزمون‌های جزئیات</strong> باشند. روش‌های تحلیلی محتوایی به تنهایی برای پاسخ به ریسک عمده <strong>کافی نیستند</strong>.
+            </p>
+          </div>
+
+          <div class="aside-box">
+            <h3 class="sub-title">فرآیند بستن صورت‌های مالی (بند ۲۰)</h3>
+            <p class="prose" style="margin-bottom: var(--space-sm);">
+              روش‌های محتوای حسابرس باید همواره شامل دو اقدام الزامی در فرآیند بستن حساب‌ها باشد:
+            </p>
+            <ul class="numbered-list">
+              <li><span class="num-badge">الف</span><span>مطابقت یا مغایرت‌گیری صورت‌های مالی با سوابق حسابداری زیربنایی (از جمله افشاها)؛</span></li>
+              <li><span class="num-badge">ب</span><span>بررسی ثبت‌های روزنامه بااهمیت و سایر تعدیلات انجام‌شده در جریان تهیه صورت‌های مالی.</span></li>
+            </ul>
+          </div>
+
+          <div class="aside-box secondary-accent">
+            <h3 class="sub-title">روش‌های محتوا در تاریخ میان‌دوره‌ای (بند ۲۲ و ۲۳)</h3>
+            <p class="prose" style="margin: 0;">
+              برای تعمیم نتایج میان‌دوره‌ای به پایان دوره (<bdi dir="ltr">Roll-Forward</bdi>) باید دوره باقیمانده را با <strong>(الف) روش‌های محتوا همراه با آزمون کنترل</strong> یا <strong>(ب) در صورت کفایت، فقط روش‌های محتوای تکمیلی</strong> پوشش داد. در صورت کشف <strong>تحریف غیرمنتظره</strong> در تاریخ میان‌دوره‌ای، حسابرس باید ارزیابی ریسک و برنامه دوره باقیمانده را بازنگری کند (بند ۲۳).
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 04: ADEQUACY OF PRESENTATION, EVIDENCE & DOCUMENTATION -->
+    <section id="sec-closing">
+      <div class="dossier-bar">
+        <div class="dossier-bar-group">
+          <span class="index-num">۰۴</span>
+          <span class="dossier-meta">بندهای ۲۴ تا ۳۰ | جمع‌بندی، اظهارنظر و مستندسازی</span>
+        </div>
+        <span class="tag petrol">گام نهایی پیش از صدور گزارش حسابرس</span>
+      </div>
+
+      <h2 class="section-title">کفایت ارائه و افشا، ارزیابی شواهد و مستندات الزامی</h2>
+
+      <div class="card-grid">
+        <article class="figure-card">
+          <span class="tag">بند ۲۴ | ارائه و افشا</span>
+          <h3 class="sub-title" style="margin-top: var(--space-sm);">مطابقت با چارچوب گزارشگری</h3>
+          <p class="prose" style="margin: 0;">
+            حسابرس باید روش‌هایی برای ارزیابی انطباق ارائه کلی صورت‌های مالی (شامل طبقه‌بندی، تجمیع، اصطلاحات و افشاهای مرتبط) با چارچوب گزارشگری مالی مربوط اجرا کند.
+          </p>
+        </article>
+
+        <article class="figure-card">
+          <span class="tag error">بند ۲۵ تا ۲۷ | ناتوانی در کسب شواهد</span>
+          <h3 class="sub-title" style="margin-top: var(--space-sm);">تعدیل اظهارنظر در فقدان شواهد</h3>
+          <p class="prose" style="margin: 0;">
+            پیش از نتیجه‌گیری باید مناسب بودن ارزیابی ریسک و کفایت شواهد بررسی شود. اگر حسابرس نتواند شواهد کافی و مناسب درباره یک ادعای بااهمیت کسب کند، باید <strong>اظهارنظر مشروط</strong> یا <strong>عدم اظهارنظر</strong> صادر کند (استاندارد ۷۰۵).
+          </p>
+        </article>
+
+        <article class="figure-card">
+          <span class="tag positive">بند ۲۸ تا ۳۰ | مستندسازی الزامی</span>
+          <h3 class="sub-title" style="margin-top: var(--space-sm);">۴ محور مستندسازی کاربرگ‌ها</h3>
+          <p class="prose" style="margin: 0;">
+            ثبت پاسخ‌های کلی و ماهیت/زمان‌بندی/دامنه روش‌ها؛ پیوند صریح روش‌ها به ریسک‌های سطح ادعا؛ نتایج روش‌ها و نتیجه‌گیری‌های غیربدیهی؛ مستندسازی مبنای اتکا به کنترل‌های دوره‌های قبل و تطبیق صورت‌های مالی با سوابق.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECTION 05: FREQUENT IACPA EXAM TRAPS -->
+    <section id="sec-traps">
+      <div class="dossier-bar">
+        <div class="dossier-bar-group">
+          <span class="index-num">۰۵</span>
+          <span class="dossier-meta">تله‌های آزمونی پرتکرار جامعه حسابداران رسمی (<bdi dir="ltr">IACPA</bdi>)</span>
+        </div>
+        <span class="dossier-meta" id="traps-mastered-count">۰ از ۸ تله مرور شده</span>
+      </div>
+
+      <h2 class="section-title">تله‌های کلاسیک طراحان سؤال و دام‌های مفهومی استاندارد ۳۳۰</h2>
+      <p class="prose">
+        سؤالات آزمون حسابرسی جامعه حسابداران رسمی اغلب بر پایه عبارات مطلق‌گرا یا جابه‌جایی ظریف مفاهیم استاندارد ۳۱۵ و ۳۳۰ طراحی می‌شوند. تله‌ها را بر اساس مبحث فیلتر کنید و پس از تسلط، تیک مرور را ثبت نمایید.
+      </p>
+
+      <div class="filter-row" style="margin-bottom: var(--space-md);" role="group" aria-label="فیلتر تله‌های آزمونی">
+        <button type="button" class="btn btn-secondary active" onclick="filterTraps('all', this)">همه تله‌ها (۸)</button>
+        <button type="button" class="btn btn-secondary" onclick="filterTraps('controls', this)">آزمون کنترل و چرخه ۳ ساله</button>
+        <button type="button" class="btn btn-secondary" onclick="filterTraps('substantive', this)">روش محتوا و ریسک عمده</button>
+        <button type="button" class="btn btn-secondary" onclick="filterTraps('timing', this)">میان‌دوره‌ای و مستندسازی</button>
+      </div>
+
+      <div class="card-grid" id="traps-container">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+
+    <!-- SECTION 06: INTERACTIVE IACPA QUIZ SYSTEM -->
+    <section id="sec-quiz">
+      <div class="dossier-bar">
+        <div class="dossier-bar-group">
+          <span class="index-num">۰۶</span>
+          <span class="dossier-meta">سامانه آزمون تستی جامع | ۲۰ پرسش چهارگزینه‌ای با پاسخ تشریحی</span>
+        </div>
+        <span class="dossier-pill">شبیه‌ساز آزمون <bdi dir="ltr">IACPA</bdi></span>
+      </div>
+
+      <h2 class="section-title">آزمون تعاملی و تحلیل عملکرد استاندارد ۳۳۰</h2>
+      <p class="prose">
+        در <strong>حالت آموزشی</strong>، بلافاصله پس از انتخاب هر گزینه تحلیل دقیق بند استاندارد نمایش داده می‌شود. در <strong>حالت آزمون شبیه‌ساز</strong>، پاسخ‌ها تا زمان ثبت نهایی آزمون پنهان می‌مانند و در پایان کارنامه جامع به تفکیک مبحث صادر می‌شود.
+      </p>
+
+      <!-- Quiz Toolbar -->
+      <div class="quiz-toolbar" style="margin-bottom: var(--space-md);">
+        <div class="control-row" style="flex: 1 1 500px;">
+          <div class="field-group">
+            <label class="field-label" for="quiz-mode-select">حالت برگزاری آزمون</label>
+            <select class="field-select" id="quiz-mode-select" onchange="changeQuizMode(this.value)">
+              <option value="study">حالت آموزشی (نمایش فوری پاسخ تشریحی)</option>
+              <option value="exam">حالت آزمون شبیه‌ساز (تصحیح در پایان)</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="quiz-topic-select">فیلتر مبحث سؤالات</label>
+            <select class="field-select" id="quiz-topic-select" onchange="changeQuizTopic(this.value)">
+              <option value="all">همه مباحث (۲۰ پرسش)</option>
+              <option value="overall">پاسخ‌های کلی و سطح ادعا</option>
+              <option value="controls">آزمون‌های کنترل و چرخه ۳ ساله</option>
+              <option value="substantive">روش‌های محتوا و ریسک عمده</option>
+              <option value="closing">میان‌دوره‌ای، شواهد و مستندسازی</option>
+              <option value="bookmarked">فقط سؤالات نشانه‌گذاری‌شده</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="dossier-bar-group">
+          <button type="button" class="btn btn-primary" id="btn-submit-exam" onclick="submitExam()">ثبت و تصحیح نهایی آزمون</button>
+          <button type="button" class="btn btn-secondary" onclick="exportQuizCsv()">خروجی کارنامه (<bdi dir="ltr">CSV</bdi>)</button>
+          <button type="button" class="btn btn-danger-outline" id="btn-reset-quiz" onclick="handleResetQuiz(this)">بازنشانی پاسخ‌ها</button>
+        </div>
+      </div>
+
+      <!-- Progress & Live Status -->
+      <div class="figure-card" style="margin-bottom: var(--space-md);">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-sm);">
+          <span class="dossier-meta" id="quiz-status-text">پاسخ‌داده‌شده: ۰ از ۲۰ پرسش</span>
+          <span class="dossier-meta" id="quiz-score-text">امتیاز فعلی: —</span>
+        </div>
+        <div class="progress-track" aria-hidden="true">
+          <div class="progress-fill" id="quiz-progress-bar"></div>
+        </div>
+        <div id="quiz-inline-notice" class="dossier-meta" style="margin-top: var(--space-sm); color: var(--secondary);" aria-live="polite"></div>
+      </div>
+
+      <!-- Results Summary Panel (shown when answers exist in study mode or after exam submit) -->
+      <div id="quiz-results-panel" class="figure-card" style="margin-bottom: var(--space-lg); display: none;">
+        <h3 class="sub-title">کارنامه تحلیلی عملکرد به تفکیک مباحث استاندارد ۳۳۰</h3>
+        <div class="split-layout">
+          <div class="chart-box" style="min-height: 280px;">
+            <canvas id="quizResultsChart" aria-label="نمودار درصد تسلط در مباحث استاندارد ۳۳۰"></canvas>
+          </div>
+          <div id="quiz-results-breakdown" style="display: flex; flex-direction: column; gap: var(--space-sm);">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Questions Container -->
+      <div id="quiz-questions-container" style="display: flex; flex-direction: column; gap: var(--space-md);">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+
+    <!-- FOOTER / SOURCES -->
+    <footer class="site-footer">
+      <p style="margin: 0 0 var(--space-xs) 0;">
+        <strong>منبع علمی:</strong> استاندارد حسابرسی شماره ۳۳۰ ایران («پاسخ‌های حسابرس به ریسک‌های ارزیابی‌شده»، منطبق با <bdi dir="ltr">ISA 330</bdi>) — ویژه آمادگی داوطلبان آزمون حسابدار رسمی (<bdi dir="ltr">IACPA</bdi>).
+      </p>
+      <p style="margin: 0;">
+        تمامی وضعیت‌های آزمون، سؤالات نشانه‌گذاری‌شده، شبیه‌سازها و تله‌های مرور شده به صورت خودکار در حافظه نشست ذخیره می‌شوند.
+      </p>
+    </footer>
+
+  </div>
+
+  <api-shim></api-shim>
+  <script>
+    // =========================================================
+    // 1. DATA: TRAPS & 20 IACPA QUESTIONS (BACKTICK LITERALS)
+    // =========================================================
+
+    const TRAPS_DATA = [
+      {
+        id: `trap-1`,
+        category: `controls`,
+        categoryLabel: `آزمون کنترل`,
+        paragraph: `بند ۱۰ و A26`,
+        myth: `پرس‌وجو از کارکنان واحد مورد رسیدگی، در صورتی که با مستندسازی پاسخ‌ها همراه شود، به تنهایی برای آزمون اثربخشی عملیاتی کنترل‌ها کافی است.`,
+        truth: `پرس‌وجو به تنهایی هرگز برای آزمون اثربخشی عملیاتی کنترل‌ها کافی نیست. حسابرس باید پرس‌وجو را با مشاهده، بازرسی یا اجرای مجدد ترکیب کند (ترکیب پرس‌وجو با بازرسی یا اجرای مجدد اطمینان بیشتری نسبت به مشاهده ایجاد می‌کند).`
+      },
+      {
+        id: `trap-2`,
+        category: `substantive`,
+        categoryLabel: `روش محتوا`,
+        paragraph: `بند ۱۸ و A42`,
+        myth: `اگر حسابرس با اجرای آزمون‌های کنترل به این نتیجه برسد که کنترل‌های داخلی کاملاً اثربخش هستند و ریسک کنترل نزدیک به صفر است، می‌تواند روش‌های محتوا را حذف کند.`,
+        truth: `صرف‌نظر از سطح ریسک ارزیابی‌شده تحریف بااهمیت، حسابرس باید برای هر یک از گروه‌های معاملات، مانده حساب‌ها و افشاهای بااهمیت، روش‌های محتوا را طراحی و اجرا کند (به دلیل قضاوتی بودن ارزیابی ریسک و محدودیت‌های ذاتی کنترل داخلی).`
+      },
+      {
+        id: `trap-3`,
+        category: `substantive`,
+        categoryLabel: `ریسک عمده`,
+        paragraph: `بند ۲۱ و A53`,
+        myth: `برای پاسخ به یک ریسک عمده (Significant Risk) در رویکرد مبتنی بر روش محتوا، اجرای روش‌های تحلیلی محتوایی دقیق می‌تواند به تنهایی کافی باشد.`,
+        truth: `هنگامی که رویکرد پاسخ به ریسک عمده فقط شامل روش‌های محتوا باشد، این روش‌ها باید حتماً شامل «آزمون‌های جزئیات» باشند. روش تحلیلی محتوایی به تنهایی برای ریسک عمده کافی نیست.`
+      },
+      {
+        id: `trap-4`,
+        category: `controls`,
+        categoryLabel: `چرخه ۳ ساله`,
+        paragraph: `بند ۱۴ و ۱۵`,
+        myth: `اگر کنترل‌های مرتبط با یک ریسک عمده از سال قبل تغییر نکرده باشند، حسابرس می‌تواند بر اساس چرخه سه‌ساله تا دو سال آینده به شواهد قبلی اتکا کند.`,
+        truth: `استثنای قطعی بند ۱۵: اگر حسابرس قصد اتکا به کنترل‌هایی را دارد که به یک «ریسک عمده» پاسخ می‌دهند، نمی‌تواند به شواهد حسابرسی‌های قبلی اتکا کند و باید آن کنترل‌ها را در «دوره جاری» آزمون نماید.`
+      },
+      {
+        id: `trap-5`,
+        category: `controls`,
+        categoryLabel: `انحرافات و ۳۱۵`,
+        paragraph: `بند ۱۶ و A22`,
+        myth: `اگر در آزمون‌های محتوا هیچ تحریفی در حساب‌ها کشف نشود، این امر اثبات می‌کند که کنترل‌های داخلی مربوطه در طول دوره اثربخش بوده‌اند.`,
+        truth: `کشف نشدن تحریف توسط روش‌های محتوا به معنای کسب شواهد مبنی بر اثربخشی عملیاتی کنترل‌های مرتبط با آن ادعا نیست؛ اما برعکس، کشف تحریف در روش محتوا نشانه مهمی از احتمال نبود اثربخشی کنترل‌هاست.`
+      },
+      {
+        id: `trap-6`,
+        category: `controls`,
+        categoryLabel: `مرز استاندارد ۳۱۵ و ۳۳۰`,
+        paragraph: `بند ۴ و A22`,
+        myth: `ارزیابی طراحی و استقرار (Design & Implementation) کنترل‌های داخلی جزئی از آزمون‌های کنترل در استاندارد ۳۳۰ محسوب می‌شود.`,
+        truth: `ارزیابی طراحی و استقرار کنترل‌ها در مرحله شناخت واحد تجاری و طبق استاندارد ۳۱۵ انجام می‌شود؛ استاندارد ۳۳۰ مربوط به آزمون «اثربخشی عملیاتی» کنترل‌ها در طول دوره اتکاست.`
+      },
+      {
+        id: `trap-7`,
+        category: `timing`,
+        categoryLabel: `میان‌دوره‌ای`,
+        paragraph: `بند ۱۲ و ۲۲`,
+        myth: `اگر حسابرس روش‌های محتوا را در تاریخ میان‌دوره‌ای (مثلاً پایان آذرماه) اجرا کند و مشکلی نبیند، دیگر نیازی به اجرای روش برای دوره باقیمانده تا پایان سال نیست.`,
+        truth: `برای تعمیم نتیجه‌گیری از تاریخ میان‌دوره‌ای به پایان دوره، پوشش دوره باقیمانده با روش‌های محتوای تکمیلی یا ترکیب روش محتوا و آزمون کنترل الزامی است. همچنین در آزمون کنترل میان‌دوره‌ای باید تغییرات بااهمیت دوره باقیمانده و شواهد تکمیلی بررسی شود.`
+      },
+      {
+        id: `trap-8`,
+        category: `timing`,
+        categoryLabel: `شواهد ناکافی`,
+        paragraph: `بند ۲۷`,
+        myth: `در صورت ناتوانی در کسب شواهد حسابرسی کافی و مناسب درباره یک ادعای بااهمیت، حسابرس تنها باید در بند تأکید بر مطلب خاص به آن اشاره کند.`,
+        truth: `بند ۲۷ صراحت دارد که اگر حسابرس پس از تلاش مجدد نیز نتواند شواهد کافی و مناسب درباره ادعای بااهمیت کسب کند، باید نظر «مشروط» یا «عدم اظهارنظر» بر صورت‌های مالی صادر کند (تعدیل اظهارنظر طبق استاندارد ۷۰۵).`
+      }
+    ];
+
+    const QUESTIONS_DATA = [
+      {
+        id: 1,
+        topic: `overall`,
+        topicLabel: `پاسخ‌های کلی و ادعا`,
+        paragraph: `بند ۴ و A22`,
+        stem: `تفاوت اساسی میان ارزیابی کنترل‌های داخلی در استاندارد حسابرسی ۳۱۵ و آزمون‌های کنترل در استاندارد حسابرسی ۳۳۰ چیست؟`,
+        options: [
+          `استاندارد ۳۱۵ به کنترل‌های عمومی فناوری اطلاعات و استاندارد ۳۳۰ به کنترل‌های دستی می‌پردازد.`,
+          `استاندارد ۳۱۵ طراحی و استقرار کنترل‌ها را بررسی می‌کند، در حالی که استاندارد ۳۳۰ اثربخشی عملیاتی کنترل‌ها در طول دوره را آزمون می‌نماید.`,
+          `استاندارد ۳۱۵ فقط در سال اول حسابرسی کاربرد دارد و استاندارد ۳۳۰ در حسابرسی‌های مکرر اجرا می‌شود.`,
+          `استاندارد ۳۱۵ شامل روش‌های تحلیلی و استاندارد ۳۳۰ شامل آزمون جزئیات است.`
+        ],
+        correct: 1,
+        explanation: `طبق بند ۴ و A22 استاندارد ۳۳۰، ارزیابی طراحی کنترل و تعیین اینکه آیا مستقر شده است یا خیر (طراحی و استقرار) موضوع استاندارد ۳۱۵ است؛ اما آزمون اثربخشی عملیاتی کنترل‌ها در پیشگیری، یا کشف و اصلاح تحریف‌های بااهمیت در طول دوره، موضوع آزمون‌های کنترل در استاندارد ۳۳۰ می‌باشد.`
+      },
+      {
+        id: 2,
+        topic: `overall`,
+        topicLabel: `پاسخ‌های کلی و ادعا`,
+        paragraph: `بند ۵ و A1`,
+        stem: `کدام یک از موارد زیر جزء «پاسخ‌های کلی» حسابرس به ریسک‌های ارزیابی‌شده تحریف بااهمیت در سطح صورت‌های مالی محسوب نمی‌شود؟`,
+        options: [
+          `تأکید به تیم حسابرسی بر ضرورت حفظ تردید حرفه‌ای بیشتر`,
+          `گنجاندن عناصر غیرقابل‌پیش‌بینی در انتخاب روش‌های حسابرسی آتی`,
+          `درخواست تأییدیه برون‌سازمانی برای مانده حساب‌های دریافتنی عمده`,
+          `به‌کارگیری کارکنان باتجربه‌تر، دارای مهارت‌های تخصصی یا استفاده از کارشناسان`
+        ],
+        correct: 2,
+        explanation: `درخواست تأییدیه برون‌سازمانی برای حساب‌های دریافتنی یک «روش محتوا (آزمون جزئیات) در سطح ادعا» است، نه یک پاسخ کلی در سطح صورت‌های مالی. سایر گزینه‌ها به همراه اعمال سرپرستی بیشتر و ایجاد تغییرات کلی در ماهیت، زمان‌بندی یا دامنه روش‌ها، از پاسخ‌های کلی بند A1 هستند.`
+      },
+      {
+        id: 3,
+        topic: `overall`,
+        topicLabel: `پاسخ‌های کلی و ادعا`,
+        paragraph: `بند A2`,
+        stem: `ارزیابی حسابرس از «محیط کنترلی» واحد مورد رسیدگی دارای ضعف‌های عمده است. این موضوع به طور معمول چگونه بر روش‌های حسابرسی پسینی تأثیر می‌گذارد؟`,
+        options: [
+          `اجرای روش‌های حسابرسی بیشتر در تاریخ میان‌دوره‌ای به جای پایان دوره`,
+          `کاهش اندازه نمونه آزمون‌های محتوا و افزایش اتکا به پرس‌وجو`,
+          `اجرای روش‌های حسابرسی بیشتر در پایان دوره، کسب شواهد گسترده‌تر از روش‌های محتوا و افزایش مکان‌های تحت پوشش`,
+          `انحصار روش‌های محتوا به روش‌های تحلیلی محتوایی در پایان سال`
+        ],
+        correct: 2,
+        explanation: `طبق بند A2 استاندارد ۳۳۰، ضعف‌های عمده در محیط کنترلی معمولاً حسابرس را به اجرای روش‌های حسابرسی بیشتر در پایان دوره (به جای تاریخ میان‌دوره‌ای)، کسب شواهد حسابرسی گسترده‌تر از روش‌های محتوا و افزایش تعداد مکان‌های مورد حسابرسی سوق می‌دهد.`
+      },
+      {
+        id: 4,
+        topic: `overall`,
+        topicLabel: `پاسخ‌های کلی و ادعا`,
+        paragraph: `بند ۷ و A4–A18`,
+        stem: `در طراحی روش‌های حسابرسی پسینی در سطح ادعا بر اساس بند ۷ استاندارد ۳۳۰، کدام عبارت صحیح است؟`,
+        options: [
+          `دامنه روش‌ها مهم‌ترین عامل در پاسخ به ریسک‌های ارزیابی‌شده است و بر ماهیت روش اولویت دارد.`,
+          `هرچه ارزیابی حسابرس از ریسک بالاتر باشد، شواهد حسابرسی که حسابرس کسب می‌کند باید متقاعدکننده‌تر باشد.`,
+          `حسابرس تنها موظف به بررسی ریسک کنترل است و دلایل مربوط به ریسک ذاتی در طراحی روش نقشی ندارد.`,
+          `با افزایش ریسک ارزیابی‌شده، تنها حجم نمونه افزایش می‌یابد و نیازی به تغییر کیفیت یا منبع شواهد نیست.`
+        ],
+        correct: 1,
+        explanation: `طبق بند ۷(ب) استاندارد ۳۳۰، هرچه ارزیابی ریسک بالاتر باشد، حسابرس باید شواهد متقاعدکننده‌تری کسب کند (هم از نظر کمیت و هم از نظر کیفیت/قابلیت اتکا). همچنین طبق بند A5، «ماهیت» روش‌های حسابرسی مهم‌ترین عامل در پاسخ به ریسک‌های ارزیابی‌شده است، نه دامنه به تنهایی.`
+      },
+      {
+        id: 5,
+        topic: `controls`,
+        topicLabel: `آزمون‌های کنترل`,
+        paragraph: `بند ۸`,
+        stem: `در کدام یک از شرایط زیر اجرای آزمون‌های کنترل برای کسب شواهد درباره اثربخشی عملیاتی کنترل‌ها طبق استاندارد ۳۳۰ «الزامی» نیست؟`,
+        options: [
+          `ارزیابی ریسک تحریف بااهمیت متضمن انتظار اثربخشی عملیاتی کنترل‌ها برای کاهش روش‌های محتوا باشد.`,
+          `معاملات واحد تجاری کاملاً الکترونیکی پردازش شوند و روش‌های محتوا به تنهایی شواهد کافی فراهم نکنند.`,
+          `حسابرس پس از شناخت کنترل‌ها در استاندارد ۳۱۵، تصمیم بگیرد رویکرد تمام‌محتوا اتخاذ کند و شواهد محتوا به تنهایی کافی باشند.`,
+          `حسابرس بخواهد در تاریخ میان‌دوره‌ای از میزان آزمون‌های جزئیات بکاهد و به کنترل اتکا نماید.`
+        ],
+        correct: 2,
+        explanation: `طبق بند ۸، آزمون کنترل تنها در دو حالت الزامی است: (الف) قصد اتکا به اثربخشی عملیاتی کنترل‌ها وجود داشته باشد، یا (ب) روش‌های محتوا به تنهایی شواهد کافی و مناسب فراهم نکنند. اگر حسابرس رویکرد تمام‌محتوا اتخاذ کند و روش‌های محتوا کافی باشند، اجرای آزمون کنترل الزامی نیست.`
+      },
+      {
+        id: 6,
+        topic: `controls`,
+        topicLabel: `آزمون‌های کنترل`,
+        paragraph: `بند ۱۰ و A26–A28`,
+        stem: `در خصوص ماهیت روش‌های آزمون کنترل، کدام ترکیب معمولاً «اطمینان بیشتری» نسبت به سایر روش‌های آزمون اثربخشی عملیاتی فراهم می‌کند؟`,
+        options: [
+          `پرس‌وجو به تنهایی از مسئول کنترل به همراه یادداشت‌برداری رسمی`,
+          `پرس‌وجو همراه با مشاهده نحوه اجرای کنترل در حضور حسابرس`,
+          `پرس‌وجو همراه با بازرسی مستندات یا اجرای مجدد کنترل توسط حسابرس`,
+          `اجرای روش‌های تحلیلی بر روی مانده‌های پایان دوره`
+        ],
+        correct: 2,
+        explanation: `طبق بند A27 استاندارد ۳۳۰، پرس‌وجو به تنهایی برای آزمون اثربخشی عملیاتی کافی نیست. ترکیب پرس‌وجو با «بازرسی» یا «اجرای مجدد» معمولاً اطمینان بیشتری نسبت به پرس‌وجو و مشاهده به تنهایی فراهم می‌کند، زیرا مشاهده فقط مربوط به لحظه‌ای است که کنترل در حال اجراست.`
+      },
+      {
+        id: 7,
+        topic: `controls`,
+        topicLabel: `آزمون‌های کنترل`,
+        paragraph: `بند A23`,
+        stem: `حسابرس در حین رسیدگی به فاکتورهای فروش، هم‌زمان امضای تأیید اعتبار مشتری (برای ارزیابی کنترل) و صحت مبلغ و محاسبات فاکتور (برای تأیید ادعای صحت مانده) را بررسی می‌کند. این اقدام چه نام دارد؟`,
+        options: [
+          `روش تحلیلی ترکیبی`,
+          `آزمون دومنظوره (Dual-Purpose Test)`,
+          `تعمیم دوره میان‌دوره‌ای (Roll-Forward)`,
+          `آزمون تخطی مدیریت`
+        ],
+        correct: 1,
+        explanation: `طبق بند A23، حسابرس می‌تواند هم‌زمان یک آزمون کنترل و یک آزمون جزئیات را بر روی همان معامله اجرا کند که به آن «آزمون دومنظوره» می‌گویند. در این حالت اهداف هر یک از دو آزمون باید به طور جداگانه مشخص و ارزیابی شود.`
+      },
+      {
+        id: 8,
+        topic: `controls`,
+        topicLabel: `آزمون‌های کنترل`,
+        paragraph: `بند ۱۴ (ب)`,
+        stem: `در حسابرسی‌های مکرر، اگر کنترل‌های داخلی از حسابرسی قبل تغییر بااهمیتی نکرده باشند و به یک ریسک عمده نیز پاسخ ندهند، حسابرس حداقل هر چند وقت یک‌بار باید آن کنترل‌ها را آزمون کند؟`,
+        options: [
+          `حداقل هر سال یک‌بار بدون استثنا`,
+          `حداقل هر دو حسابرسی یک‌بار`,
+          `حداقل هر سه حسابرسی یک‌بار (با توزیع آزمون کنترل‌ها بین دوره‌ها)`,
+          `حداقل هر پنج حسابرسی یک‌بار به شرط وجود حسابرسی داخلی`
+        ],
+        correct: 2,
+        explanation: `طبق بند ۱۴(ب) استاندارد ۳۳۰، در صورت نبود تغییرات بااهمیت و نبود ریسک عمده، حسابرس باید کنترل‌ها را حداقل «هر سه حسابرسی یک‌بار» آزمون کند و در هر حسابرسی تعدادی از کنترل‌های مورد اتکا را آزمون نماید تا از تمرکز همه آزمون‌ها در یک دوره و ترک آزمون در دو دوره بعد جلوگیری شود.`
+      },
+      {
+        id: 9,
+        topic: `controls`,
+        topicLabel: `آزمون‌های کنترل`,
+        paragraph: `بند ۱۵`,
+        stem: `شرکتی دارای یک کنترل کلیدی بسیار قوی برای پیشگیری از تقلب در شناسایی درآمد (یک ریسک عمده) است که در حسابرسی سال گذشته آزمون شده و در سال جاری نیز بدون تغییر باقی مانده است. تکلیف حسابرس در سال جاری چیست؟`,
+        options: [
+          `می‌تواند به دلیل نبود تغییر، به شواهد سال گذشته اتکا کرده و امسال فقط پرس‌وجو کند.`,
+          `اگر قصد اتکا به این کنترل را دارد، باید حتماً آن را در حسابرسی سال جاری آزمون کند.`,
+          `باید هر دو سال یک‌بار آن را آزمون کند و امسال از روش تحلیلی استفاده نماید.`,
+          `اتکا به کنترل‌های مرتبط با ریسک عمده در استاندارد ۳۳۰ مطلقاً ممنوع است.`
+        ],
+        correct: 1,
+        explanation: `طبق بند ۱۵ استاندارد ۳۳۰، اگر حسابرس قصد اتکا به کنترل‌هایی را دارد که به یک «ریسک عمده» پاسخ می‌دهند، نمی‌تواند از شواهد حسابرسی‌های قبلی استفاده کند و باید آن کنترل‌ها را در دوره جاری آزمون نماید. (توجه: اتکا ممنوع نیست، اما آزمون در سال جاری الزامی است).`
+      },
+      {
+        id: 10,
+        topic: `controls`,
+        topicLabel: `آزمون‌های کنترل`,
+        paragraph: `بند ۱۲`,
+        stem: `حسابرس شواهد اثربخشی عملیاتی کنترل‌ها را تا تاریخ میان‌دوره‌ای (پایان آذرماه) کسب کرده و قصد اتکا به آن‌ها برای کل سال را دارد. طبق بند ۱۲ چه اقدامی الزامی است؟`,
+        options: [
+          `کسب شواهد درباره تغییرات بااهمیت کنترل‌ها پس از دوره میان‌دوره‌ای و تعیین شواهد تکمیلی مورد نیاز برای دوره باقیمانده`,
+          `اکتفا به شواهد میان‌دوره‌ای به شرط دریافت تأییدیه مدیران`,
+          `حذف کامل روش‌های محتوای پایان سال برای آن چرخه`,
+          `اجرای مجدد کل آزمون‌های کنترل از ابتدای سال در پایان اسفندماه`
+        ],
+        correct: 0,
+        explanation: `طبق بند ۱۲ استاندارد ۳۳۰، حسابرس باید (الف) شواهدی درباره تغییرات بااهمیت آن کنترل‌ها پس از دوره میان‌دوره‌ای کسب کند، و (ب) شواهد حسابرسی تکمیلی را که برای دوره باقیمانده باید کسب شود، تعیین و اجرا نماید.`
+      },
+      {
+        id: 11,
+        topic: `controls`,
+        topicLabel: `آزمون‌های کنترل`,
+        paragraph: `بند ۱۶ و ۱۷`,
+        stem: `در خصوص ارتباط میان انحرافات کنترل‌ها و نتایج روش‌های محتوا، کدام گزینه با استاندارد ۳۳۰ مطابقت دارد؟`,
+        options: [
+          `نبود تحریف در روش‌های محتوا، اثربخشی عملیاتی کنترل‌های مربوط را اثبات می‌کند.`,
+          `کشف تحریف در روش‌های محتوا، ضرورتاً نشان‌دهنده خطای تصادفی بوده و اثری بر ارزیابی کنترل‌ها ندارد.`,
+          `نبود تحریف در روش محتوا اثبات‌کننده اثربخشی کنترل نیست؛ اما کشف تحریف در روش محتوا نشانه مهمی از نبود اثربخشی کنترل است.`,
+          `در صورت کشف هرگونه انحراف در آزمون کنترل، حسابرس موظف به کناره‌گیری از کار است.`
+        ],
+        correct: 2,
+        explanation: `طبق بند ۱۶ و A39، کشف نشدن تحریف توسط روش‌های محتوا، شواهدی مبنی بر اثربخشی عملیاتی کنترل‌ها فراهم نمی‌کند؛ اما تحریف‌های کشف‌شده در روش‌های محتوا ممکن است نشان‌دهنده نبود اثربخشی کنترل‌ها باشند. همچنین در صورت کشف انحراف، باید علت و پیامد آن بررسی و یا با آزمون تکمیلی / روش محتوا پاسخ داده شود (بند ۱۷).`
+      },
+      {
+        id: 12,
+        topic: `substantive`,
+        topicLabel: `روش‌های محتوا`,
+        paragraph: `بند ۱۸ و A42`,
+        stem: `چرا طبق بند ۱۸ استاندارد ۳۳۰، حسابرس باید برای «هر گروه معاملات، مانده حساب و افشای بااهمیت» بدون توجه به سطح ریسک ارزیابی‌شده، روش‌های محتوا اجرا کند؟`,
+        options: [
+          `زیرا آزمون‌های کنترل فقط در شرکت‌های سهامی عام مجاز است.`,
+          `زیرا ارزیابی حسابرس از ریسک قضاوتی است و همچنین کنترل‌های داخلی دارای محدودیت‌های ذاتی از جمله امکان تخطی مدیریت هستند.`,
+          `زیرا سازمان حسابرسی استفاده از رویکرد ترکیبی را در ایران ممنوع کرده است.`,
+          `زیرا روش‌های محتوا همیشه کم‌هزینه‌تر از آزمون کنترل هستند.`
+        ],
+        correct: 1,
+        explanation: `طبق بند A42 استاندارد ۳۳۰، دو دلیل اصلی الزام بند ۱۸ عبارتند از: (۱) ارزیابی ریسک توسط حسابرس امری قضاوتی است و ممکن است تمام ریسک‌های تحریف بااهمیت را شناسایی نکند؛ و (۲) کنترل‌های داخلی دارای محدودیت‌های ذاتی از جمله تخطی مدیریت از کنترل‌ها و تبانی هستند.`
+      },
+      {
+        id: 13,
+        topic: `substantive`,
+        topicLabel: `روش‌های محتوا`,
+        paragraph: `بند ۲۰`,
+        stem: `کدام یک از موارد زیر جزء روش‌های محتوای «الزامی» حسابرس در ارتباط با فرآیند بستن صورت‌های مالی طبق بند ۲۰ است؟`,
+        options: [
+          `اخذ تأییدیه حقوقی از تمام وکلای شرکت`,
+          `مطابقت یا مغایرت‌گیری صورت‌های مالی با سوابق حسابداری زیربنایی و بررسی ثبت‌های روزنامه بااهمیت و سایر تعدیلات`,
+          `شمارش مجدد صددرصدی موجودی کالا در پایان سال`,
+          `آزمون کنترل‌های عمومی فناوری اطلاعات برای نرم‌افزار حقوق و دستمزد`
+        ],
+        correct: 1,
+        explanation: `بند ۲۰ استاندارد ۳۳۰ صراحتاً مقرر می‌دارد که روش‌های محتوای حسابرس باید شامل روش‌های زیر در فرآیند بستن صورت‌های مالی باشد: (الف) تطبیق یا مغایرت‌گیری صورت‌های مالی با سوابق حسابداری زیربنایی (از جمله افشاها)؛ و (ب) بررسی ثبت‌های روزنامه بااهمیت و سایر تعدیلات انجام‌شده در جریان تهیه صورت‌های مالی.`
+      },
+      {
+        id: 14,
+        topic: `substantive`,
+        topicLabel: `روش‌های محتوا و ریسک عمده`,
+        paragraph: `بند ۲۱ و A53`,
+        stem: `اگر حسابرس برای پاسخ به یک «ریسک عمده» تصمیم بگیرد رویکردی اتخاذ کند که فقط شامل روش‌های محتواست (بدون اتکا به کنترل)، چه الزامی در بند ۲۱ مقرر شده است؟`,
+        options: [
+          `می‌تواند فقط از روش‌های تحلیلی محتوایی دقیق استفاده کند.`,
+          `روش‌های محتوا باید حتماً شامل «آزمون‌های جزئیات» باشند (به تنهایی یا همراه با روش تحلیلی محتوایی).`,
+          `باید حتماً از آزمون کنترل در دوره جاری نیز همراه با آن استفاده کند.`,
+          `کافی است با مدیریت مصاحبه کرده و گواهینامه مدیران دریافت کند.`
+        ],
+        correct: 1,
+        explanation: `طبق بند ۲۱ استاندارد ۳۳۰، هنگامی که رویکرد پاسخ به ریسک عمده فقط شامل روش‌های محتوا باشد، این روش‌ها باید شامل «آزمون‌های جزئیات» باشند. به عبارت دیگر، روش‌های تحلیلی محتوایی به تنهایی برای پاسخ به ریسک عمده کافی نیستند (هرچند همراه با آزمون جزئیات مفیدند).`
+      },
+      {
+        id: 15,
+        topic: `substantive`,
+        topicLabel: `روش‌های محتوا`,
+        paragraph: `بند ۱۹ و A48–A51`,
+        stem: `بر اساس بند ۱۹ استاندارد ۳۳۰، تکلیف حسابرس درباره اجرای روش‌های «تأییدخواهی برون‌سازمانی» به عنوان روش محتوا چیست؟`,
+        options: [
+          `تنها برای موجودی نقد نزد بانک‌ها مجاز است.`,
+          `حسابرس باید تعیین کند که آیا روش‌های تأییدخواهی برون‌سازمانی باید به عنوان روش‌های محتوا اجرا شوند یا خیر.`,
+          `تأییدخواهی برون‌سازمانی یک روش آزمون کنترل است و ارتباطی با روش‌های محتوا ندارد.`,
+          `اگر روش تحلیلی نتیجه قابل قبول بدهد، بررسی لزوم تأییدخواهی ممنوع است.`
+        ],
+        correct: 1,
+        explanation: `طبق بند ۱۹ استاندارد ۳۳۰، حسابرس باید بررسی و تعیین کند که آیا روش‌های تأییدخواهی برون‌سازمانی (مانند حساب‌های دریافتنی، مانده بانک یا شرایط قراردادهای غیرمعمول) باید به عنوان روش‌های محتوا اجرا شوند یا خیر.`
+      },
+      {
+        id: 16,
+        topic: `closing`,
+        topicLabel: `میان‌دوره‌ای و مستندسازی`,
+        paragraph: `بند ۲۲`,
+        stem: `در صورتی که حسابرس روش‌های محتوا را در تاریخ میان‌دوره‌ای اجرا کند، چگونه باید دوره باقیمانده تا پایان سال مالی را پوشش دهد؟`,
+        options: [
+          `فقط با دریافت گواهینامه مدیران برای دوره باقیمانده`,
+          `با اجرای روش‌های محتوا همراه با آزمون کنترل برای دوره باقیمانده، یا در صورت کفایت، فقط اجرای روش‌های محتوای تکمیلی`,
+          `تنها با اتکا به بودجه مصوب دوره باقیمانده`,
+          `با تعمیم خطی درصد خطای دوره میان‌دوره‌ای بدون هیچ روش اضافی`
+        ],
+        correct: 1,
+        explanation: `طبق بند ۲۲، برای پوشش دوره باقیمانده جهت ایجاد مبنایی معقول برای تعمیم نتیجه‌گیری به پایان دوره، حسابرس باید: (الف) روش‌های محتوا همراه با آزمون‌های کنترل برای دوره مداخله‌ای؛ یا (ب) اگر تشخیص دهد که کافی است، فقط روش‌های محتوای تکمیلی را اجرا نماید.`
+      },
+      {
+        id: 17,
+        topic: `closing`,
+        topicLabel: `میان‌دوره‌ای و مستندسازی`,
+        paragraph: `بند ۲۳`,
+        stem: `اگر حسابرس در جریان اجرای روش‌های محتوا در تاریخ میان‌دوره‌ای، تحریف‌هایی را کشف کند که قبلاً انتظار وقوع آن‌ها را نداشته است، چه وظیفه‌ای دارد؟`,
+        options: [
+          `باید بدون تغییر برنامه، تا پایان سال صبر کند و همه تحریف‌ها را با هم جمع ببندد.`,
+          `باید ارزیابی کند که آیا ارزیابی مربوط به ریسک و ماهیت، زمان‌بندی یا دامنه برنامه‌ریزی‌شده روش‌های محتوا برای پوشش دوره باقیمانده نیاز به تعدیل دارد یا خیر.`,
+          `باید بلافاصله گزارش مردود صادر کند.`,
+          `باید صرفاً اندازه نمونه آزمون‌های کنترل دوره قبل را کاهش دهد.`
+        ],
+        correct: 1,
+        explanation: `طبق بند ۲۳ استاندارد ۳۳۰، کشف تحریف‌های غیرمنتظره در تاریخ میان‌دوره‌ای مستلزم آن است که حسابرس ارزیابی کند آیا ارزیابی ریسک و ماهیت، زمان‌بندی یا دامنه برنامه‌ریزی‌شده روش‌های محتوا برای دوره باقیمانده نیازمند تعدیل است یا خیر.`
+      },
+      {
+        id: 18,
+        topic: `closing`,
+        topicLabel: `شواهد و اظهارنظر`,
+        paragraph: `بند ۲۶ و ۲۷`,
+        stem: `اگر حسابرس نتواند شواهد حسابرسی کافی و مناسب در مورد یک ادعای بااهمیت صورت‌های مالی کسب کند و تلاش‌های بیشتر برای کسب شواهد نیز بی‌نتیجه بماند، اقدام نهایی چیست؟`,
+        options: [
+          `افزودن یک بند تأکید بر مطلب خاص به گزارش مقبول`,
+          `افزایش سطح اهمیت اجرای کار تا رفع مشکل`,
+          `صدور اظهارنظر مشروط یا عدم اظهارنظر بر صورت‌های مالی`,
+          `تأیید صورت‌های مالی با شرط درج موضوع در نامه مدیریت`
+        ],
+        correct: 2,
+        explanation: `طبق بند ۲۷ استاندارد ۳۳۰، اگر حسابرس قادر به کسب شواهد حسابرسی کافی و مناسب درباره یک ادعای بااهمیت نباشد، باید بر اساس استاندارد ۷۰۵ (تغییرات در اظهارنظر) گزارش «مشروط» یا «عدم اظهارنظر» صادر کند.`
+      },
+      {
+        id: 19,
+        topic: `closing`,
+        topicLabel: `مستندسازی`,
+        paragraph: `بند ۲۸ تا ۳۰`,
+        stem: `بر اساس الزامات مستندسازی استاندارد ۳۳۰ (بندهای ۲۸ تا ۳۰)، کدام یک از موارد زیر نباید در پرونده حسابرسی جا بیفتد؟`,
+        options: [
+          `پیوند روش‌های حسابرسی پسینی با ریسک‌های ارزیابی‌شده در سطح ادعا، نتیجه‌گیری درباره اتکا به کنترل‌های دوره‌های قبل و نشان دادن تطبیق صورت‌های مالی با سوابق حسابداری`,
+          `فقط ذخیره نسخه نهایی صورت‌های مالی بدون نیاز به ثبت پیوند روش‌ها به ادعاها`,
+          `ثبت ساعات دقیق کار حسابرسان بدون مستندسازی نتایج روش‌ها`,
+          `تنها مستندسازی روش‌هایی که در آن‌ها تحریف کشف شده است`
+        ],
+        correct: 0,
+        explanation: `طبق بندهای ۲۸ تا ۳۰، حسابرس باید پاسخ‌های کلی، ماهیت/زمان‌بندی/دامنه روش‌های پسینی، پیوند آن‌ها با ریسک‌های سطح ادعا، نتایج روش‌ها و نتیجه‌گیری‌های غیربدیهی، نتیجه‌گیری مربوط به استفاده از شواهد قبلی کنترل‌ها (بند ۲۹) و تطبیق یا مغایرت‌گیری صورت‌های مالی با سوابق حسابداری زیربنایی (بند ۳۰) را مستند کند.`
+      },
+      {
+        id: 20,
+        topic: `substantive`,
+        topicLabel: `پرسش ترکیبی IACPA`,
+        paragraph: `بندهای ۵، A2، ۱۵ و ۲۱`,
+        stem: `در حسابرسی شرکتی، محیط کنترلی دارای ضعف عمده است و در چرخه درآمد، یک ریسک عمده در ادعای وقوع شناسایی شده است. اگر حسابرس تصمیم بگیرد به کنترل‌های این چرخه اتکا نکند، مناسب‌ترین ترکیب پاسخ طبق استاندارد ۳۳۰ کدام است؟`,
+        options: [
+          `اجرای آزمون کنترل بر اساس چرخه سه‌ساله در سال بعد به همراه روش تحلیلی محتوایی در پایان سال`,
+          `پاسخ کلی (سرپرستی بیشتر و نیروی باتجربه) + انتقال روش‌ها به پایان دوره + اجرای روش محتوا شامل آزمون‌های جزئیات برای پاسخ صریح به ریسک عمده`,
+          `اجرای روش‌های تحلیلی محتوایی در تاریخ میان‌دوره‌ای بدون آزمون جزئیات`,
+          `کاهش اندازه نمونه آزمون جزئیات و اتکا به پرس‌وجو از مدیر فروش`
+        ],
+        correct: 1,
+        explanation: `این پرسش ترکیبی سه بند کلیدی را می‌سنجد: (۱) ضعف عمده محیط کنترلی مستلزم پاسخ کلی قوی‌تر و انتقال کارها به پایان دوره است (بند ۵ و A2)؛ (۲) عدم اتکا به کنترل یعنی نیازی به آزمون کنترل نیست (چون روش محتوا کافی است)؛ و (۳) برای پاسخ به ریسک عمده با رویکرد تمام‌محتوا، اجرای آزمون‌های جزئیات الزامی است و روش تحلیلی به تنهایی کافی نیست (بند ۲۱).`
+      }
+    ];
+
+    // =========================================================
+    // 2. PERSISTENT STATE MODEL (with notebookAppApi)
+    // =========================================================
+
+    const appState = {
+      simEnv: `moderate`,
+      simRisk: `medium`,
+      simReliance: `yes`,
+      priorChecks: {
+        sigRisk: false,
+        changed: false,
+        threeYears: false,
+        weakItgc: false
+      },
+      trapFilter: `all`,
+      masteredTraps: [],
+      quizMode: `study`,
+      quizTopic: `all`,
+      quizAnswers: {},
+      examSubmitted: false,
+      bookmarkedQuestions: []
+    };
+
+    let auditMixChartInstance = null;
+    let quizResultsChartInstance = null;
+
+    function getCssVar(name) {
+      return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+    }
+
+    async function saveAppState() {
+      if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === `function`) {
+        try {
+          await window.notebookAppApi.setAppState(appState);
+        } catch (err) {
+          // Graceful fallback if host rejects
+        }
+      }
+    }
+
+    async function loadAppState() {
+      if (window.notebookAppApi && typeof window.notebookAppApi.getAppState === `function`) {
+        try {
+          const saved = await window.notebookAppApi.getAppState();
+          if (saved && typeof saved === `object`) {
+            if (saved.simEnv) appState.simEnv = saved.simEnv;
+            if (saved.simRisk) appState.simRisk = saved.simRisk;
+            if (saved.simReliance) appState.simReliance = saved.simReliance;
+            if (saved.priorChecks) appState.priorChecks = Object.assign({}, appState.priorChecks, saved.priorChecks);
+            if (saved.trapFilter) appState.trapFilter = saved.trapFilter;
+            if (Array.isArray(saved.masteredTraps)) appState.masteredTraps = saved.masteredTraps;
+            if (saved.quizMode) appState.quizMode = saved.quizMode;
+            if (saved.quizTopic) appState.quizTopic = saved.quizTopic;
+            if (saved.quizAnswers && typeof saved.quizAnswers === `object`) appState.quizAnswers = saved.quizAnswers;
+            if (typeof saved.examSubmitted === `boolean`) appState.examSubmitted = saved.examSubmitted;
+            if (Array.isArray(saved.bookmarkedQuestions)) appState.bookmarkedQuestions = saved.bookmarkedQuestions;
+          }
+        } catch (err) {
+          // Proceed with defaults
+        }
+      }
+    }
+
+    function applyStateToControls() {
+      const simEnvEl = document.getElementById(`sim-env`);
+      const simRiskEl = document.getElementById(`sim-risk`);
+      const simRelEl = document.getElementById(`sim-reliance`);
+      if (simEnvEl) simEnvEl.value = appState.simEnv;
+      if (simRiskEl) simRiskEl.value = appState.simRisk;
+      if (simRelEl) simRelEl.value = appState.simReliance;
+
+      const c1 = document.getElementById(`chk-sig-risk`);
+      const c2 = document.getElementById(`chk-changed`);
+      const c3 = document.getElementById(`chk-three-years`);
+      const c4 = document.getElementById(`chk-weak-itgc`);
+      if (c1) c1.checked = !!appState.priorChecks.sigRisk;
+      if (c2) c2.checked = !!appState.priorChecks.changed;
+      if (c3) c3.checked = !!appState.priorChecks.threeYears;
+      if (c4) c4.checked = !!appState.priorChecks.weakItgc;
+
+      const qModeEl = document.getElementById(`quiz-mode-select`);
+      const qTopicEl = document.getElementById(`quiz-topic-select`);
+      if (qModeEl) qModeEl.value = appState.quizMode;
+      if (qTopicEl) qTopicEl.value = appState.quizTopic;
+    }
+
+    // =========================================================
+    // 3. INTERACTIVE SIMULATOR 1: OVERALL & ASSERTION STRATEGY
+    // =========================================================
+
+    function updateStrategySim(persist = true) {
+      const envEl = document.getElementById(`sim-env`);
+      const riskEl = document.getElementById(`sim-risk`);
+      const relEl = document.getElementById(`sim-reliance`);
+      const outEl = document.getElementById(`sim-output`);
+      if (!envEl || !riskEl || !relEl || !outEl) return;
+
+      appState.simEnv = envEl.value;
+      appState.simRisk = riskEl.value;
+      appState.simReliance = relEl.value;
+
+      let overallText = ``;
+      let tocText = ``;
+      let subText = ``;
+      let timingText = ``;
+      let boxClass = `aside-box secondary-accent`;
+
+      if (appState.simEnv === `weak`) {
+        overallText = `فعال‌سازی تمام ۵ پاسخ کلی بند A1: افزایش تردید حرفه‌ای، استفاده از کارکنان باتجربه‌تر، سرپرستی شدیدتر، غیرقابل‌پیش‌بینی بودن روش‌ها و تغییر کلی ماهیت/زمان‌بندی/دامنه (بند A2).`;
+        timingText = `انتقال بخش عمده روش‌ها به <strong>پایان دوره</strong> و افزایش مکان‌های تحت رسیدگی.`;
+        boxClass = `aside-box warning-accent`;
+      } else if (appState.simEnv === `moderate`) {
+        overallText = `تقویت سرپرستی در حوزه‌های دارای ضعف و گنجاندن عناصر غیرقابل‌پیش‌بینی در انتخاب نمونه‌ها (بند ۵).`;
+        timingText = `ترکیب آزمون‌های میان‌دوره‌ای و پایان دوره با کنترل تغییر دوره باقیمانده.`;
+      } else {
+        overallText = `محیط کنترلی اطمینان بیشتری برای اتکا به کنترل داخلی فراهم می‌کند (بند A2)؛ حفظ تردید حرفه‌ای متعارف.`;
+        timingText = `امکان اجرای بیشتر روش‌ها در <strong>تاریخ میان‌دوره‌ای</strong> (با پوشش دوره باقیمانده).`;
+        boxClass = `aside-box positive-accent`;
+      }
+
+      if (appState.simReliance === `electronic`) {
+        tocText = `<strong>آزمون کنترل الزامی است (بند ۸ ب):</strong> زیرا پردازش تمام‌الکترونیکی است و روش‌های محتوا به تنهایی شواهد کافی فراهم نمی‌کنند.`;
+      } else if (appState.simReliance === `yes`) {
+        if (appState.simRisk === `significant`) {
+          tocText = `<strong>آزمون کنترل در سال جاری الزامی است (بند ۱۵):</strong> برای اتکا به کنترل‌های مرتبط با ریسک عمده، استفاده از شواهد قبلی ممنوع است.`;
+        } else {
+          tocText = `<strong>آزمون کنترل الزامی است (بند ۸ الف):</strong> رویکرد ترکیبی؛ پرس‌وجو باید با بازرسی/اجرای مجدد/مشاهده ترکیب شود.`;
+        }
+      } else {
+        tocText = `<strong>عدم نیاز به آزمون کنترل (بند ۸):</strong> رویکرد تمام‌محتوا اتخاذ شده است (به شرط کفایت روش‌های محتوا).`;
+      }
+
+      if (appState.simRisk === `significant`) {
+        boxClass = `aside-box error-accent`;
+        subText = `<strong>الزام ویژه ریسک عمده (بند ۲۱):</strong> روش‌های محتوا باید به صراحت به این ریسک پاسخ دهند. اگر اتکا به کنترل وجود نداشته باشد، اجرای <strong>آزمون جزئیات</strong> الزامی است (روش تحلیلی به تنهایی کافی نیست).`;
+      } else if (appState.simRisk === `high`) {
+        subText = `<strong>بند ۷ و ۱۸:</strong> کسب شواهد متقاعدکننده‌تر (کیفیت بالاتر + حجم نمونه بیشتر). روش محتوا برای اقلام بااهمیت الزامی است.`;
+      } else {
+        subText = `<strong>بند ۱۸:</strong> حتی در ریسک پایین یا متوسط نیز طراحی و اجرای روش محتوا برای هر گروه معاملات، مانده و افشای بااهمیت الزامی است.`;
+      }
+
+      outEl.className = boxClass;
+      outEl.innerHTML = `
+        <div style="display: flex; flex-direction: column; gap: var(--space-sm);">
+          <div><strong>۱. پاسخ کلی (بند ۵):</strong> ${overallText}</div>
+          <div><strong>۲. تکلیف آزمون کنترل (بند ۸ و ۱۵):</strong> ${tocText}</div>
+          <div><strong>۳. تکلیف روش محتوا (بند ۱۸ و ۲۱):</strong> ${subText}</div>
+          <div><strong>۴. زمان‌بندی و دامنه (بند A2 و ۲۲):</strong> ${timingText}</div>
+        </div>
+      `;
+
+      if (persist) saveAppState();
+    }
+
+    // =========================================================
+    // 4. INTERACTIVE SIMULATOR 2: 3-YEAR PRIOR RELIANCE CHECKER
+    // =========================================================
+
+    function updatePriorRelianceChecker(persist = true) {
+      const c1 = document.getElementById(`chk-sig-risk`);
+      const c2 = document.getElementById(`chk-changed`);
+      const c3 = document.getElementById(`chk-three-years`);
+      const c4 = document.getElementById(`chk-weak-itgc`);
+      const outEl = document.getElementById(`prior-reliance-result`);
+      if (!c1 || !c2 || !c3 || !c4 || !outEl) return;
+
+      appState.priorChecks = {
+        sigRisk: c1.checked,
+        changed: c2.checked,
+        threeYears: c3.checked,
+        weakItgc: c4.checked
+      };
+
+      const reasons = [];
+      if (c1.checked) reasons.push(`کنترل مربوط به یک <strong>ریسک عمده</strong> است (استثنای قطعی بند ۱۵).`);
+      if (c2.checked) reasons.push(`تغییر بااهمیت در کنترل، افراد کلیدی یا <bdi dir="ltr">IT</bdi> رخ داده که تداوم ارتباط شواهد قبلی را مختل کرده است (بند ۱۴ الف).`);
+      if (c3.checked) reasons.push(`دوره تناوب <strong>سه‌ساله</strong> به پایان رسیده و آزمون مجدد الزامی است (بند ۱۴ ب).`);
+      if (c4.checked) reasons.push(`ضعف در کنترل‌های عمومی <bdi dir="ltr">IT</bdi> یا نظارت بر کنترل‌ها، قابلیت اتکا به شواهد قبلی را کاهش یا از بین می‌برد (بند <bdi dir="ltr">A36</bdi>).`);
+
+      if (reasons.length > 0) {
+        outEl.className = `aside-box error-accent`;
+        outEl.innerHTML = `
+          <div style="font-weight: 800; margin-bottom: var(--space-xs);">حکم استاندارد ۳۳۰: اتکا به شواهد قبلی مجاز نیست — آزمون در دوره جاری الزامی است</div>
+          <ul style="margin: 0; padding-inline-start: 1.25rem;">
+            ${reasons.map(r => `<li>${r}</li>`).join(``)}
+          </ul>
+        `;
+      } else {
+        outEl.className = `aside-box positive-accent`;
+        outEl.innerHTML = `
+          <div style="font-weight: 800; margin-bottom: var(--space-xs);">حکم استاندارد ۳۳۰: اتکا به شواهد قبلی مجاز است (مشروط به آزمون نبود تغییر)</div>
+          <p style="margin: 0;">
+            حسابرس باید با اجرای <strong>پرس‌وجو همراه با مشاهده یا بازرسی</strong> (بند ۱۴) اطمینان یابد که تغییری رخ نداده است و همچنین در هر حسابرسی حداقل بخشی از کنترل‌های مورد اتکا را آزمون کند تا توزیع آزمون بین دوره‌ها رعایت شود.
+          </p>
+        `;
+      }
+
+      if (persist) saveAppState();
+    }
+
+    // =========================================================
+    // 5. CHART.JS: AUDIT MIX ACROSS SCENARIOS
+    // =========================================================
+
+    function renderAuditMixChart() {
+      const canvas = document.getElementById(`auditMixChart`);
+      if (!canvas || typeof Chart === `undefined`) return;
+
+      if (auditMixChartInstance) {
+        auditMixChartInstance.destroy();
+      }
+
+      const c1 = getCssVar(`--data-1`) || `#1f4e5f`;
+      const c2 = getCssVar(`--data-2`) || `#d99000`;
+      const c3 = getCssVar(`--data-3`) || `#2b6e52`;
+      const ink = getCssVar(`--on-surface`) || `#17181a`;
+      const grid = getCssVar(`--outline-variant`) || `#dedad0`;
+
+      auditMixChartInstance = new Chart(canvas, {
+        type: `bar`,
+        data: {
+          labels: [
+            `ریسک پایین + اتکا به کنترل`,
+            `ریسک متوسط + تمام‌محتوا`,
+            `ریسک عمده + اتکا به کنترل`,
+            `ریسک عمده + بدون اتکا (بند ۲۱)`
+          ],
+          datasets: [
+            {
+              label: `آزمون‌های کنترل (بند ۸ و ۱۵)`,
+              data: [45, 0, 50, 0],
+              backgroundColor: c3,
+              borderRadius: 2
+            },
+            {
+              label: `آزمون‌های جزئیات (بند ۱۸ و ۲۱)`,
+              data: [25, 65, 60, 85],
+              backgroundColor: c1,
+              borderRadius: 2
+            },
+            {
+              label: `روش‌های تحلیلی محتوایی`,
+              data: [30, 35, 20, 15],
+              backgroundColor: c2,
+              borderRadius: 2
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: `bottom`,
+              rtl: true,
+              labels: {
+                color: ink,
+                font: { family: `Vazirmatn`, size: 12, weight: `600` }
+              }
+            },
+            tooltip: {
+              rtl: true,
+              titleFont: { family: `Vazirmatn` },
+              bodyFont: { family: `Vazirmatn` },
+              callbacks: {
+                label: function(ctx) {
+                  return `${ctx.dataset.label}: ${ctx.parsed.y}٪ سهم نسبی تلاش`;
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              stacked: false,
+              ticks: { color: ink, font: { family: `Vazirmatn`, size: 11 } },
+              grid: { display: false }
+            },
+            y: {
+              beginAtZero: true,
+              max: 100,
+              ticks: {
+                color: ink,
+                font: { family: `Vazirmatn`, size: 11 },
+                callback: function(val) { return val + `٪`; }
+              },
+              grid: { color: grid }
+            }
+          }
+        }
+      });
+    }
+
+    // =========================================================
+    // 6. EXAM TRAPS RENDERING & INTERACTION
+    // =========================================================
+
+    function filterTraps(category, btnEl) {
+      appState.trapFilter = category;
+      const buttons = document.querySelectorAll(`#sec-traps .filter-row .btn`);
+      buttons.forEach(b => b.classList.remove(`active`));
+      if (btnEl) btnEl.classList.add(`active`);
+      renderTraps();
+      saveAppState();
+    }
+
+    function toggleTrapMastered(trapId) {
+      const idx = appState.masteredTraps.indexOf(trapId);
+      if (idx === -1) {
+        appState.masteredTraps.push(trapId);
+      } else {
+        appState.masteredTraps.splice(idx, 1);
+      }
+      renderTraps();
+      saveAppState();
+    }
+
+    function renderTraps() {
+      const container = document.getElementById(`traps-container`);
+      const countEl = document.getElementById(`traps-mastered-count`);
+      if (!container) return;
+
+      if (countEl) {
+        countEl.textContent = `${toPersianNum(appState.masteredTraps.length)} از ${toPersianNum(TRAPS_DATA.length)} تله مرور شده`;
+      }
+
+      const list = appState.trapFilter === `all`
+        ? TRAPS_DATA
+        : TRAPS_DATA.filter(t => t.category === appState.trapFilter);
+
+      container.innerHTML = list.map(t => {
+        const isMastered = appState.masteredTraps.includes(t.id);
+        return `
+          <article class="trap-card ${isMastered ? `mastered` : ``}">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: var(--space-sm); flex-wrap: wrap;">
+              <span class="tag">${t.categoryLabel} | ${t.paragraph}</span>
+              <button type="button" class="btn ${isMastered ? `btn-primary` : `btn-secondary`}" style="min-height: 44px; font-size: var(--label-size);" onclick="toggleTrapMastered('${t.id}')">
+                ${isMastered ? `مرور شده` : `ثبت تسلط بر این تله`}
+              </button>
+            </div>
+            <div class="trap-myth">
+              <strong>تله طراح سؤال:</strong> ${t.myth}
+            </div>
+            <div class="trap-truth">
+              <strong>حکم استاندارد ۳۳۰:</strong> ${t.truth}
+            </div>
+          </article>
+        `;
+      }).join(``);
+    }
+
+    // =========================================================
+    // 7. QUIZ ENGINE (20 QUESTIONS, STUDY & EXAM MODES, CSV)
+    // =========================================================
+
+    const OPTION_LETTERS = [`الف`, `ب`, `ج`, `د`];
+
+    function toPersianNum(n) {
+      return String(n).replace(/\d/g, d => `۰۱۲۳۴۵۶۷۸۹`[d]);
+    }
+
+    function changeQuizMode(mode) {
+      appState.quizMode = mode;
+      const notice = document.getElementById(`quiz-inline-notice`);
+      if (notice) {
+        notice.textContent = mode === `exam`
+          ? `حالت آزمون شبیه‌ساز فعال شد. پس از پاسخگویی به پرسش‌ها، دکمه «ثبت و تصحیح نهایی آزمون» را بزنید.`
+          : `حالت آموزشی فعال شد. تحلیل تشریحی هر پرسش بلافاصله پس از انتخاب گزینه نمایش داده می‌شود.`;
+      }
+      renderQuiz();
+      saveAppState();
+    }
+
+    function changeQuizTopic(topic) {
+      appState.quizTopic = topic;
+      renderQuiz();
+      saveAppState();
+    }
+
+    function selectAnswer(qId, optIndex) {
+      if (appState.quizMode === `exam` && appState.examSubmitted) return;
+      appState.quizAnswers[String(qId)] = optIndex;
+      renderQuiz();
+      saveAppState();
+    }
+
+    function toggleBookmark(qId) {
+      const idx = appState.bookmarkedQuestions.indexOf(qId);
+      if (idx === -1) {
+        appState.bookmarkedQuestions.push(qId);
+      } else {
+        appState.bookmarkedQuestions.splice(idx, 1);
+      }
+      renderQuiz();
+      saveAppState();
+    }
+
+    function submitExam() {
+      const answeredCount = Object.keys(appState.quizAnswers).length;
+      const notice = document.getElementById(`quiz-inline-notice`);
+      if (answeredCount === 0) {
+        if (notice) notice.textContent = `لطفاً پیش از ثبت نهایی، حداقل به یک پرسش پاسخ دهید.`;
+        return;
+      }
+      appState.examSubmitted = true;
+      appState.quizMode = `exam`;
+      const qModeEl = document.getElementById(`quiz-mode-select`);
+      if (qModeEl) qModeEl.value = `exam`;
+      if (notice) {
+        notice.textContent = `آزمون با موفقیت تصحیح شد. کارنامه تحلیلی و پاسخ تشریحی همه پرسش‌ها در زیر قابل مشاهده است.`;
+      }
+      renderQuiz();
+      saveAppState();
+    }
+
+    function handleResetQuiz(btn) {
+      if (!btn) return;
+      if (btn.dataset.armed !== `true`) {
+        btn.dataset.armed = `true`;
+        btn.classList.add(`armed`);
+        btn.textContent = `برای تأیید بازنشانی دوباره کلیک کنید`;
+        setTimeout(() => {
+          if (btn.dataset.armed === `true`) {
+            btn.dataset.armed = `false`;
+            btn.classList.remove(`armed`);
+            btn.textContent = `بازنشانی پاسخ‌ها`;
+          }
+        }, 4000);
+        return;
+      }
+      btn.dataset.armed = `false`;
+      btn.classList.remove(`armed`);
+      btn.textContent = `بازنشانی پاسخ‌ها`;
+
+      appState.quizAnswers = {};
+      appState.examSubmitted = false;
+      const notice = document.getElementById(`quiz-inline-notice`);
+      if (notice) notice.textContent = `تمامی پاسخ‌های آزمون پاک شد. می‌توانید از نو آغاز کنید.`;
+      renderQuiz();
+      saveAppState();
+    }
+
+    function exportQuizCsv() {
+      const lines = [`شماره,مبحث,بند استاندارد,پاسخ شما,پاسخ صحیح,وضعیت`];
+      QUESTIONS_DATA.forEach(q => {
+        const chosen = appState.quizAnswers[String(q.id)];
+        const chosenTxt = typeof chosen === `number` ? OPTION_LETTERS[chosen] : `پاسخ‌داده‌نشده`;
+        const correctTxt = OPTION_LETTERS[q.correct];
+        const status = typeof chosen !== `number` ? `بی‌پاسخ` : (chosen === q.correct ? `صحیح` : `نادرست`);
+        lines.push(`${q.id},"${q.topicLabel}","${q.paragraph}","${chosenTxt}","${correctTxt}","${status}"`);
+      });
+      const csvContent = `\uFEFF` + lines.join(`\n`);
+
+      if (window.notebookAppApi && typeof window.notebookAppApi.triggerFileDownload === `function`) {
+        window.notebookAppApi.triggerFileDownload({
+          content: csvContent,
+          contentType: `text/csv`,
+          encoding: `UTF-8`,
+          filename: `standard330-iacpa-report.csv`
+        });
+      }
+      const notice = document.getElementById(`quiz-inline-notice`);
+      if (notice) notice.textContent = `فایل کارنامه آزمون با فرمت CSV آماده دانلود شد.`;
+    }
+
+    function renderQuiz() {
+      const container = document.getElementById(`quiz-questions-container`);
+      const statusEl = document.getElementById(`quiz-status-text`);
+      const scoreEl = document.getElementById(`quiz-score-text`);
+      const barEl = document.getElementById(`quiz-progress-bar`);
+      const headerBadge = document.getElementById(`header-progress-badge`);
+      const kpiScore = document.getElementById(`kpi-quiz-score`);
+      const submitBtn = document.getElementById(`btn-submit-exam`);
+      const resultsPanel = document.getElementById(`quiz-results-panel`);
+
+      if (!container) return;
+
+      const total = QUESTIONS_DATA.length;
+      let answered = 0;
+      let correctCount = 0;
+      QUESTIONS_DATA.forEach(q => {
+        const ans = appState.quizAnswers[String(q.id)];
+        if (typeof ans === `number`) {
+          answered++;
+          if (ans === q.correct) correctCount++;
+        }
+      });
+
+      const pctAnswered = Math.round((answered / total) * 100);
+      const pctCorrect = answered > 0 ? Math.round((correctCount / total) * 100) : 0;
+
+      if (statusEl) statusEl.textContent = `پاسخ‌داده‌شده: ${toPersianNum(answered)} از ${toPersianNum(total)} پرسش`;
+      if (barEl) barEl.style.width = `${pctAnswered}%`;
+      if (headerBadge) headerBadge.textContent = `پیشرفت آزمون: ${toPersianNum(answered)} از ${toPersianNum(total)} پرسش`;
+      if (kpiScore) kpiScore.textContent = `${toPersianNum(pctCorrect)}٪ تسلط`;
+
+      const showAnswersNow = appState.quizMode === `study` || appState.examSubmitted;
+
+      if (scoreEl) {
+        if (showAnswersNow && answered > 0) {
+          scoreEl.textContent = `پاسخ صحیح: ${toPersianNum(correctCount)} از ${toPersianNum(answered)} (${toPersianNum(Math.round((correctCount / answered) * 100))}٪ دقت)`;
+        } else if (appState.quizMode === `exam` && !appState.examSubmitted) {
+          scoreEl.textContent = `امتیاز پس از ثبت نهایی آزمون محاسبه می‌شود`;
+        } else {
+          scoreEl.textContent = `امتیاز فعلی: —`;
+        }
+      }
+
+      if (submitBtn) {
+        submitBtn.style.display = appState.quizMode === `exam` && !appState.examSubmitted ? `inline-flex` : `none`;
+      }
+
+      // Show results panel when enough data or submitted
+      if (resultsPanel) {
+        if ((appState.quizMode === `exam` && appState.examSubmitted) || (appState.quizMode === `study` && answered >= 3)) {
+          resultsPanel.style.display = `block`;
+          renderQuizResultsBreakdown();
+        } else {
+          resultsPanel.style.display = `none`;
+        }
+      }
+
+      // Filter questions
+      let filtered = QUESTIONS_DATA;
+      if (appState.quizTopic === `bookmarked`) {
+        filtered = QUESTIONS_DATA.filter(q => appState.bookmarkedQuestions.includes(q.id));
+      } else if (appState.quizTopic !== `all`) {
+        if (appState.quizTopic === `substantive`) {
+          filtered = QUESTIONS_DATA.filter(q => q.topic === `substantive`);
+        } else {
+          filtered = QUESTIONS_DATA.filter(q => q.topic === appState.quizTopic);
+        }
+      }
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="aside-box">
+            <strong>هیچ پرسشی در این فیلتر یافت نشد.</strong>
+            <p style="margin: var(--space-xs) 0 0 0;">برای مشاهده تمام پرسش‌ها، فیلتر مبحث را روی «همه مباحث» قرار دهید یا ابتدا پرسش‌هایی را نشانه‌گذاری کنید.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(q => {
+        const chosen = appState.quizAnswers[String(q.id)];
+        const hasChosen = typeof chosen === `number`;
+        const isBookmarked = appState.bookmarkedQuestions.includes(q.id);
+        const reveal = (appState.quizMode === `study` && hasChosen) || (appState.quizMode === `exam` && appState.examSubmitted);
+
+        const optionsHtml = q.options.map((opt, idx) => {
+          let cls = `option-btn`;
+          if (reveal) {
+            if (idx === q.correct) {
+              cls += ` correct`;
+            } else if (hasChosen && idx === chosen && chosen !== q.correct) {
+              cls += ` wrong`;
+            }
+          } else if (hasChosen && idx === chosen) {
+            cls += ` selected`;
+          }
+
+          const disabledAttr = (appState.quizMode === `exam` && appState.examSubmitted) ? `disabled` : ``;
+          return `
+            <button type="button" class="${cls}" ${disabledAttr} onclick="selectAnswer(${q.id}, ${idx})">
+              <span class="option-letter">${OPTION_LETTERS[idx]}</span>
+              <span>${opt}</span>
+            </button>
+          `;
+        }).join(``);
+
+        let expHtml = ``;
+        if (reveal) {
+          const isRight = hasChosen && chosen === q.correct;
+          const boxCls = hasChosen ? (isRight ? `is-correct` : `is-wrong`) : ``;
+          const verdictText = !hasChosen
+            ? `پاسخ‌داده‌نشده — گزینه صحیح: ${OPTION_LETTERS[q.correct]}`
+            : (isRight ? `پاسخ صحیح است (${OPTION_LETTERS[q.correct]})` : `پاسخ نادرست — گزینه صحیح: ${OPTION_LETTERS[q.correct]}`);
+          expHtml = `
+            <div class="explanation-box ${boxCls}">
+              <div style="font-weight: 800; margin-bottom: var(--space-xs);">${verdictText} | مستند استاندارد: ${q.paragraph}</div>
+              <div>${q.explanation}</div>
+            </div>
+          `;
+        }
+
+        return `
+          <article class="question-card" id="q-card-${q.id}">
+            <div class="question-header">
+              <div class="dossier-bar-group">
+                <span class="index-num">پرسش ${toPersianNum(String(q.id).padStart(2, '0'))}</span>
+                <span class="tag petrol">${q.topicLabel}</span>
+                <span class="dossier-meta">${q.paragraph}</span>
+              </div>
+              <button type="button" class="btn ${isBookmarked ? `btn-primary` : `btn-secondary`}" style="min-height: 44px; font-size: var(--label-size);" onclick="toggleBookmark(${q.id})">
+                ${isBookmarked ? `نشانه‌گذاری‌شده` : `نشانه‌گذاری مرور`}
+              </button>
+            </div>
+            <p class="question-stem">${q.stem}</p>
+            <div class="options-grid">
+              ${optionsHtml}
+            </div>
+            ${expHtml}
+          </article>
+        `;
+      }).join(``);
+    }
+
+    function renderQuizResultsBreakdown() {
+      const breakdownEl = document.getElementById(`quiz-results-breakdown`);
+      const canvas = document.getElementById(`quizResultsChart`);
+      if (!breakdownEl) return;
+
+      const groups = [
+        { key: `overall`, label: `پاسخ‌های کلی و سطح ادعا` },
+        { key: `controls`, label: `آزمون‌های کنترل و چرخه ۳ ساله` },
+        { key: `substantive`, label: `روش‌های محتوا و ریسک عمده` },
+        { key: `closing`, label: `میان‌دوره‌ای، شواهد و مستندسازی` }
+      ];
+
+      const labels = [];
+      const values = [];
+
+      breakdownEl.innerHTML = groups.map(g => {
+        const qs = QUESTIONS_DATA.filter(q => q.topic === g.key);
+        let right = 0;
+        let done = 0;
+        qs.forEach(q => {
+          const ans = appState.quizAnswers[String(q.id)];
+          if (typeof ans === `number`) {
+            done++;
+            if (ans === q.correct) right++;
+          }
+        });
+        const pct = qs.length > 0 ? Math.round((right / qs.length) * 100) : 0;
+        labels.push(g.label);
+        values.push(pct);
+
+        return `
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-sm) var(--space-md); background: var(--surface-container); border-radius: var(--rounded);">
+            <span><strong>${g.label}</strong> (${toPersianNum(done)} از ${toPersianNum(qs.length)} پاسخ‌داده‌شده)</span>
+            <span class="tag ${pct >= 70 ? `positive` : (pct >= 40 ? `` : `error`)}">${toPersianNum(right)}/${toPersianNum(qs.length)} (${toPersianNum(pct)}٪)</span>
+          </div>
+        `;
+      }).join(``);
+
+      if (canvas && typeof Chart !== `undefined`) {
+        if (quizResultsChartInstance) quizResultsChartInstance.destroy();
+        const c1 = getCssVar(`--data-1`) || `#1f4e5f`;
+        const ink = getCssVar(`--on-surface`) || `#17181a`;
+        const grid = getCssVar(`--outline-variant`) || `#dedad0`;
+
+        quizResultsChartInstance = new Chart(canvas, {
+          type: `bar`,
+          data: {
+            labels: labels,
+            datasets: [{
+              label: `درصد تسلط مبحثی`,
+              data: values,
+              backgroundColor: c1,
+              borderRadius: 2
+            }]
+          },
+          options: {
+            indexAxis: `y`,
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                rtl: true,
+                titleFont: { family: `Vazirmatn` },
+                bodyFont: { family: `Vazirmatn` },
+                callbacks: {
+                  label: function(ctx) { return `تسلط: ${ctx.parsed.x}٪`; }
+                }
+              }
+            },
+            scales: {
+              x: {
+                beginAtZero: true,
+                max: 100,
+                ticks: { color: ink, font: { family: `Vazirmatn`, size: 11 }, callback: v => v + `٪` },
+                grid: { color: grid }
+              },
+              y: {
+                ticks: { color: ink, font: { family: `Vazirmatn`, size: 11 } },
+                grid: { display: false }
+              }
+            }
+          }
+        });
+      }
+    }
+
+    // =========================================================
+    // 8. INITIALIZATION
+    // =========================================================
+
+    async function initApp() {
+      await loadAppState();
+      applyStateToControls();
+      updateStrategySim(false);
+      updatePriorRelianceChecker(false);
+      renderAuditMixChart();
+      renderTraps();
+      renderQuiz();
+
+      if (window.notebookAppApi && typeof window.notebookAppApi.notifyAppReady === `function`) {
+        window.notebookAppApi.notifyAppReady();
+      }
+    }
+
+    document.addEventListener(`DOMContentLoaded`, initApp);
+  </script>
+</body>
+</html>
